@@ -1,5 +1,4 @@
-# Jogo-de-ferias
+# TCC Jogo Digital
 
-Planejar um jogo de férias pq sim
-
+Desenvolvimento de um jogo digital focado em daltonismo. Este jogo servirá como base para o TCC
 

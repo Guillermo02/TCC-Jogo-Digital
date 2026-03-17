@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://csgq2q1g8mh86"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_it3ha"]
+size = Vector2(46.6369, 1058.2515)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23dcn"]
+size = Vector2(29, 652)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h72s8"]
+size = Vector2(1167, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2q0ua"]
+size = Vector2(1184, 25)
+
+[node name="Paredes" type="Node2D" unique_id=535034372]
+
+[node name="Colisoes" type="Node2D" parent="." unique_id=1077836470]
+
+[node name="ParedeEsquerda" type="StaticBody2D" parent="Colisoes" unique_id=705969549]
+position = Vector2(0, -4)
+rotation = 3.1415927
+scale = Vector2(614.09656, -1.0218397)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colisoes/ParedeEsquerda" unique_id=1272488321]
+position = Vector2(0.0016283393, 323.92554)
+rotation = -3.1415925
+scale = Vector2(0.0012221015, -0.62143767)
+shape = SubResource("RectangleShape2D_it3ha")
+
+[node name="ParedeDireita" type="StaticBody2D" parent="Colisoes" unique_id=802892737]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colisoes/ParedeDireita" unique_id=979029667]
+position = Vector2(1150.5, 318)
+shape = SubResource("RectangleShape2D_23dcn")
+
+[node name="Piso" type="StaticBody2D" parent="Colisoes" unique_id=1004605086]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colisoes/Piso" unique_id=2108064244]
+position = Vector2(571, 638)
+shape = SubResource("RectangleShape2D_h72s8")
+
+[node name="Teto" type="StaticBody2D" parent="Colisoes" unique_id=672947471]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colisoes/Teto" unique_id=1179624721]
+position = Vector2(570, -2.5)
+shape = SubResource("RectangleShape2D_2q0ua")

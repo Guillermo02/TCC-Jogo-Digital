@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Jogo tcc"
+run/main_scene="uid://1ao3x01q53j7"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

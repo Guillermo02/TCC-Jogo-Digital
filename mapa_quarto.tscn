@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://culygo8g3m1yj" path="res://assets/quarto-feminino.jpg" id="1_h6yjm"]
 [ext_resource type="PackedScene" uid="uid://csgq2q1g8mh86" path="res://paredes.tscn" id="2_a8jwn"]
-[ext_resource type="PackedScene" uid="uid://b2vyxab30n72u" path="res://player.tscn" id="3_6im55"]
+[ext_resource type="PackedScene" uid="uid://b2vyxab30n72u" path="res://personagens/jogador.tscn" id="3_6im55"]
 
 [node name="Mapa-quarto" type="Node2D" unique_id=405284583]
 

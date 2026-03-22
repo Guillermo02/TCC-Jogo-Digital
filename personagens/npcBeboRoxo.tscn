@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ct41bj7rcjkwt"]
 
+[ext_resource type="Script" uid="uid://cg1fk2hkyn58o" path="res://scripts/npc_bebo_roxo.gd" id="1_dk7dl"]
 [ext_resource type="Texture2D" uid="uid://i03lw11tj16i" path="res://assets/Homeless_3/Attack_1.png" id="1_i74sn"]
 [ext_resource type="Texture2D" uid="uid://c3ntttp11fyb1" path="res://assets/Homeless_3/Idle_2.png" id="2_dk7dl"]
 [ext_resource type="Texture2D" uid="uid://ob1y6biwrffa" path="res://assets/Homeless_3/Run.png" id="3_rc0hr"]
@@ -352,11 +353,14 @@ animations = [{
 [node name="NpcBeboRoxo" type="Node2D" unique_id=410114744]
 
 [node name="NpcBeboRoxo" type="CharacterBody2D" parent="." unique_id=1167497737]
+script = ExtResource("1_dk7dl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NpcBeboRoxo" unique_id=542394418]
 sprite_frames = SubResource("SpriteFrames_bri0g")
-animation = &"walk"
-frame = 3
-frame_progress = 0.13417986
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NpcBeboRoxo" unique_id=599684523]
+
+[node name="Area2D" type="Area2D" parent="NpcBeboRoxo" unique_id=1573454831]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NpcBeboRoxo/Area2D" unique_id=361898056]

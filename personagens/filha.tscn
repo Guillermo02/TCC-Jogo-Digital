@@ -424,6 +424,6 @@ animations = [{
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Filha" unique_id=1903780998]
 sprite_frames = SubResource("SpriteFrames_d50q2")
-animation = &"dialogue"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Filha" unique_id=700905402]

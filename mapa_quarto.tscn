@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://culygo8g3m1yj" path="res://assets/quarto-feminino.jpg" id="1_h6yjm"]
 [ext_resource type="PackedScene" uid="uid://csgq2q1g8mh86" path="res://paredes.tscn" id="2_a8jwn"]
 [ext_resource type="PackedScene" uid="uid://b2vyxab30n72u" path="res://personagens/jogador.tscn" id="3_6im55"]
+[ext_resource type="PackedScene" uid="uid://ct41bj7rcjkwt" path="res://personagens/npcBeboRoxo.tscn" id="4_36lbi"]
 
 [node name="Mapa-quarto" type="Node2D" unique_id=405284583]
 
@@ -15,4 +16,8 @@ texture = ExtResource("1_h6yjm")
 
 [node name="PlayerScene" parent="." unique_id=2032534576 instance=ExtResource("3_6im55")]
 position = Vector2(106, 362)
-scale = Vector2(4.8649907, 4.507523)
+scale = Vector2(4.184991, 4.467523)
+
+[node name="NpcBeboRoxo" parent="." unique_id=410114744 instance=ExtResource("4_36lbi")]
+position = Vector2(792, 339.00003)
+scale = Vector2(-3.6643102, 4.922181)

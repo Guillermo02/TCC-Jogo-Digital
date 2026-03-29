@@ -1,16 +1,17 @@
 [gd_scene format=3 uid="uid://1ao3x01q53j7"]
 
-[ext_resource type="Texture2D" uid="uid://culygo8g3m1yj" path="res://assets/quarto-feminino.jpg" id="1_h6yjm"]
+[ext_resource type="Texture2D" uid="uid://dtd1xhf34p0gm" path="res://assets/PNG/City2/Bright/City2.png" id="1_b7lri"]
 [ext_resource type="PackedScene" uid="uid://csgq2q1g8mh86" path="res://paredes.tscn" id="2_a8jwn"]
 [ext_resource type="PackedScene" uid="uid://b2vyxab30n72u" path="res://personagens/jogador.tscn" id="3_6im55"]
 [ext_resource type="PackedScene" uid="uid://ct41bj7rcjkwt" path="res://personagens/npcBeboRoxo.tscn" id="4_36lbi"]
+[ext_resource type="PackedScene" uid="uid://dhhpmfu6ryooi" path="res://colorblind_filter.tscn" id="5_b7lri"]
 
 [node name="Mapa-quarto" type="Node2D" unique_id=405284583]
 
 [node name="Background-quarto" type="Sprite2D" parent="." unique_id=362746643]
-position = Vector2(575.625, 321.875)
-scale = Vector2(0.7504883, 0.6350097)
-texture = ExtResource("1_h6yjm")
+position = Vector2(688.12494, 329.99997)
+scale = Vector2(0.8376302, 0.68703705)
+texture = ExtResource("1_b7lri")
 
 [node name="Paredes" parent="." unique_id=535034372 instance=ExtResource("2_a8jwn")]
 
@@ -21,3 +22,5 @@ scale = Vector2(4.184991, 4.467523)
 [node name="NpcBeboRoxo" parent="." unique_id=410114744 instance=ExtResource("4_36lbi")]
 position = Vector2(792, 339.00003)
 scale = Vector2(-3.6643102, 4.922181)
+
+[node name="ColorblindFilter" parent="." unique_id=1655978627 instance=ExtResource("5_b7lri")]

@@ -22,6 +22,14 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
+		# exemplo: borda direita
+	if position.x > 1150:
+		var lado = "dir"
+		trocar_para_proxima_cena(lado)
+	if position.x < 0:
+		var lado = "esq"
+		trocar_para_proxima_cena(lado)
 
 	move_and_slide()
 	
@@ -37,3 +45,13 @@ func atualizar_animacao(direction):
 		sprite.flip_h = false
 	elif direction < 0:
 		sprite.flip_h = true
+
+func trocar_para_proxima_cena(lado):
+	if lado=="dir":
+		get_tree().change_scene_to_file("res://mapas/cidade_direita.tscn")
+	else:
+		get_tree().change_scene_to_file("res://mapas/cidade_esquerda.tscn")
+			
+	
+	
+	

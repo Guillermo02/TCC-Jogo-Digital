@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://l3kj1i4sgumc"]
+
+[ext_resource type="Texture2D" uid="uid://dtd1xhf34p0gm" path="res://assets/PNG/City2/Bright/City2.png" id="1_kmx2j"]
+[ext_resource type="PackedScene" uid="uid://csgq2q1g8mh86" path="res://paredes.tscn" id="2_j70hl"]
+[ext_resource type="PackedScene" uid="uid://b2vyxab30n72u" path="res://personagens/jogador.tscn" id="3_j70hl"]
+
+[node name="cidade_meio" type="Node2D" unique_id=1587743360]
+position = Vector2(2, 4)
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1932144957]
+position = Vector2(1174, 662.99994)
+scale = Vector2(1.2229167, 1.2314814)
+texture = ExtResource("1_kmx2j")
+
+[node name="Paredes" parent="." unique_id=535034372 instance=ExtResource("2_j70hl")]
+position = Vector2(2, -2)
+scale = Vector2(2, 2)
+
+[node name="Jogador" parent="." unique_id=2032534576 instance=ExtResource("3_j70hl")]
+position = Vector2(298, 932.00006)
+scale = Vector2(6, 6)

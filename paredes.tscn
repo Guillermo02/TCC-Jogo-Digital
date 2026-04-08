@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://csgq2q1g8mh86"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it3ha"]
-size = Vector2(46.6369, 1058.2515)
+size = Vector2(32.64545, 1058.2515)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23dcn"]
-size = Vector2(29, 652)
+size = Vector2(17, 652)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h72s8"]
 size = Vector2(1167, 24)
@@ -22,7 +22,7 @@ rotation = 3.1415927
 scale = Vector2(614.09656, -1.0218397)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colisoes/ParedeEsquerda" unique_id=1272488321]
-position = Vector2(0.0016283393, 323.92554)
+position = Vector2(0.010177826, 323.9256)
 rotation = -3.1415925
 scale = Vector2(0.0012221015, -0.62143767)
 shape = SubResource("RectangleShape2D_it3ha")
@@ -30,7 +30,7 @@ shape = SubResource("RectangleShape2D_it3ha")
 [node name="ParedeDireita" type="StaticBody2D" parent="Colisoes" unique_id=802892737]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colisoes/ParedeDireita" unique_id=979029667]
-position = Vector2(1150.5, 318)
+position = Vector2(1156.5, 318)
 shape = SubResource("RectangleShape2D_23dcn")
 
 [node name="Piso" type="StaticBody2D" parent="Colisoes" unique_id=1004605086]

@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://8mb823s1l7ww"]
+
+[ext_resource type="Script" uid="uid://bninlf7t088gc" path="res://scripts/puzzle_fios.gd" id="1_itjss"]
+[ext_resource type="Script" uid="uid://dclrplv3mv8ga" path="res://puzzles/fio_1.gd" id="3_8o37v"]
+[ext_resource type="Texture2D" uid="uid://bi51mu6ww0dg6" path="res://assets/icone quadrado.png" id="3_ltrn3"]
+[ext_resource type="Texture2D" uid="uid://sl4uyi38i8e4" path="res://assets/icone circulo.png" id="4_4w63o"]
+[ext_resource type="Texture2D" uid="uid://cck78b3a77f3w" path="res://assets/icone triangulo.png" id="5_8o37v"]
+[ext_resource type="Script" uid="uid://jmkhs53uoddg" path="res://puzzles/fio_2.gd" id="5_v3ceo"]
+[ext_resource type="Script" uid="uid://btivmic7qyo6p" path="res://puzzles/fio_3.gd" id="7_kimgy"]
+[ext_resource type="Script" uid="uid://dyv6ulnbeni88" path="res://puzzles/entrada_1.gd" id="10_dy70j"]
+[ext_resource type="Script" uid="uid://bnul0wlkgiajt" path="res://puzzles/entrada_2.gd" id="11_c1j6u"]
+[ext_resource type="Script" uid="uid://d3inj173qt5qv" path="res://puzzles/entrada_3.gd" id="12_k0pac"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wv0fo"]
+size = Vector2(52, 52)
+
+[node name="puzzleFios" type="Node2D" unique_id=624222972]
+script = ExtResource("1_itjss")
+
+[node name="fios" type="Node2D" parent="." unique_id=1662704973]
+
+[node name="fio1" type="Area2D" parent="fios" unique_id=759939399]
+position = Vector2(300, 200)
+script = ExtResource("3_8o37v")
+
+[node name="Sprite2D" type="Sprite2D" parent="fios/fio1" unique_id=837493701]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_ltrn3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fios/fio1" unique_id=743448065]
+shape = SubResource("RectangleShape2D_wv0fo")
+
+[node name="fio2" type="Area2D" parent="fios" unique_id=556753222]
+position = Vector2(300, 300)
+script = ExtResource("5_v3ceo")
+
+[node name="Sprite2D" type="Sprite2D" parent="fios/fio2" unique_id=415759242]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_4w63o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fios/fio2" unique_id=1502697276]
+shape = SubResource("RectangleShape2D_wv0fo")
+
+[node name="fio3" type="Area2D" parent="fios" unique_id=2109252508]
+position = Vector2(300, 400)
+script = ExtResource("7_kimgy")
+
+[node name="Sprite2D" type="Sprite2D" parent="fios/fio3" unique_id=562513533]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("5_8o37v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fios/fio3" unique_id=197210753]
+shape = SubResource("RectangleShape2D_wv0fo")
+
+[node name="entradas" type="Node2D" parent="." unique_id=32530947]
+
+[node name="entrada1" type="Area2D" parent="entradas" unique_id=432495343]
+position = Vector2(800, 200)
+script = ExtResource("10_dy70j")
+
+[node name="Sprite2D" type="Sprite2D" parent="entradas/entrada1" unique_id=1350840433]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_ltrn3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="entradas/entrada1" unique_id=1320408651]
+shape = SubResource("RectangleShape2D_wv0fo")
+
+[node name="entrada2" type="Area2D" parent="entradas" unique_id=1972974763]
+position = Vector2(800, 300)
+script = ExtResource("11_c1j6u")
+
+[node name="Sprite2D" type="Sprite2D" parent="entradas/entrada2" unique_id=963798046]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_4w63o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="entradas/entrada2" unique_id=1026475838]
+shape = SubResource("RectangleShape2D_wv0fo")
+
+[node name="entrada3" type="Area2D" parent="entradas" unique_id=257424512]
+position = Vector2(800, 400)
+script = ExtResource("12_k0pac")
+
+[node name="Sprite2D" type="Sprite2D" parent="entradas/entrada3" unique_id=551147899]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("5_8o37v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="entradas/entrada3" unique_id=1148603475]
+shape = SubResource("RectangleShape2D_wv0fo")

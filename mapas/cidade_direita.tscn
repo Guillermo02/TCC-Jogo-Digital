@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://iahwi31ycmss"]
+
+[ext_resource type="Texture2D" uid="uid://bui7fguruu5ff" path="res://assets/PNG/City4/Bright/City4.png" id="1_h1p4o"]
+[ext_resource type="PackedScene" uid="uid://csgq2q1g8mh86" path="res://paredes.tscn" id="2_ow8b4"]
+
+[node name="cidade_direita" type="Node2D" unique_id=1738880812]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1151551134]
+position = Vector2(630.5, 343.50003)
+scale = Vector2(0.6557292, 0.6416667)
+texture = ExtResource("1_h1p4o")
+
+[node name="Paredes" parent="." unique_id=535034372 instance=ExtResource("2_ow8b4")]

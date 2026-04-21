@@ -1,17 +1,18 @@
-[gd_scene format=3 uid="uid://dhhpmfu6ryooi"]
+[gd_scene load_steps=3 format=3 uid="uid://dhhpmfu6ryooi"]
 
 [ext_resource type="Shader" uid="uid://d3tbtg75mjvc7" path="res://colorblindShader.gdshader" id="1_yrhom"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o4svd"]
 shader = ExtResource("1_yrhom")
-shader_parameter/mode = 2
+shader_parameter/mode = 0
 
-[node name="ColorblindFilter" type="CanvasLayer" unique_id=1655978627]
+[node name="ColorblindFilter" type="CanvasLayer"]
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=80621133]
+[node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_o4svd")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2

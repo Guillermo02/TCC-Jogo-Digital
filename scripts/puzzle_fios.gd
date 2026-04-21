@@ -1,59 +1,73 @@
 extends Node2D
 
-var fio_selecionado = null
-var entrada_selecionada = null
+var primeiro_ponto = null
+var segundo_ponto = null
 
-func selecionar_fio(fio):
-	fio_selecionado = fio
-	fio.scale = Vector2(1.1, 1.1)
-	print("Selecionado:", fio.id)
-
-func selecionar_entrada(entrada):
-	entrada_selecionada = entrada
-	entrada.scale = Vector2(1.1, 1.1)
-	print("Selecionado:", entrada.id)
-
-func tentar_conectar(entrada):
-	if fio_selecionado == null:
+func selecionar_ponto(ponto):
+	if ponto.conectado:
 		return
-	if entrada.ocupado:
-		return
-	if fio_selecionado.id == entrada.id:
-		conectar(fio_selecionado, entrada)
-	else:
-		print("errado!")
-	fio_selecionado = null
-
-func criar_linha(fio, entrada):
-	var linha = Line2D.new()
-	linha.width = 120
-	linha.add_point(fio.global_position)
-	linha.add_point(entrada.global_position)
-	linha.texture = preload("res://assets/fios.png")
-	linha.texture_mode = Line2D.LINE_TEXTURE_TILE
-	linha.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
 	
-	# estilo baseado no tipo
-	#match fio.id:
-		#"1":
-			#linha.default_color = Color.RED
-		#"2":
-			#linha.default_color = Color.GREEN
-		#"3":
-			#linha.default_color = Color.BLUE
-	add_child(linha)
+	if primeiro_ponto == ponto:
+		return
+	
+	if primeiro_ponto == null:
+		primeiro_ponto = ponto
+		ponto.definir_pressionado()
+		print("Primeiro selecionado:", ponto.nome_fio)
+		return
+	
+	if segundo_ponto == null:
+		segundo_ponto = ponto
+		ponto.definir_pressionado()
+		print("Segundo selecionado:", ponto.nome_fio)
+		validar_conexao()
 
-func conectar(fio, entrada):
-	print("conectado!")
+func validar_conexao():
+	if primeiro_ponto == null or segundo_ponto == null:
+		return
+	
+	if primeiro_ponto == segundo_ponto:
+		resetar_selecao()
+		return
+	
+	if combinacao_correta(primeiro_ponto, segundo_ponto):
+		conectar_pontos(primeiro_ponto, segundo_ponto)
+	else:
+		print("Combinação errada!")
+		await get_tree().create_timer(0.25).timeout
+		resetar_selecao()
 
-	fio.conectado = true
-	entrada.ocupado = true
+func combinacao_correta(ponto1, ponto2) -> bool:
+	return ponto1.par_nome == ponto2.nome_fio and ponto2.par_nome == ponto1.nome_fio
 
-	criar_linha(fio, entrada)
+func conectar_pontos(ponto1, ponto2):
+	print("Conectado corretamente!")
+	
+	ponto1.conectado = true
+	ponto2.conectado = true
+	
+	ponto1.definir_conectado()
+	ponto2.definir_conectado()
+	
+	primeiro_ponto = null
+	segundo_ponto = null
+	
 	verificar_vitoria()
 
+func resetar_selecao():
+	if primeiro_ponto != null and not primeiro_ponto.conectado:
+		primeiro_ponto.definir_normal()
+	
+	if segundo_ponto != null and not segundo_ponto.conectado:
+		segundo_ponto.definir_normal()
+	
+	primeiro_ponto = null
+	segundo_ponto = null
+
 func verificar_vitoria():
-	for entrada in $entradas.get_children():
-		if not entrada.ocupado:
-			return
+	for no in get_children():
+		if no is Area2D:
+			if not no.conectado:
+				return
+	
 	print("PUZZLE COMPLETO!")

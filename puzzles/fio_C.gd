@@ -1,7 +1,7 @@
 extends Area2D
 
-@export var nome_fio: String = "3"
-@export var par_nome: String = "C"
+@export var nome_fio: String = "C"
+@export var par_nome: String = "3"
 
 @export var sprite_normal: Texture2D
 @export var sprite_pressionado: Texture2D

@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://8mb823s1l7ww"]
 
 [ext_resource type="Script" uid="uid://bninlf7t088gc" path="res://scripts/puzzle_fios.gd" id="1_itjss"]
-[ext_resource type="Texture2D" uid="uid://cmr8mvikvomvw" path="res://assets/AAkenney/sci-fi-ui-pack/Grey/Double/button_square_header_large_square_screws.png" id="2_mgvj8"]
+[ext_resource type="Texture2D" uid="uid://c2mbdl4u52hpa" path="res://assets/AAkenney/puzzle icons/background/button_square_header_large_square_screws.png" id="2_mgvj8"]
 [ext_resource type="Script" uid="uid://dclrplv3mv8ga" path="res://scripts/fio_1.gd" id="3_8o37v"]
 [ext_resource type="Texture2D" uid="uid://d2a52bpl7aw7f" path="res://assets/AAkenney/puzzle icons/grey/check_square_grey_square.png" id="3_c1j6u"]
 [ext_resource type="Texture2D" uid="uid://btrps1bndyf7d" path="res://assets/AAkenney/puzzle icons/grey/check_square_color_square.png" id="4_71d81"]
@@ -31,9 +31,9 @@ size = Vector2(54, 52)
 script = ExtResource("1_itjss")
 
 [node name="background" type="Sprite2D" parent="."]
-position = Vector2(576.0953, 324.00214)
+position = Vector2(584.1478, 329.6389)
 rotation = 1.5707964
-scale = Vector2(5.621065, 9.979051)
+scale = Vector2(11.0817, 19.692442)
 texture = ExtResource("2_mgvj8")
 
 [node name="fio1" type="Area2D" parent="."]

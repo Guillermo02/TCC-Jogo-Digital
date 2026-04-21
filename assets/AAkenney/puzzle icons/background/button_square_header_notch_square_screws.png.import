@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2mbdl4u52hpa"
-path="res://.godot/imported/button_square_header_large_square_screws.png-0ba66a2df478a16f6ee247cd04194e0e.ctex"
+uid="uid://bm5y4tjdjhogi"
+path="res://.godot/imported/button_square_header_notch_square_screws.png-df951a5ff9881abea2683cf7a597a4e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/AAkenney/button_square_header_large_square_screws.png"
-dest_files=["res://.godot/imported/button_square_header_large_square_screws.png-0ba66a2df478a16f6ee247cd04194e0e.ctex"]
+source_file="res://assets/AAkenney/puzzle icons/background/button_square_header_notch_square_screws.png"
+dest_files=["res://.godot/imported/button_square_header_notch_square_screws.png-df951a5ff9881abea2683cf7a597a4e0.ctex"]
 
 [params]
 

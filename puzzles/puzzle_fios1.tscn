@@ -3,25 +3,25 @@
 [ext_resource type="Script" uid="uid://bninlf7t088gc" path="res://scripts/puzzle_fios.gd" id="1_itjss"]
 [ext_resource type="Texture2D" uid="uid://c2mbdl4u52hpa" path="res://assets/AAkenney/puzzle icons/background/button_square_header_large_square_screws.png" id="2_mgvj8"]
 [ext_resource type="Script" uid="uid://dclrplv3mv8ga" path="res://scripts/fio_1.gd" id="3_8o37v"]
-[ext_resource type="Texture2D" uid="uid://d2a52bpl7aw7f" path="res://assets/AAkenney/puzzle icons/grey/check_square_grey_square.png" id="3_c1j6u"]
-[ext_resource type="Texture2D" uid="uid://btrps1bndyf7d" path="res://assets/AAkenney/puzzle icons/grey/check_square_color_square.png" id="4_71d81"]
-[ext_resource type="Texture2D" uid="uid://bkabxpvq5yw4o" path="res://assets/AAkenney/puzzle icons/yellow/check_square_color_square.png" id="5_5uim4"]
-[ext_resource type="Texture2D" uid="uid://qw33fs4tljrm" path="res://assets/AAkenney/puzzle icons/grey/check_round_grey_circle.png" id="5_k0pac"]
+[ext_resource type="Texture2D" uid="uid://bfcu0lqcgqo3t" path="res://assets/AAkenney/rune-pack/Grey/Tile (outline)/runeGrey_tileOutline_001.png" id="4_mgvj8"]
 [ext_resource type="Script" uid="uid://jmkhs53uoddg" path="res://scripts/fio_2.gd" id="5_v3ceo"]
-[ext_resource type="Texture2D" uid="uid://cktpmpnv8nhkl" path="res://assets/AAkenney/puzzle icons/grey/check_square_grey_cross.png" id="7_jf05b"]
+[ext_resource type="Texture2D" uid="uid://bndkpgodwmxx5" path="res://assets/AAkenney/rune-pack/Blue/Tile (outline)/runeBlue_tileOutline_036.png" id="5_xsy46"]
+[ext_resource type="Texture2D" uid="uid://cdvaiaejwyh56" path="res://assets/AAkenney/rune-pack/Black/Tile (outline)/runeBlack_tileOutline_001.png" id="6_oswg1"]
 [ext_resource type="Script" uid="uid://btivmic7qyo6p" path="res://scripts/fio_3.gd" id="7_kimgy"]
+[ext_resource type="Texture2D" uid="uid://tlyum2s27v8c" path="res://assets/AAkenney/rune-pack/Grey/Tile (outline)/runeGrey_tileOutline_005.png" id="8_32k2f"]
 [ext_resource type="Script" uid="uid://i8jipsuiaa5u" path="res://scripts/fio_4.gd" id="8_k0pac"]
-[ext_resource type="Texture2D" uid="uid://07sptekxo1w8" path="res://assets/AAkenney/puzzle icons/grey/check_round_round_circle.png" id="8_v4rqk"]
-[ext_resource type="Texture2D" uid="uid://bomkfr2jmnedp" path="res://assets/AAkenney/puzzle icons/grey/check_square_grey_checkmark.png" id="8_vi3ty"]
-[ext_resource type="Texture2D" uid="uid://b4lu4epk2dd07" path="res://assets/AAkenney/puzzle icons/blue/check_round_round_circle.png" id="9_d22bl"]
+[ext_resource type="Texture2D" uid="uid://bdt2yphwpeqam" path="res://assets/AAkenney/rune-pack/Blue/Tile (outline)/runeBlue_tileOutline_004.png" id="9_nqbnw"]
 [ext_resource type="Script" uid="uid://dyv6ulnbeni88" path="res://scripts/fio_A.gd" id="10_dy70j"]
+[ext_resource type="Texture2D" uid="uid://r8wlhtr57uqa" path="res://assets/AAkenney/rune-pack/Black/Tile (outline)/runeBlack_tileOutline_005.png" id="10_ksmhc"]
 [ext_resource type="Script" uid="uid://bnul0wlkgiajt" path="res://scripts/fio_B.gd" id="11_c1j6u"]
-[ext_resource type="Texture2D" uid="uid://ccdb0wggjb6la" path="res://assets/AAkenney/puzzle icons/grey/check_square_color_cross.png" id="12_5bnik"]
 [ext_resource type="Script" uid="uid://d3inj173qt5qv" path="res://scripts/fio_C.gd" id="12_k0pac"]
+[ext_resource type="Texture2D" uid="uid://b3fc2or3h4r3k" path="res://assets/AAkenney/rune-pack/Grey/Tile (outline)/runeGrey_tileOutline_018.png" id="12_p2hi1"]
 [ext_resource type="Script" uid="uid://rlx4af25w1y3" path="res://scripts/fio_D.gd" id="13_jf05b"]
-[ext_resource type="Texture2D" uid="uid://bbvem0ed7dpar" path="res://assets/AAkenney/puzzle icons/green/check_square_color_cross.png" id="13_knc3h"]
-[ext_resource type="Texture2D" uid="uid://n58m4m62kh14" path="res://assets/AAkenney/puzzle icons/grey/check_square_color_checkmark.png" id="16_2y6g0"]
-[ext_resource type="Texture2D" uid="uid://cmli0daafisa2" path="res://assets/AAkenney/puzzle icons/red/check_square_color_checkmark.png" id="17_rikvp"]
+[ext_resource type="Texture2D" uid="uid://cvu5exqk8ip62" path="res://assets/AAkenney/rune-pack/Blue/Tile (outline)/runeBlue_tileOutline_017.png" id="13_ksrnq"]
+[ext_resource type="Texture2D" uid="uid://c4c67gh15uha8" path="res://assets/AAkenney/rune-pack/Black/Tile (outline)/runeBlack_tileOutline_018.png" id="14_cfnlq"]
+[ext_resource type="Texture2D" uid="uid://chkiaajko3ppq" path="res://assets/AAkenney/rune-pack/Grey/Tile (outline)/runeGrey_tileOutline_022.png" id="16_b1nn0"]
+[ext_resource type="Texture2D" uid="uid://cr5ioka6nojg4" path="res://assets/AAkenney/rune-pack/Blue/Tile (outline)/runeBlue_tileOutline_021.png" id="17_uy6ga"]
+[ext_resource type="Texture2D" uid="uid://cvuefxh2bgjem" path="res://assets/AAkenney/rune-pack/Black/Tile (outline)/runeBlack_tileOutline_022.png" id="18_ml6rt"]
 [ext_resource type="PackedScene" uid="uid://dhhpmfu6ryooi" path="res://colorblind_filter.tscn" id="23_d22bl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wv0fo"]
@@ -39,14 +39,15 @@ texture = ExtResource("2_mgvj8")
 [node name="fio1" type="Area2D" parent="."]
 visibility_layer = 512
 position = Vector2(285, 185)
+scale = Vector2(1.5, 1.5)
 script = ExtResource("3_8o37v")
-sprite_normal = ExtResource("3_c1j6u")
-sprite_pressionado = ExtResource("4_71d81")
-sprite_conectado = ExtResource("5_5uim4")
+sprite_normal = ExtResource("4_mgvj8")
+sprite_pressionado = ExtResource("5_xsy46")
+sprite_conectado = ExtResource("6_oswg1")
 
 [node name="Sprite2D" type="Sprite2D" parent="fio1"]
 position = Vector2(1, -1.9999962)
-texture = ExtResource("3_c1j6u")
+texture = ExtResource("4_mgvj8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fio1"]
 position = Vector2(1, -2)
@@ -54,53 +55,57 @@ shape = SubResource("RectangleShape2D_wv0fo")
 
 [node name="fio2" type="Area2D" parent="."]
 position = Vector2(787, 158)
+scale = Vector2(1.5, 1.5)
 script = ExtResource("5_v3ceo")
-sprite_normal = ExtResource("5_k0pac")
-sprite_pressionado = ExtResource("8_v4rqk")
-sprite_conectado = ExtResource("9_d22bl")
+sprite_normal = ExtResource("8_32k2f")
+sprite_pressionado = ExtResource("9_nqbnw")
+sprite_conectado = ExtResource("10_ksmhc")
 
 [node name="Sprite2D" type="Sprite2D" parent="fio2"]
-texture = ExtResource("5_k0pac")
+texture = ExtResource("8_32k2f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fio2"]
 shape = SubResource("RectangleShape2D_wv0fo")
 
 [node name="fio3" type="Area2D" parent="."]
 position = Vector2(934, 290)
+scale = Vector2(1.5, 1.5)
 script = ExtResource("7_kimgy")
-sprite_normal = ExtResource("7_jf05b")
-sprite_pressionado = ExtResource("12_5bnik")
-sprite_conectado = ExtResource("13_knc3h")
+sprite_normal = ExtResource("12_p2hi1")
+sprite_pressionado = ExtResource("13_ksrnq")
+sprite_conectado = ExtResource("14_cfnlq")
 
 [node name="Sprite2D" type="Sprite2D" parent="fio3"]
-texture = ExtResource("7_jf05b")
+texture = ExtResource("12_p2hi1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fio3"]
 shape = SubResource("RectangleShape2D_wv0fo")
 
 [node name="fio4" type="Area2D" parent="."]
 position = Vector2(293, 519)
+scale = Vector2(1.5, 1.5)
 script = ExtResource("8_k0pac")
-sprite_normal = ExtResource("8_vi3ty")
-sprite_pressionado = ExtResource("16_2y6g0")
-sprite_conectado = ExtResource("17_rikvp")
+sprite_normal = ExtResource("16_b1nn0")
+sprite_pressionado = ExtResource("17_uy6ga")
+sprite_conectado = ExtResource("18_ml6rt")
 
 [node name="Sprite2D" type="Sprite2D" parent="fio4"]
-texture = ExtResource("8_vi3ty")
+texture = ExtResource("16_b1nn0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fio4"]
 shape = SubResource("RectangleShape2D_wv0fo")
 
 [node name="fioA" type="Area2D" parent="."]
 position = Vector2(877, 536)
+scale = Vector2(1.5, 1.5)
 script = ExtResource("10_dy70j")
-sprite_normal = ExtResource("3_c1j6u")
-sprite_pressionado = ExtResource("4_71d81")
-sprite_conectado = ExtResource("5_5uim4")
+sprite_normal = ExtResource("4_mgvj8")
+sprite_pressionado = ExtResource("5_xsy46")
+sprite_conectado = ExtResource("6_oswg1")
 
 [node name="Sprite2D" type="Sprite2D" parent="fioA"]
 position = Vector2(1, 0)
-texture = ExtResource("3_c1j6u")
+texture = ExtResource("4_mgvj8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fioA"]
 position = Vector2(1, 0)
@@ -108,39 +113,42 @@ shape = SubResource("RectangleShape2D_wv0fo")
 
 [node name="fioB" type="Area2D" parent="."]
 position = Vector2(416, 349)
+scale = Vector2(1.5, 1.5)
 script = ExtResource("11_c1j6u")
-sprite_normal = ExtResource("5_k0pac")
-sprite_pressionado = ExtResource("8_v4rqk")
-sprite_conectado = ExtResource("9_d22bl")
+sprite_normal = ExtResource("8_32k2f")
+sprite_pressionado = ExtResource("9_nqbnw")
+sprite_conectado = ExtResource("10_ksmhc")
 
 [node name="Sprite2D" type="Sprite2D" parent="fioB"]
-texture = ExtResource("5_k0pac")
+texture = ExtResource("8_32k2f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fioB"]
 shape = SubResource("RectangleShape2D_wv0fo")
 
 [node name="fioC" type="Area2D" parent="."]
 position = Vector2(132, 350)
+scale = Vector2(1.5, 1.5)
 script = ExtResource("12_k0pac")
-sprite_normal = ExtResource("7_jf05b")
-sprite_pressionado = ExtResource("12_5bnik")
-sprite_conectado = ExtResource("13_knc3h")
+sprite_normal = ExtResource("12_p2hi1")
+sprite_pressionado = ExtResource("13_ksrnq")
+sprite_conectado = ExtResource("14_cfnlq")
 
 [node name="Sprite2D" type="Sprite2D" parent="fioC"]
-texture = ExtResource("7_jf05b")
+texture = ExtResource("12_p2hi1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fioC"]
 shape = SubResource("RectangleShape2D_wv0fo")
 
 [node name="fioD" type="Area2D" parent="."]
 position = Vector2(721, 399)
+scale = Vector2(1.5, 1.5)
 script = ExtResource("13_jf05b")
-sprite_normal = ExtResource("8_vi3ty")
-sprite_pressionado = ExtResource("16_2y6g0")
-sprite_conectado = ExtResource("17_rikvp")
+sprite_normal = ExtResource("16_b1nn0")
+sprite_pressionado = ExtResource("17_uy6ga")
+sprite_conectado = ExtResource("18_ml6rt")
 
 [node name="Sprite2D" type="Sprite2D" parent="fioD"]
-texture = ExtResource("8_vi3ty")
+texture = ExtResource("16_b1nn0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fioD"]
 shape = SubResource("RectangleShape2D_wv0fo")

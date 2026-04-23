@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b2vyxab30n72u"]
+[gd_scene load_steps=57 format=3 uid="uid://b2vyxab30n72u"]
 
 [ext_resource type="Script" uid="uid://4afaah74x43v" path="res://scripts/jogador.gd" id="1_b26j0"]
 [ext_resource type="Texture2D" uid="uid://bi8lb81f2fwpe" path="res://assets/protagonista/Attack.png" id="2_sbhs4"]
@@ -371,20 +371,20 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cy2ki"]
-radius = 11.0
-height = 60.0
+radius = 12.0
+height = 68.0
 
-[node name="Jogador" type="Node2D" unique_id=2032534576]
+[node name="Jogador" type="Node2D" groups=["player"]]
 
-[node name="Jogador" type="CharacterBody2D" parent="." unique_id=496951655]
+[node name="Jogador" type="CharacterBody2D" parent="." groups=["player"]]
 script = ExtResource("1_b26j0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Jogador" unique_id=1609371598]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Jogador"]
 position = Vector2(14, 0)
 sprite_frames = SubResource("SpriteFrames_77e46")
 animation = &"idle"
 frame_progress = 0.6415214
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Jogador" unique_id=656864804]
-position = Vector2(8, 20)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jogador" groups=["player"]]
+position = Vector2(10, 18)
 shape = SubResource("CapsuleShape2D_cy2ki")

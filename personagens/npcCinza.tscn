@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://ct6dbgrbjrylr"]
+[gd_scene load_steps=52 format=3 uid="uid://ct6dbgrbjrylr"]
 
 [ext_resource type="Texture2D" uid="uid://c5k4hapmfc3mb" path="res://assets/Homeless_2/Attack_1.png" id="1_lpulo"]
+[ext_resource type="Script" uid="uid://bnff1wjgsltpo" path="res://scripts/npc_cinza.gd" id="1_yr7al"]
 [ext_resource type="Texture2D" uid="uid://d1scj4wy682hs" path="res://assets/Homeless_2/Idle.png" id="2_va0qa"]
 [ext_resource type="Texture2D" uid="uid://rvl6bdfdkvcm" path="res://assets/Homeless_2/Idle_2.png" id="2_wl8co"]
 [ext_resource type="Texture2D" uid="uid://cqqnx2igpncts" path="res://assets/Homeless_2/Run.png" id="4_yr7al"]
@@ -340,12 +341,21 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="NpcCinza" type="Node2D" unique_id=715680928]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_va0qa"]
+size = Vector2(23, 62)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1540486255]
+[node name="NpcCinza" type="Node2D"]
+script = ExtResource("1_yr7al")
+dialogo_npc = Array[String](["Olá! Sou NPC cinza", "Testando conversa NPC cinza", "Caralhoooo NPC cinza"])
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=343057386]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1t0rw")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=131242253]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, 21)
+shape = SubResource("RectangleShape2D_va0qa")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

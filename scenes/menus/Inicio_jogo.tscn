@@ -1,0 +1,450 @@
+[gd_scene load_steps=34 format=3 uid="uid://dbm48yue7sddb"]
+
+[ext_resource type="Script" uid="uid://t5to803fisxg" path="res://scripts/menu_scripts/inicio_jogo.gd" id="1_ecbqq"]
+[ext_resource type="Texture2D" uid="uid://bgrrmqsjoq1t7" path="res://UI/Imagens/CityIntro.png" id="2_x8vjp"]
+[ext_resource type="Script" uid="uid://cc65hietjaqr0" path="res://scripts/menu_scripts/chuva_inicio.gd" id="3_64kpo"]
+[ext_resource type="FontFile" uid="uid://b6oxy7pm61oun" path="res://fonts/PixelifySans-SemiBold.ttf" id="3_u2sdf"]
+[ext_resource type="FontFile" uid="uid://doey2ik21lr0r" path="res://fonts/PixelifySans-VariableFont_wght.ttf" id="4_8b7j5"]
+[ext_resource type="Script" uid="uid://b7rs8ae4aiu4o" path="res://scripts/menu_scripts/impactos_chuva_inicio.gd" id="4_8r2yn"]
+[ext_resource type="Texture2D" uid="uid://b4p71upkbjqur" path="res://UI/HUD Inicio/Double/button_rectangle_depth_flat.png" id="4_bme5y"]
+[ext_resource type="Texture2D" uid="uid://bqhrxb6eacsmn" path="res://UI/HUD Inicio/Double/button_rectangle_gradient.png" id="6_x8vjp"]
+[ext_resource type="Texture2D" uid="uid://cjknkwsqt6ox8" path="res://UI/HUD Inicio/Double/star_outline.png" id="7_x8vjp"]
+[ext_resource type="Texture2D" uid="uid://couhxbt8okkb2" path="res://assets/protagonista/Idle.png" id="10_2ebim"]
+[ext_resource type="Script" uid="uid://bkkhubru4gy2u" path="res://scripts/menu_scripts/clarao_raio_inicio.gd" id="11_hsy16"]
+
+[sub_resource type="FontVariation" id="FontVariation_bme5y"]
+base_font = ExtResource("3_u2sdf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x8vjp"]
+texture = ExtResource("4_bme5y")
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_64kpo"]
+texture = ExtResource("6_x8vjp")
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="FontVariation" id="FontVariation_x8vjp"]
+base_font = ExtResource("3_u2sdf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bme5y"]
+texture = ExtResource("4_bme5y")
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8r2yn"]
+texture = ExtResource("6_x8vjp")
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="FontVariation" id="FontVariation_64kpo"]
+base_font = ExtResource("4_8b7j5")
+variation_embolden = 0.38
+spacing_glyph = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ebim"]
+texture = ExtResource("4_bme5y")
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hsy16"]
+texture = ExtResource("6_x8vjp")
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="FontVariation" id="FontVariation_u2sdf"]
+base_font = ExtResource("3_u2sdf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fthoh"]
+texture = ExtResource("4_bme5y")
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j7s83"]
+texture = ExtResource("6_x8vjp")
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ebim"]
+height = 50.20746
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsy16"]
+atlas = ExtResource("10_2ebim")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fthoh"]
+atlas = ExtResource("10_2ebim")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7s83"]
+atlas = ExtResource("10_2ebim")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkcf1"]
+atlas = ExtResource("10_2ebim")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcij8"]
+atlas = ExtResource("10_2ebim")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcxpv"]
+atlas = ExtResource("10_2ebim")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8o55"]
+atlas = ExtResource("10_2ebim")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rijbc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsy16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fthoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7s83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkcf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcij8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcxpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8o55")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ebim"]
+size = Vector2(51.83915, 20)
+
+[node name="InicioJogo" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(0.8365274, 0.8365274)
+script = ExtResource("1_ecbqq")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 2587.0
+offset_bottom = 1536.0
+scale = Vector2(0.31697544, 0.31697544)
+texture = ExtResource("2_x8vjp")
+
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 790.63116
+offset_bottom = 472.72974
+scale = Vector2(1.0574219, 1.0126024)
+color = Color(0, 0, 0, 0.3372549)
+
+[node name="ClarãoRaio" type="Node2D" parent="."]
+modulate = Color(0.89061195, 0.9998577, 0.99999994, 0.7176471)
+script = ExtResource("11_hsy16")
+
+[node name="Flash1" type="Polygon2D" parent="ClarãoRaio"]
+modulate = Color(1, 1, 1, 0.21568628)
+polygon = PackedVector2Array(646.7212, 19.12669, 640.74414, 19.12669, 640.74414, 137.47308, 646.7212, 132.6914)
+
+[node name="Flash2" type="Polygon2D" parent="ClarãoRaio"]
+modulate = Color(1, 1, 1, 0.21568628)
+polygon = PackedVector2Array(662.26166, 132.6914, 646.7212, 132.6914, 646.7212, 239.08362, 662.26166, 221.15236, 662.2617, 188.98398, 659.8708, 188.87607, 659.8708, 174.53105, 662.2617, 174.41774)
+
+[node name="Flash3" type="Polygon2D" parent="ClarãoRaio"]
+modulate = Color(1, 1, 1, 0.21568628)
+polygon = PackedVector2Array(632.37616, 7.1725087, 632.37616, 21.517527, 641.9395, 19.12669, 641.9395, 7.1725087)
+
+[node name="Flash4" type="Polygon2D" parent="ClarãoRaio"]
+modulate = Color(1, 1, 1, 0.21568628)
+polygon = PackedVector2Array(632.37616, 0, 632.37616, 7.1725087, 626.3991, 10.758763, 626.3991, 0)
+
+[node name="Flash5" type="Polygon2D" parent="ClarãoRaio"]
+modulate = Color(1, 1, 1, 0.21568628)
+polygon = PackedVector2Array(632.37616, 251.03781, 620.422, 262.99197, 620.422, 282.11868, 632.37616, 272.55533)
+
+[node name="Flash6" type="Polygon2D" parent="ClarãoRaio"]
+modulate = Color(1, 1, 1, 0.21568628)
+polygon = PackedVector2Array(653.89374, 253.42863, 634.767, 270.1645, 634.767, 374.16586, 644.3304, 374.16586, 644.3304, 384.92462, 649.11206, 384.92462, 649.11206, 388.5109, 650.30743, 388.5109, 650.30743, 400.46506, 653.89374, 400.46506)
+
+[node name="Flash1_1" type="Polygon2D" parent="ClarãoRaio"]
+modulate = Color(1, 1, 1, 0.34901962)
+polygon = PackedVector2Array(756.69965, 419.59177, 756.69965, 399.26965, 754.30884, 399.26965, 754.30884, 279.72784, 757.80664, 279.72784, 762.67676, 279.72784, 762.67676, 419.59177)
+
+[node name="Flash1_2" type="Polygon2D" parent="ClarãoRaio"]
+modulate = Color(1, 1, 1, 0.21568628)
+polygon = PackedVector2Array(778.2172, 377.75214, 778.2172, 398.07422, 778.2172, 418.39633, 779.4126, 418.39633, 779.4126, 377.75214)
+
+[node name="Flash1_3" type="Polygon2D" parent="ClarãoRaio"]
+modulate = Color(1, 1, 1, 0.34901962)
+polygon = PackedVector2Array(754.30884, 273.75076, 749.52716, 273.75076, 749.52716, 282.11868, 754.30884, 279.72784)
+
+[node name="Flash1_4" type="Polygon2D" parent="ClarãoRaio"]
+modulate = Color(1, 1, 1, 0.34901962)
+polygon = PackedVector2Array(750.7226, 262.99197, 750.7226, 273.75076, 742.3547, 276.14157, 742.3547, 262.99197)
+
+[node name="Flash1_5" type="Polygon2D" parent="ClarãoRaio"]
+modulate = Color(1, 1, 1, 0.34901962)
+polygon = PackedVector2Array(723.22797, 253.42863, 725.6188, 253.42863, 725.6188, 273.75076, 723.22797, 276.14157)
+
+[node name="Flash1_6" type="Polygon2D" parent="ClarãoRaio"]
+modulate = Color(1, 1, 1, 0.21568628)
+polygon = PackedVector2Array(722.03253, 230.7157, 723.22797, 230.7157, 723.22797, 253.42863, 722.03253, 253.42863)
+
+[node name="ClarãoRaio2" type="Node2D" parent="."]
+modulate = Color(0.89061195, 0.9998577, 0.99999994, 0.7176471)
+script = ExtResource("11_hsy16")
+
+[node name="2Flash_1" type="Polygon2D" parent="ClarãoRaio2"]
+modulate = Color(1, 1, 1, 0.34901962)
+polygon = PackedVector2Array(138.6685, 137.47308, 138.6685, 170.9448, 135.08224, 170.9448, 135.08224, 137.47308)
+
+[node name="2Flash_2" type="Polygon2D" parent="ClarãoRaio2"]
+modulate = Color(1, 1, 1, 0.34901962)
+polygon = PackedVector2Array(138.6685, 174.53105, 138.6685, 178.1173, 135.08224, 178.1173, 135.08224, 174.53105)
+
+[node name="2Flash_3" type="Polygon2D" parent="ClarãoRaio2"]
+modulate = Color(1, 1, 1, 0.34901962)
+polygon = PackedVector2Array(138.6685, 181.70355, 138.6685, 184.09439, 135.08224, 187.68065, 135.08224, 181.70355)
+
+[node name="2Flash_4" type="Polygon2D" parent="ClarãoRaio2"]
+modulate = Color(1, 1, 1, 0.34901962)
+polygon = PackedVector2Array(138.6685, 187.68065, 135.08224, 191.2669, 135.08224, 216.37068, 138.6685, 213.97984)
+
+[node name="2Flash_5" type="Polygon2D" parent="ClarãoRaio2"]
+modulate = Color(1, 1, 1, 0.34901962)
+polygon = PackedVector2Array(138.6685, 217.5661, 135.08224, 218.76152, 135.08224, 245.06071, 138.6685, 243.8653)
+
+[node name="2Flash_6" type="Polygon2D" parent="ClarãoRaio2"]
+modulate = Color(1, 1, 1, 0.34901962)
+polygon = PackedVector2Array(138.6685, 246.25613, 135.08224, 247.45155, 135.08224, 268.9691, 138.6685, 265.3828)
+
+[node name="2Flash_7" type="Polygon2D" parent="ClarãoRaio2"]
+modulate = Color(1, 1, 1, 0.34901962)
+polygon = PackedVector2Array(129.10516, 125.518906, 136.27766, 125.518906, 136.27766, 137.47308, 129.10516, 139.86392)
+
+[node name="2Flash_8" type="Polygon2D" parent="ClarãoRaio2"]
+modulate = Color(1, 1, 1, 0.34901962)
+polygon = PackedVector2Array(118.3464, 119.54181, 113.56472, 119.54181, 113.56472, 126.71432, 118.3464, 125.518906)
+
+[node name="Chuva" type="Node2D" parent="."]
+script = ExtResource("3_64kpo")
+
+[node name="ImpactosChuva" type="Node2D" parent="."]
+script = ExtResource("4_8r2yn")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+z_index = 3
+layout_mode = 0
+offset_left = 274.94617
+offset_top = 175.72646
+offset_right = 418.94617
+offset_bottom = 338.72653
+scale = Vector2(1.4314599, 1.4314599)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+z_index = 3
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="BtnContinuar" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+z_index = 3
+texture_filter = 1
+custom_minimum_size = Vector2(4.425, 28.395)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.23031461, 0.23031515, 0.23031473, 1)
+theme_override_colors/font_focus_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_colors/font_pressed_color = Color(0.8646751, 0.86467516, 0.8646751, 1)
+theme_override_colors/font_hover_color = Color(0.3529412, 0.3529412, 0.3529412, 0.75686276)
+theme_override_colors/font_hover_pressed_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_fonts/font = SubResource("FontVariation_bme5y")
+theme_override_styles/normal = SubResource("StyleBoxTexture_x8vjp")
+theme_override_styles/hover = SubResource("StyleBoxTexture_64kpo")
+text = "Continuar"
+
+[node name="BtnNovoJogo" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+z_index = 3
+custom_minimum_size = Vector2(4.425, 28.395)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_colors/font_focus_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_colors/font_pressed_color = Color(0.8627451, 0.8627451, 0.8627451, 1)
+theme_override_colors/font_hover_color = Color(0.35156274, 0.35156295, 0.35156283, 0.75686276)
+theme_override_colors/font_hover_pressed_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_fonts/font = SubResource("FontVariation_x8vjp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bme5y")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8r2yn")
+text = "Novo jogo"
+
+[node name="BtnConfiguracoes" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+z_index = 3
+custom_minimum_size = Vector2(4.425, 28.395)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_colors/font_focus_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_colors/font_pressed_color = Color(0.8627451, 0.8627451, 0.8627451, 1)
+theme_override_colors/font_hover_color = Color(0.3529412, 0.3529412, 0.3529412, 0.75686276)
+theme_override_colors/font_hover_pressed_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_fonts/font = SubResource("FontVariation_64kpo")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_2ebim")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hsy16")
+text = "Configurações"
+
+[node name="BtnSair" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+z_index = 3
+custom_minimum_size = Vector2(4.425, 28.395)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_colors/font_focus_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_colors/font_pressed_color = Color(0.8627451, 0.8627451, 0.8627451, 1)
+theme_override_colors/font_hover_color = Color(0.3529412, 0.3529412, 0.3529412, 0.75686276)
+theme_override_colors/font_hover_pressed_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_fonts/font = SubResource("FontVariation_u2sdf")
+theme_override_styles/normal = SubResource("StyleBoxTexture_fthoh")
+theme_override_styles/hover = SubResource("StyleBoxTexture_j7s83")
+text = "Sair"
+
+[node name="StarOutline" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.6862745)
+z_index = 3
+position = Vector2(21.517525, 457.84512)
+scale = Vector2(0.1232719, 0.1232719)
+texture = ExtResource("7_x8vjp")
+
+[node name="Versão do jogo" type="Label" parent="StarOutline"]
+z_index = 3
+texture_filter = 1
+texture_repeat = 1
+offset_left = 106.671524
+offset_top = -38.78952
+offset_right = 693.6715
+offset_bottom = 40.21048
+scale = Vector2(1.4206227, 1.4206227)
+theme_override_fonts/font = ExtResource("4_8b7j5")
+theme_override_font_sizes/font_size = 54
+text = "Jogando na versão 1.0 "
+metadata/_edit_use_anchors_ = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(0, 1.1954181)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(107.58763, 349.06213)
+shape = SubResource("CapsuleShape2D_2ebim")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+modulate = Color(0.004515534, 0.07546923, 0.12831357, 1)
+position = Vector2(111.173874, 332.32623)
+scale = Vector2(0.6594234, 0.6594234)
+sprite_frames = SubResource("SpriteFrames_rijbc")
+autoplay = "default"
+frame_progress = 0.6271061
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(96.828865, 381.3384)
+scale = Vector2(1.5131915, 0.6781622)
+shape = SubResource("RectangleShape2D_2ebim")
+
+[node name="ParallaxLabel" type="Node2D" parent="."]
+modulate = Color(0.44226018, 0.49868673, 0.5435062, 1)
+z_index = 3
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(-546.3061, -219.95692)
+scale = Vector2(1.9163065, 1.9163065)
+
+[node name="Texto Título Dystineak" type="Label" parent="ParallaxLabel"]
+z_index = 3
+texture_filter = 1
+texture_repeat = 1
+offset_left = 396.0
+offset_top = 135.0
+offset_right = 676.0
+offset_bottom = 214.0
+scale = Vector2(0.6345638, 0.6345638)
+theme_override_fonts/font = ExtResource("4_8b7j5")
+theme_override_font_sizes/font_size = 54
+text = "Dystineak "
+metadata/_edit_use_anchors_ = true
+
+[node name="Texto Título Wrotion" type="Label" parent="ParallaxLabel"]
+z_index = 3
+texture_filter = 1
+texture_repeat = 1
+offset_left = 410.0
+offset_top = 162.00002
+offset_right = 687.0
+offset_bottom = 241.00002
+scale = Vector2(0.6935014, 0.6935014)
+theme_override_fonts/font = ExtResource("4_8b7j5")
+theme_override_font_sizes/font_size = 54
+text = "Wrotion"
+metadata/_edit_use_anchors_ = true
+
+[node name="ParallaxLabel2" type="Node2D" parent="."]
+z_index = 3
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(-547.50146, -221.15234)
+scale = Vector2(1.916, 1.916)
+
+[node name="Texto Título Dystineak" type="Label" parent="ParallaxLabel2"]
+z_index = 3
+texture_filter = 1
+texture_repeat = 1
+offset_left = 396.0
+offset_top = 135.0
+offset_right = 676.0
+offset_bottom = 214.0
+scale = Vector2(0.6345638, 0.6345638)
+theme_override_fonts/font = ExtResource("4_8b7j5")
+theme_override_font_sizes/font_size = 54
+text = "Dystineak "
+metadata/_edit_use_anchors_ = true
+
+[node name="Texto Título Wrotion" type="Label" parent="ParallaxLabel2"]
+z_index = 3
+texture_filter = 1
+texture_repeat = 1
+offset_left = 410.0
+offset_top = 162.00002
+offset_right = 687.0
+offset_bottom = 241.00002
+scale = Vector2(0.6935014, 0.6935014)
+theme_override_fonts/font = ExtResource("4_8b7j5")
+theme_override_font_sizes/font_size = 54
+text = "Wrotion"
+metadata/_edit_use_anchors_ = true

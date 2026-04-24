@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://cdbpwxv16xty1"]
+
+[ext_resource type="Texture2D" uid="uid://c0j6fqmfohhyu" path="res://sprites/Free Industrial Zone Tileset/4 Animated objects/Screen1.png" id="1_27n4f"]
+
+[sub_resource type="GDScript" id="GDScript_u6pdf"]
+script/source = "extends Node2D
+
+func _ready():
+	$AnimatedSprite2D.play(\"refletor\")
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f0pp"]
+atlas = ExtResource("1_27n4f")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxjxo"]
+atlas = ExtResource("1_27n4f")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sifwe"]
+atlas = ExtResource("1_27n4f")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88rcy"]
+atlas = ExtResource("1_27n4f")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rigqm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f0pp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxjxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sifwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88rcy")
+}],
+"loop": true,
+"name": &"refletor",
+"speed": 7.0
+}]
+
+[node name="Refletor" type="Node2D"]
+script = SubResource("GDScript_u6pdf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rigqm")
+animation = &"refletor"
+autoplay = "refletor"

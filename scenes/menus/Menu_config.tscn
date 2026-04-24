@@ -1,0 +1,323 @@
+[gd_scene load_steps=28 format=3 uid="uid://crjf2c42cc71l"]
+
+[ext_resource type="FontFile" uid="uid://b6oxy7pm61oun" path="res://fonts/PixelifySans-SemiBold.ttf" id="1_lhsju"]
+[ext_resource type="Script" uid="uid://yukup8k6okcq" path="res://scripts/menu_scripts/menu_config.gd" id="1_pae17"]
+[ext_resource type="Texture2D" uid="uid://cufmtlupsy668" path="res://UI/HUD Inicio/Double/button_rectangle_gloss.png" id="2_pae17"]
+[ext_resource type="Texture2D" uid="uid://b4p71upkbjqur" path="res://UI/HUD Inicio/Double/button_rectangle_depth_flat.png" id="2_umh0b"]
+[ext_resource type="Texture2D" uid="uid://bqhrxb6eacsmn" path="res://UI/HUD Inicio/Double/button_rectangle_gradient.png" id="3_pae17"]
+[ext_resource type="FontFile" uid="uid://doey2ik21lr0r" path="res://fonts/PixelifySans-VariableFont_wght.ttf" id="4_765cl"]
+[ext_resource type="Texture2D" uid="uid://cjknkwsqt6ox8" path="res://UI/HUD Inicio/Double/star_outline.png" id="5_uy37p"]
+
+[sub_resource type="FontVariation" id="FontVariation_8m70i"]
+base_font = ExtResource("1_lhsju")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_egqoi"]
+texture = ExtResource("2_pae17")
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+modulate_color = Color(1, 1, 1, 0.5254902)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q7ewk"]
+texture = ExtResource("3_pae17")
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+modulate_color = Color(1, 1, 1, 0.8901961)
+
+[sub_resource type="FontVariation" id="FontVariation_bfuw3"]
+base_font = ExtResource("1_lhsju")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_381yt"]
+texture = ExtResource("2_umh0b")
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nw1s0"]
+texture = ExtResource("3_pae17")
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="FontVariation" id="FontVariation_44rwk"]
+base_font = ExtResource("4_765cl")
+variation_embolden = 0.38
+spacing_glyph = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0duqu"]
+texture = ExtResource("2_umh0b")
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qe0mu"]
+texture = ExtResource("3_pae17")
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="FontVariation" id="FontVariation_wmer4"]
+base_font = ExtResource("1_lhsju")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y5uam"]
+texture = ExtResource("2_umh0b")
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3lt7r"]
+texture = ExtResource("3_pae17")
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="FontVariation" id="FontVariation_pae17"]
+base_font = ExtResource("1_lhsju")
+spacing_space = 2
+spacing_top = 4
+spacing_bottom = 5
+baseline_offset = -0.215
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_765cl"]
+
+[sub_resource type="FontVariation" id="FontVariation_765cl"]
+base_font = ExtResource("1_lhsju")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pae17"]
+texture = ExtResource("2_umh0b")
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uy37p"]
+texture = ExtResource("3_pae17")
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="FontVariation" id="FontVariation_uy37p"]
+base_font = ExtResource("1_lhsju")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8m70i"]
+texture = ExtResource("2_umh0b")
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bfuw3"]
+texture = ExtResource("3_pae17")
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[node name="MenuConfig" type="Control"]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -11.999999
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.79686517, 0.79686517)
+script = ExtResource("1_pae17")
+
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 790.63116
+offset_bottom = 472.72974
+scale = Vector2(1.08871, 1.1106333)
+color = Color(0, 0, 0, 0.79607844)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = 282.73383
+offset_top = 132.38715
+offset_right = 426.73383
+offset_bottom = 308.38715
+scale = Vector2(1.7022179, 1.7022179)
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel"]
+layout_mode = 0
+offset_left = -75.907845
+offset_top = -88.36471
+offset_right = 48.092155
+offset_bottom = 87.63529
+
+[node name="Conteudo" type="Control" parent="CenterContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="MenuPrincipal" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer/Conteudo"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 149.0
+offset_bottom = 176.0
+theme_override_constants/separation = 9
+
+[node name="BtnVoltarJogo" type="Button" parent="CenterContainer/Panel/MarginContainer/Conteudo/MenuPrincipal"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(4.425, 28.395)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.972549, 0.972549, 0.972549, 1)
+theme_override_colors/font_pressed_color = Color(0.8646751, 0.86467516, 0.8646751, 1)
+theme_override_colors/font_hover_color = Color(0.5250989, 0.52510226, 0.5251014, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.972549, 0.972549, 0.972549, 1)
+theme_override_fonts/font = SubResource("FontVariation_8m70i")
+theme_override_styles/normal = SubResource("StyleBoxTexture_egqoi")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q7ewk")
+text = "Voltar ao Jogo"
+
+[node name="BtnSalvarJogo" type="Button" parent="CenterContainer/Panel/MarginContainer/Conteudo/MenuPrincipal"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(4.425, 28.395)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_colors/font_focus_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_colors/font_pressed_color = Color(0.8627451, 0.8627451, 0.8627451, 1)
+theme_override_colors/font_hover_color = Color(0.35156274, 0.35156295, 0.35156283, 0.75686276)
+theme_override_colors/font_hover_pressed_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_fonts/font = SubResource("FontVariation_bfuw3")
+theme_override_styles/normal = SubResource("StyleBoxTexture_381yt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nw1s0")
+text = "Salvar Jogo"
+
+[node name="BtnConfiguracoes" type="Button" parent="CenterContainer/Panel/MarginContainer/Conteudo/MenuPrincipal"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(4.425, 28.395)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_colors/font_focus_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_colors/font_pressed_color = Color(0.8627451, 0.8627451, 0.8627451, 1)
+theme_override_colors/font_hover_color = Color(0.3529412, 0.3529412, 0.3529412, 0.75686276)
+theme_override_colors/font_hover_pressed_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_fonts/font = SubResource("FontVariation_44rwk")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_0duqu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qe0mu")
+text = "Configurações"
+
+[node name="BtnTelaInicial" type="Button" parent="CenterContainer/Panel/MarginContainer/Conteudo/MenuPrincipal"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(4.425, 28.395)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_colors/font_focus_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_colors/font_pressed_color = Color(0.8627451, 0.8627451, 0.8627451, 1)
+theme_override_colors/font_hover_color = Color(0.3529412, 0.3529412, 0.3529412, 0.75686276)
+theme_override_colors/font_hover_pressed_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_fonts/font = SubResource("FontVariation_44rwk")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_0duqu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qe0mu")
+text = "Tela inicial"
+
+[node name="BtnSair" type="Button" parent="CenterContainer/Panel/MarginContainer/Conteudo/MenuPrincipal"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(4.425, 28.395)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_colors/font_focus_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_colors/font_pressed_color = Color(0.8627451, 0.8627451, 0.8627451, 1)
+theme_override_colors/font_hover_color = Color(0.3529412, 0.3529412, 0.3529412, 0.75686276)
+theme_override_colors/font_hover_pressed_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_fonts/font = SubResource("FontVariation_wmer4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_y5uam")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3lt7r")
+text = "Sair"
+
+[node name="PainelConfiguracoes" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer/Conteudo"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = -47.91962
+offset_top = -5.1605687
+offset_right = 184.08038
+offset_bottom = 118.83943
+theme_override_constants/separation = 9
+
+[node name="LabelDaltonismo" type="Label" parent="CenterContainer/Panel/MarginContainer/Conteudo/PainelConfiguracoes"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_pae17")
+theme_override_styles/normal = SubResource("StyleBoxTexture_765cl")
+text = "Escolha o tipo de daltonismo"
+
+[node name="OptionButtonDaltonismo" type="OptionButton" parent="CenterContainer/Panel/MarginContainer/Conteudo/PainelConfiguracoes"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(4.425, 28.395)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_colors/font_focus_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_colors/font_pressed_color = Color(0.8627451, 0.8627451, 0.8627451, 1)
+theme_override_colors/font_hover_color = Color(0.3529412, 0.3529412, 0.3529412, 0.75686276)
+theme_override_colors/font_hover_pressed_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_fonts/font = SubResource("FontVariation_765cl")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pae17")
+theme_override_styles/hover = SubResource("StyleBoxTexture_uy37p")
+alignment = 1
+
+[node name="BtnVoltarConfig" type="Button" parent="CenterContainer/Panel/MarginContainer/Conteudo/PainelConfiguracoes"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(4.425, 28.395)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_colors/font_focus_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_colors/font_pressed_color = Color(0.8627451, 0.8627451, 0.8627451, 1)
+theme_override_colors/font_hover_color = Color(0.3529412, 0.3529412, 0.3529412, 0.75686276)
+theme_override_colors/font_hover_pressed_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+theme_override_fonts/font = SubResource("FontVariation_uy37p")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8m70i")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bfuw3")
+text = "Voltar"
+
+[node name="StarOutline" type="Sprite2D" parent="."]
+position = Vector2(38.48464, 478.74887)
+scale = Vector2(0.15924445, 0.15924445)
+texture = ExtResource("5_uy37p")
+
+[node name="Texto Título Dystineak" type="Label" parent="StarOutline"]
+texture_filter = 1
+texture_repeat = 1
+offset_left = 110.999664
+offset_top = -47.99981
+offset_right = 697.99963
+offset_bottom = 31.00019
+scale = Vector2(1.4206227, 1.4206227)
+theme_override_fonts/font = ExtResource("4_765cl")
+theme_override_font_sizes/font_size = 54
+text = "Jogando na versão 1.0 "
+metadata/_edit_use_anchors_ = true
+
+[node name="Texto Menu" type="Label" parent="StarOutline"]
+unique_name_in_owner = true
+texture_filter = 1
+texture_repeat = 1
+offset_left = 1752.9144
+offset_top = -2809.8186
+offset_right = 2339.914
+offset_bottom = -2730.8186
+scale = Vector2(8.116583, 8.116583)
+theme_override_fonts/font = ExtResource("4_765cl")
+theme_override_font_sizes/font_size = 54
+text = "Menu"
+metadata/_edit_use_anchors_ = true

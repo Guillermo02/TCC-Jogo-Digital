@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhhpmfu6ryooi"]
+
+[ext_resource type="Script" uid="uid://cc8hrlwooy4mv" path="res://scripts/menu_scripts/colorblind_filter.gd" id="1_1d5a6"]
+[ext_resource type="Shader" uid="uid://clarjepd5vm4p" path="res://addons/accesibilitytools/colorblindShader.gdshader" id="1_yrhom"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k1lnv"]
+shader = ExtResource("1_yrhom")
+shader_parameter/mode = 4
+
+[node name="ColorblindFilter" type="CanvasLayer"]
+script = ExtResource("1_1d5a6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_k1lnv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

@@ -1,0 +1,95 @@
+[gd_scene load_steps=11 format=3 uid="uid://wgtydcno2a8j"]
+
+[ext_resource type="Script" uid="uid://qryjjokfdboy" path="res://scripts/HUD_scripts/HUD.gd" id="1_rr8ot"]
+[ext_resource type="Texture2D" uid="uid://cgesg733sfkx7" path="res://UI/HUD_Mono/CoracaoCheio.png" id="2_43lqu"]
+[ext_resource type="Texture2D" uid="uid://qp74f2ki80bp" path="res://UI/HUD_Mono/shield.png" id="3_c2x1a"]
+[ext_resource type="Texture2D" uid="uid://buxfbkkt7dmii" path="res://UI/HUD_Mono/CoracaoDano.png" id="3_rufx2"]
+[ext_resource type="Texture2D" uid="uid://cb51xygeexi7i" path="res://UI/HUD_Mono/IndicadorDano.png" id="4_c2x1a"]
+[ext_resource type="Texture2D" uid="uid://c2e4tdm6junff" path="res://UI/HUD_Mono/CoracaoVazio.png" id="4_gipir"]
+[ext_resource type="Texture2D" uid="uid://c53maoehxfrxg" path="res://UI/HUD_Mono/XSemEscudo.png" id="6_gipir"]
+[ext_resource type="Texture2D" uid="uid://cne5b4asjmpup" path="res://UI/Tutorial/tile_0093.png" id="8_wa322"]
+[ext_resource type="Texture2D" uid="uid://bnkia0cadhi5o" path="res://UI/HUD_Mono/OlhoHUD.png" id="9_ykc18"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8r4id"]
+bg_color = Color(0, 0, 0, 0.49803922)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[node name="Hud" type="CanvasLayer" groups=["hud"]]
+script = ExtResource("1_rr8ot")
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(180, 40)
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 196.0
+offset_bottom = 56.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8r4id")
+
+[node name="HeartsRow" type="HBoxContainer" parent="BackgroundPanel"]
+layout_mode = 0
+offset_left = 12.000001
+offset_top = -39.000004
+offset_right = 404.0
+offset_bottom = 89.0
+scale = Vector2(0.82193685, 0.82193685)
+
+[node name="Heart1" type="TextureRect" parent="BackgroundPanel/HeartsRow"]
+layout_mode = 2
+texture = ExtResource("2_43lqu")
+
+[node name="Heart2" type="TextureRect" parent="BackgroundPanel/HeartsRow"]
+layout_mode = 2
+texture = ExtResource("3_rufx2")
+
+[node name="Heart3" type="TextureRect" parent="BackgroundPanel/HeartsRow"]
+layout_mode = 2
+texture = ExtResource("4_gipir")
+
+[node name="ShieldsRow" type="HBoxContainer" parent="BackgroundPanel"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = -8.0
+offset_right = 414.0
+offset_bottom = 120.0
+scale = Vector2(0.5890238, 0.5890238)
+
+[node name="Shield1" type="TextureRect" parent="BackgroundPanel/ShieldsRow"]
+layout_mode = 2
+texture = ExtResource("3_c2x1a")
+
+[node name="Shield2" type="TextureRect" parent="BackgroundPanel/ShieldsRow"]
+layout_mode = 2
+texture = ExtResource("3_c2x1a")
+
+[node name="Shield3" type="TextureRect" parent="BackgroundPanel/ShieldsRow"]
+layout_mode = 2
+texture = ExtResource("6_gipir")
+expand_mode = 2
+
+[node name="DamageIndicator" type="TextureRect" parent="BackgroundPanel"]
+layout_mode = 0
+offset_left = 113.00001
+offset_top = 11.0
+offset_right = 133.0
+offset_bottom = 31.0
+scale = Vector2(0.61089617, 0.61089617)
+texture = ExtResource("4_c2x1a")
+expand_mode = 1
+
+[node name="Tile0093" type="Sprite2D" parent="BackgroundPanel"]
+position = Vector2(155, 19)
+scale = Vector2(1.1981115, 1.1981115)
+texture = ExtResource("8_wa322")
+
+[node name="OlhoHud" type="Sprite2D" parent="BackgroundPanel"]
+position = Vector2(161.00002, 12)
+scale = Vector2(0.64018655, 0.64018655)
+texture = ExtResource("9_ykc18")
+
+[node name="DamageIndicatorTimer" type="Timer" parent="."]
+
+[node name="RegenTimer" type="Timer" parent="."]

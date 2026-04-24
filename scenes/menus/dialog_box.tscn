@@ -1,0 +1,95 @@
+[gd_scene load_steps=11 format=3 uid="uid://cbd30h1r7sg3s"]
+
+[ext_resource type="Script" uid="uid://buydj0hvvxusg" path="res://scripts/diolog_box.gd" id="1_kxkgd"]
+[ext_resource type="Texture2D" uid="uid://ce2b5xmxt0un0" path="res://UI/Balao de Fala/BalaFala.png" id="2_v0qdq"]
+[ext_resource type="FontFile" uid="uid://b6oxy7pm61oun" path="res://fonts/PixelifySans-SemiBold.ttf" id="3_kxkgd"]
+[ext_resource type="Texture2D" uid="uid://wiu5avjxuuuv" path="res://UI/Balao de Fala/BalaoFalaPontinha.png" id="4_kdl02"]
+[ext_resource type="Texture2D" uid="uid://k4qlghh6y3su" path="res://UI/Tutorial/tile_0135.png" id="5_dfgu0"]
+[ext_resource type="Texture2D" uid="uid://c5m6xoovc5mkw" path="res://UI/Tutorial/tile_0100.png" id="6_srukh"]
+[ext_resource type="Texture2D" uid="uid://1aqcymayh25i" path="res://UI/Tutorial/tile_0101.png" id="7_86vqb"]
+[ext_resource type="Texture2D" uid="uid://duxkhapsod878" path="res://UI/Tutorial/tile_0134.png" id="8_sw6x2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dfgu0"]
+texture = ExtResource("2_v0qdq")
+
+[sub_resource type="FontVariation" id="FontVariation_v0qdq"]
+base_font = ExtResource("3_kxkgd")
+spacing_glyph = 1
+
+[node name="dialog_box" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchor_left = 0.469
+anchor_top = 0.44400004
+anchor_right = 0.531
+anchor_bottom = 0.55600005
+offset_left = -6.1600037
+offset_top = 28.159988
+offset_right = -5.840027
+offset_bottom = 27.839981
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.623975, 1.623975)
+script = ExtResource("1_kxkgd")
+
+[node name="bg_dialog_box" type="PanelContainer" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -122.0
+offset_top = -88.0
+offset_right = 146.0
+offset_bottom = 55.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_dfgu0")
+
+[node name="text_container" type="MarginContainer" parent="bg_dialog_box"]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 6
+
+[node name="text_label" type="Label" parent="bg_dialog_box/text_container"]
+texture_filter = 1
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_stretch_ratio = 2.71
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 6
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = SubResource("FontVariation_v0qdq")
+theme_override_font_sizes/font_size = 16
+text = "Olá, viajante. Esta é uma frase maior para verificar se o balão aumenta sozinho conforme o texto ocupa mais espaço."
+autowrap_mode = 3
+
+[node name="indicador" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -64.837135
+offset_top = 55.302235
+offset_right = 83.734276
+offset_bottom = 81.30223
+texture = ExtResource("4_kdl02")
+
+[node name="Enter1" type="Sprite2D" parent="."]
+position = Vector2(147.46478, 50.60066)
+scale = Vector2(1.9168837, 1.9168837)
+texture = ExtResource("5_dfgu0")
+
+[node name="Enter2" type="Sprite2D" parent="."]
+position = Vector2(118.068214, 20.722174)
+scale = Vector2(1.9168837, 1.9168837)
+texture = ExtResource("6_srukh")
+
+[node name="Enter3" type="Sprite2D" parent="."]
+position = Vector2(147.46477, 20.72218)
+scale = Vector2(1.9168847, 1.9168847)
+texture = ExtResource("7_86vqb")
+
+[node name="Enter4" type="Sprite2D" parent="."]
+position = Vector2(117.10438, 50.600655)
+scale = Vector2(1.9168847, 1.9168847)
+texture = ExtResource("8_sw6x2")

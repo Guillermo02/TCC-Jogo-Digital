@@ -1,0 +1,218 @@
+[gd_scene load_steps=18 format=3 uid="uid://bfjmqxr3xyr7u"]
+
+[ext_resource type="Texture2D" uid="uid://daq22cthhijfn" path="res://sprites/Cenários/Cidade - Noite/1-sky_layer.png" id="1_afpml"]
+[ext_resource type="Texture2D" uid="uid://bkwmyk5js6s20" path="res://sprites/Cenários/Cidade - Noite/2-backround.png" id="2_8wmhy"]
+[ext_resource type="Texture2D" uid="uid://bxwcise8gkgd8" path="res://sprites/Cenários/Cidade - Noite/3-backround.png" id="3_i5fi2"]
+[ext_resource type="Texture2D" uid="uid://bsqvwraxtcuwg" path="res://sprites/Cenários/Cidade - Noite/4backround-traffic-lights.png" id="4_85lir"]
+[ext_resource type="Texture2D" uid="uid://ub8g5s8v4ot7" path="res://sprites/Cenários/Cidade - Noite/5-backround.png" id="5_i1j2k"]
+[ext_resource type="Texture2D" uid="uid://brc0hfle2kbye" path="res://sprites/Cenários/Cidade - Noite/6-backround-train.png" id="6_uh3xl"]
+[ext_resource type="Script" uid="uid://btp87hpqwk3jt" path="res://scripts/cidade_noite_scripts/metro.gd" id="7_85lir"]
+[ext_resource type="Texture2D" uid="uid://ds0tnx4vh7iyl" path="res://sprites/Cenários/Cidade - Noite/7-backround.png" id="7_oqpm8"]
+[ext_resource type="Texture2D" uid="uid://2vuu13v3ikuk" path="res://sprites/Cenários/Cidade - Noite/8-backround.png" id="8_wj3jt"]
+[ext_resource type="Texture2D" uid="uid://cnu3t5h1s6xw4" path="res://sprites/Cenários/Cidade - Noite/9-middleground-tower.png" id="9_p8lgb"]
+[ext_resource type="Texture2D" uid="uid://5x51nagrnmqu" path="res://sprites/Cenários/Cidade - Noite/10-middleground-lights-tower.png" id="10_442xd"]
+[ext_resource type="Texture2D" uid="uid://bvpkhmtxwudru" path="res://sprites/Cenários/Cidade - Noite/11-middleground.png" id="11_7em00"]
+[ext_resource type="Texture2D" uid="uid://dydu5kvs2256r" path="res://sprites/Cenários/Cidade - Noite/12-middleground.png" id="12_gsa28"]
+[ext_resource type="PackedScene" uid="uid://cjdpsuep8yj7x" path="res://entities/jogador.tscn" id="13_8wmhy"]
+[ext_resource type="Script" uid="uid://bsgsumhy53ryr" path="res://scripts/camera.gd" id="15_85lir"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wmhy"]
+size = Vector2(35733, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5fi2"]
+size = Vector2(20, 401.25)
+
+[node name="Cidade" type="Node2D"]
+
+[node name="Parallax1" type="Parallax2D" parent="."]
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.03, 0.03)
+scroll_offset = Vector2(383, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="ceu" type="Sprite2D" parent="Parallax1"]
+texture = ExtResource("1_afpml")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Parallax2" type="Parallax2D" parent="."]
+modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.05, 0.05)
+scroll_offset = Vector2(383, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="Background" type="Sprite2D" parent="Parallax2"]
+modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
+texture = ExtResource("2_8wmhy")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Parallax3" type="Parallax2D" parent="."]
+modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.08, 0.08)
+scroll_offset = Vector2(383, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax3"]
+modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
+texture = ExtResource("3_i5fi2")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Parallax4" type="Parallax2D" parent="."]
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.12, 0.12)
+scroll_offset = Vector2(383, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax4"]
+texture = ExtResource("4_85lir")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Parallax5" type="Parallax2D" parent="."]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.17, 0.17)
+scroll_offset = Vector2(383, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax5"]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+texture = ExtResource("5_i1j2k")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Parallax6" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.42, 0.42)
+repeat_size = Vector2(1024, 0)
+repeat_times = 3
+
+[node name="Metro" type="Sprite2D" parent="."]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+position = Vector2(817.0001, 189.00002)
+scale = Vector2(1.6458043, 1.6458043)
+texture = ExtResource("6_uh3xl")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+script = ExtResource("7_85lir")
+
+[node name="Parallax7" type="Parallax2D" parent="."]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.25, 0.25)
+scroll_offset = Vector2(384, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax7"]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+texture = ExtResource("7_oqpm8")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Parallax8" type="Parallax2D" parent="."]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.32, 0.32)
+scroll_offset = Vector2(383, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax8"]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+texture = ExtResource("8_wj3jt")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Parallax9" type="Parallax2D" parent="."]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.4, 0.4)
+scroll_offset = Vector2(383, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax9"]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+texture = ExtResource("9_p8lgb")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Parallax10" type="Parallax2D" parent="."]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.4, 0.4)
+scroll_offset = Vector2(383, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax10"]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+texture = ExtResource("10_442xd")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Parallax11" type="Parallax2D" parent="."]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.6, 0.6)
+scroll_offset = Vector2(383, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax11"]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+texture = ExtResource("11_7em00")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Parallax12" type="Parallax2D" parent="."]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.7, 0.7)
+scroll_offset = Vector2(383, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax12"]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+position = Vector2(-0.21157168, 0)
+texture = ExtResource("12_gsa28")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Jogador" parent="." instance=ExtResource("13_8wmhy")]
+modulate = Color(0.51326185, 0.70160633, 0.7945089, 1)
+position = Vector2(23, 300)
+scale = Vector2(0.8384367, 0.8384367)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 44)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(16795, 363)
+shape = SubResource("RectangleShape2D_8wmhy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 233)
+shape = SubResource("RectangleShape2D_i5fi2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1005, 199)
+shape = SubResource("RectangleShape2D_i5fi2")
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(57, 318)
+limit_left = 4
+limit_top = -10000396
+limit_right = 1000
+limit_bottom = 397
+script = ExtResource("15_85lir")

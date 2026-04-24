@@ -1,0 +1,217 @@
+[gd_scene load_steps=17 format=3 uid="uid://bhv8mbcyy6761"]
+
+[ext_resource type="Texture2D" uid="uid://clk501ew53mlp" path="res://sprites/Cenários/Fabrica_Oleo/1-sky_layer.png" id="1_525qc"]
+[ext_resource type="Texture2D" uid="uid://br6q0lsw8q3ay" path="res://sprites/Cenários/Fabrica_Oleo/2-background-towers.png" id="2_b7dr8"]
+[ext_resource type="Texture2D" uid="uid://jjn6xmjsmrsn" path="res://sprites/Cenários/Fabrica_Oleo/3-background.png" id="3_1t1j6"]
+[ext_resource type="PackedScene" uid="uid://cri7psifxb67w" path="res://obstaculos sem dano/fumaca.tscn" id="4_b7dr8"]
+[ext_resource type="Texture2D" uid="uid://d30rpxc8fq57o" path="res://sprites/Cenários/Fabrica_Oleo/4-background.png" id="4_g5b34"]
+[ext_resource type="Texture2D" uid="uid://ct7oiae7fqkf" path="res://sprites/Cenários/Fabrica_Oleo/5-background.png" id="5_bi3cx"]
+[ext_resource type="Texture2D" uid="uid://qjqiwnpuppd1" path="res://sprites/Cenários/Fabrica_Oleo/6-background-cópia.png" id="6_hbwwc"]
+[ext_resource type="Texture2D" uid="uid://bdyn4x2qed6d" path="res://sprites/Cenários/Fabrica_Oleo/7-middleground.png" id="7_n6d1n"]
+[ext_resource type="Texture2D" uid="uid://b5a78nc7u77ba" path="res://sprites/Cenários/Fabrica_Oleo/8-middleground.png" id="8_xn048"]
+[ext_resource type="Texture2D" uid="uid://cvsp8khdg6c11" path="res://sprites/Cenários/Fabrica_Oleo/9-middleground.png" id="9_qussc"]
+[ext_resource type="Texture2D" uid="uid://dvd21y2tpg6vi" path="res://sprites/Cenários/Fabrica_Oleo/10-middleground.png" id="10_14xav"]
+[ext_resource type="PackedScene" uid="uid://cjdpsuep8yj7x" path="res://entities/jogador.tscn" id="14_f43ol"]
+[ext_resource type="Script" uid="uid://bsgsumhy53ryr" path="res://scripts/camera.gd" id="15_6hgpm"]
+
+[sub_resource type="GDScript" id="GDScript_g5b34"]
+script/source = "extends Node2D
+
+func _ready():
+	$AnimatedSprite2D.play(\"fumaca\")
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbbfs"]
+size = Vector2(35733, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofecu"]
+size = Vector2(20, 401.25)
+
+[node name="FabricaOleo" type="Node2D"]
+
+[node name="Parallax1" type="Parallax2D" parent="."]
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.03, 0.03)
+scroll_offset = Vector2(383, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="ceu" type="Sprite2D" parent="Parallax1"]
+texture = ExtResource("1_525qc")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Parallax2" type="Parallax2D" parent="."]
+modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.03, 0.03)
+scroll_offset = Vector2(383, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="Background" type="Sprite2D" parent="Parallax2"]
+modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
+texture = ExtResource("2_b7dr8")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Parallax3" type="Parallax2D" parent="."]
+modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.06, 0.06)
+scroll_offset = Vector2(383, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax3"]
+modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
+texture = ExtResource("3_1t1j6")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Fumaca" parent="Parallax3" instance=ExtResource("4_b7dr8")]
+modulate = Color(0.7294118, 0.4117647, 0.2627451, 0.5254902)
+position = Vector2(632.9136, -86.88761)
+scale = Vector2(0.05824829, 0.26894882)
+script = SubResource("GDScript_g5b34")
+
+[node name="Fumaca2" parent="Parallax3" instance=ExtResource("4_b7dr8")]
+modulate = Color(0.7294118, 0.4117647, 0.2627451, 0.5254902)
+position = Vector2(649.9265, -58.330143)
+scale = Vector2(0.051648006, 0.14282583)
+script = SubResource("GDScript_g5b34")
+
+[node name="Fumaca3" parent="Parallax3" instance=ExtResource("4_b7dr8")]
+modulate = Color(0.7294118, 0.4117647, 0.2627451, 0.5254902)
+position = Vector2(423.28955, -21.266195)
+scale = Vector2(0.05015696, 0.14364028)
+script = SubResource("GDScript_g5b34")
+
+[node name="Parallax4" type="Parallax2D" parent="."]
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.1, 0.1)
+scroll_offset = Vector2(383, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax4"]
+texture = ExtResource("4_g5b34")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Parallax5" type="Parallax2D" parent="."]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.15, 0.15)
+scroll_offset = Vector2(-460.00003, 189.00002)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax5"]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+texture = ExtResource("5_bi3cx")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Parallax6" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1024, 0)
+repeat_times = 3
+
+[node name="Parallax7" type="Parallax2D" parent="."]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.25, 0.25)
+scroll_offset = Vector2(384, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax7"]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+texture = ExtResource("6_hbwwc")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Parallax8" type="Parallax2D" parent="."]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.3, 0.3)
+scroll_offset = Vector2(383, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax8"]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+texture = ExtResource("7_n6d1n")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Parallax9" type="Parallax2D" parent="."]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.4, 0.4)
+scroll_offset = Vector2(383, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax9"]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+texture = ExtResource("8_xn048")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Parallax10" type="Parallax2D" parent="."]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.55, 0.55)
+scroll_offset = Vector2(383, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax10"]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+texture = ExtResource("9_qussc")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Parallax11" type="Parallax2D" parent="."]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+scale = Vector2(1.6458043, 1.6458043)
+scroll_scale = Vector2(0.6, 0.6)
+scroll_offset = Vector2(383, 189)
+repeat_size = Vector2(512, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax11"]
+modulate = Color(0.75046813, 0.7207028, 0.8092189, 1)
+texture = ExtResource("10_14xav")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 256)
+
+[node name="Jogador" parent="." instance=ExtResource("14_f43ol")]
+modulate = Color(0.98454326, 0.94940406, 0.9213998, 1)
+position = Vector2(23, 300)
+scale = Vector2(0.8384367, 0.8384367)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 44)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(16795, 363)
+shape = SubResource("RectangleShape2D_jbbfs")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 233)
+shape = SubResource("RectangleShape2D_ofecu")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1005, 199)
+shape = SubResource("RectangleShape2D_ofecu")
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(54, 310)
+limit_left = 4
+limit_top = -10000396
+limit_right = 1000
+limit_bottom = 397
+script = ExtResource("15_6hgpm")

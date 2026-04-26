@@ -12,6 +12,7 @@ var conectado = false
 @onready var sprite = $Sprite2D
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	definir_normal()
 
 func _input_event(_viewport, event, _shape_idx):
@@ -19,7 +20,7 @@ func _input_event(_viewport, event, _shape_idx):
 		return
 	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		get_parent().selecionar_ponto(self)
+		get_parent().get_parent().selecionar_ponto(self)
 
 func definir_normal():
 	if sprite_normal != null:

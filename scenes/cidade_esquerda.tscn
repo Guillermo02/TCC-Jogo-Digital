@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://betucs5t87hju"]
+
+[ext_resource type="Texture2D" uid="uid://br3jpaprv3vun" path="res://assets/PNG/City3/Bright/City3.png" id="1_ysb76"]
+[ext_resource type="PackedScene" uid="uid://csgq2q1g8mh86" path="res://scenes/paredes.tscn" id="2_ka7ap"]
+[ext_resource type="Script" uid="uid://cjxwvjnx1xeyu" path="res://scripts/spawn_left.gd" id="3_ka7ap"]
+[ext_resource type="PackedScene" uid="uid://b2vyxab30n72u" path="res://scenes/personagens/jogador.tscn" id="4_pktxo"]
+
+[node name="cidade_esquerda" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1159, 653.00006)
+scale = Vector2(1.2010417, 1.1870371)
+texture = ExtResource("1_ysb76")
+
+[node name="Paredes" parent="." instance=ExtResource("2_ka7ap")]
+position = Vector2(-2, -8)
+scale = Vector2(2, 2)
+
+[node name="Jogador" parent="." instance=ExtResource("4_pktxo")]
+position = Vector2(2074, 902)
+scale = Vector2(6, 6)
+
+[node name="spawn_left" type="Node2D" parent="."]
+script = ExtResource("3_ka7ap")

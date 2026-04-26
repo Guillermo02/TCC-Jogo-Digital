@@ -1,7 +1,34 @@
-extends Node2D
+extends Control
 
 var primeiro_ponto = null
 var segundo_ponto = null
+var puzzle_completo = false
+var numero_do_puzzle = 1
+
+var dialogos = {
+	1: [
+		"Prefeito: Atualização da situação",
+		"Capanga 1: Já subornamos mais da metade dos votos.",
+		"Prefeito: Ótimo, se certifique de cobrir bem os rastros.",
+		"Capanga 1: Entendido!"
+	],
+	
+	2: [
+		"Capanga 2: Deixamos aquela garota naquele lugar que você pediu seu prefeito.",
+		"Prefeito: Perfeito. Se certifiquem que ela não possa escapar,
+		e encontrem aquele maldito celular!",
+		"Capanga 2: Vamos encontrar, senhor!"
+	]
+}
+
+func _ready():
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	if GameState.puzzles_completos.get(numero_do_puzzle, false):
+		abrir_dialogo()
+
+func _input(event):
+	if event.is_action_pressed("sair"):
+		sair_do_puzzle()
 
 func selecionar_ponto(ponto):
 	if ponto.conectado:
@@ -65,9 +92,19 @@ func resetar_selecao():
 	segundo_ponto = null
 
 func verificar_vitoria():
-	for no in get_children():
-		if no is Area2D:
-			if not no.conectado:
-				return
+	for no in $fios.get_children():
+		if no is Area2D and not no.conectado:
+			return
 	
 	print("PUZZLE COMPLETO!")
+	GameState.puzzles_completos[numero_do_puzzle] = true
+	puzzle_completo = true
+	abrir_dialogo()
+
+func abrir_dialogo():
+	var dialogo_ui = $dialogoUI
+	dialogo_ui.iniciar_dialogo(dialogos[numero_do_puzzle])
+
+func sair_do_puzzle():
+	get_tree().paused = false  # se você pausou o jogo
+	queue_free()

@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhhpmfu6ryooi"]
 
-[ext_resource type="Shader" uid="uid://d3tbtg75mjvc7" path="res://colorblindShader.gdshader" id="1_yrhom"]
+[ext_resource type="Shader" uid="uid://d3tbtg75mjvc7" path="res://shaders/colorblindShader.gdshader" id="1_uiksk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o4svd"]
-shader = ExtResource("1_yrhom")
-shader_parameter/mode = 0
+shader = ExtResource("1_uiksk")
+shader_parameter/mode = 2
 
 [node name="ColorblindFilter" type="CanvasLayer"]
 

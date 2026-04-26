@@ -1,0 +1,228 @@
+[gd_scene load_steps=27 format=3 uid="uid://2b2lvc6kaie0"]
+
+[ext_resource type="Script" uid="uid://bninlf7t088gc" path="res://scripts/puzzle/puzzle_fios.gd" id="1_wh8i6"]
+[ext_resource type="Texture2D" uid="uid://c2mbdl4u52hpa" path="res://assets/AAkenney/puzzle icons/background/button_square_header_large_square_screws.png" id="2_6a3s8"]
+[ext_resource type="Script" uid="uid://dclrplv3mv8ga" path="res://scripts/puzzle/fio_1.gd" id="2_wh8i6"]
+[ext_resource type="Texture2D" uid="uid://dlw4lrkw5ke04" path="res://assets/AAkenney/rune-pack/Grey/Tile (outline)/runeGrey_tileOutline_025.png" id="4_wh8i6"]
+[ext_resource type="Texture2D" uid="uid://7i8yhscty6tn" path="res://assets/AAkenney/rune-pack/Blue/Tile (outline)/runeBlue_tileOutline_024.png" id="5_6a3s8"]
+[ext_resource type="Texture2D" uid="uid://sbwl00p0ml4r" path="res://assets/AAkenney/rune-pack/Black/Tile (outline)/runeBlack_tileOutline_025.png" id="6_50q5j"]
+[ext_resource type="Script" uid="uid://jmkhs53uoddg" path="res://scripts/puzzle/fio_2.gd" id="6_wh8vp"]
+[ext_resource type="Texture2D" uid="uid://b3byj7ewp6jly" path="res://assets/AAkenney/rune-pack/Grey/Tile (outline)/runeGrey_tileOutline_028.png" id="8_h3tqt"]
+[ext_resource type="Texture2D" uid="uid://c3yyy2wa1jhf3" path="res://assets/AAkenney/rune-pack/Blue/Tile (outline)/runeBlue_tileOutline_027.png" id="9_wh8vp"]
+[ext_resource type="Script" uid="uid://btivmic7qyo6p" path="res://scripts/puzzle/fio_3.gd" id="10_4d58l"]
+[ext_resource type="Texture2D" uid="uid://comk00n8ufvfe" path="res://assets/AAkenney/rune-pack/Black/Tile (outline)/runeBlack_tileOutline_028.png" id="10_erpbf"]
+[ext_resource type="Texture2D" uid="uid://ixlbnsxl73a" path="res://assets/AAkenney/rune-pack/Grey/Tile (outline)/runeGrey_tileOutline_007.png" id="12_8nv4d"]
+[ext_resource type="Texture2D" uid="uid://y5hwxkbps4gl" path="res://assets/AAkenney/rune-pack/Blue/Tile (outline)/runeBlue_tileOutline_006.png" id="13_4lha1"]
+[ext_resource type="Texture2D" uid="uid://cyyuucv0pnc3u" path="res://assets/AAkenney/rune-pack/Black/Tile (outline)/runeBlack_tileOutline_007.png" id="14_4d58l"]
+[ext_resource type="Script" uid="uid://i8jipsuiaa5u" path="res://scripts/puzzle/fio_4.gd" id="14_mje5v"]
+[ext_resource type="Texture2D" uid="uid://qojyp422xkl5" path="res://assets/AAkenney/rune-pack/Grey/Tile (outline)/runeGrey_tileOutline_027.png" id="16_5a363"]
+[ext_resource type="Texture2D" uid="uid://cs8f2h21dgvk" path="res://assets/AAkenney/rune-pack/Blue/Tile (outline)/runeBlue_tileOutline_026.png" id="17_pyap8"]
+[ext_resource type="Script" uid="uid://dyv6ulnbeni88" path="res://scripts/puzzle/fio_A.gd" id="18_5r4ia"]
+[ext_resource type="Texture2D" uid="uid://dgb0er6g2mlna" path="res://assets/AAkenney/rune-pack/Black/Tile (outline)/runeBlack_tileOutline_027.png" id="18_sko6h"]
+[ext_resource type="Script" uid="uid://bnul0wlkgiajt" path="res://scripts/puzzle/fio_B.gd" id="19_pegsr"]
+[ext_resource type="Script" uid="uid://d3inj173qt5qv" path="res://scripts/puzzle/fio_C.gd" id="20_x2svu"]
+[ext_resource type="Script" uid="uid://rlx4af25w1y3" path="res://scripts/puzzle/fio_D.gd" id="21_rftql"]
+[ext_resource type="PackedScene" uid="uid://dhhpmfu6ryooi" path="res://scenes/colorblind_filter.tscn" id="22_v2qej"]
+[ext_resource type="Script" uid="uid://gy6tyc3plwyw" path="res://scripts/puzzle/dialogo_ui.gd" id="23_p1e2k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6v2m"]
+size = Vector2(54, 52)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7nta"]
+bg_color = Color(0.16409373, 0.16409373, 0.16409373, 0.9411765)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="puzzleUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_wh8i6")
+metadata/_edit_use_anchors_ = true
+
+[node name="background" type="TextureRect" parent="puzzleUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.147
+anchor_top = 0.08800001
+anchor_right = 0.8689236
+anchor_bottom = 0.8981481
+offset_left = -0.34399414
+offset_top = -0.02400589
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_6a3s8")
+stretch_mode = 6
+metadata/_edit_use_anchors_ = true
+
+[node name="fios" type="Node2D" parent="puzzleUI"]
+
+[node name="fio1" type="Area2D" parent="puzzleUI/fios"]
+visibility_layer = 512
+position = Vector2(481.00003, 130)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("2_wh8i6")
+sprite_normal = ExtResource("4_wh8i6")
+sprite_pressionado = ExtResource("5_6a3s8")
+sprite_conectado = ExtResource("6_50q5j")
+
+[node name="Sprite2D" type="Sprite2D" parent="puzzleUI/fios/fio1"]
+position = Vector2(1, -1.9999962)
+texture = ExtResource("4_wh8i6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puzzleUI/fios/fio1"]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_m6v2m")
+
+[node name="fio2" type="Area2D" parent="puzzleUI/fios"]
+position = Vector2(657, 225.00002)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("6_wh8vp")
+sprite_normal = ExtResource("8_h3tqt")
+sprite_pressionado = ExtResource("9_wh8vp")
+sprite_conectado = ExtResource("10_erpbf")
+
+[node name="Sprite2D" type="Sprite2D" parent="puzzleUI/fios/fio2"]
+texture = ExtResource("8_h3tqt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puzzleUI/fios/fio2"]
+shape = SubResource("RectangleShape2D_m6v2m")
+
+[node name="fio3" type="Area2D" parent="puzzleUI/fios"]
+position = Vector2(486.00003, 410)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("10_4d58l")
+sprite_normal = ExtResource("12_8nv4d")
+sprite_pressionado = ExtResource("13_4lha1")
+sprite_conectado = ExtResource("14_4d58l")
+
+[node name="Sprite2D" type="Sprite2D" parent="puzzleUI/fios/fio3"]
+texture = ExtResource("12_8nv4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puzzleUI/fios/fio3"]
+shape = SubResource("RectangleShape2D_m6v2m")
+
+[node name="fio4" type="Area2D" parent="puzzleUI/fios"]
+position = Vector2(324, 227)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("14_mje5v")
+sprite_normal = ExtResource("16_5a363")
+sprite_pressionado = ExtResource("17_pyap8")
+sprite_conectado = ExtResource("18_sko6h")
+
+[node name="Sprite2D" type="Sprite2D" parent="puzzleUI/fios/fio4"]
+texture = ExtResource("16_5a363")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puzzleUI/fios/fio4"]
+shape = SubResource("RectangleShape2D_m6v2m")
+
+[node name="fioA" type="Area2D" parent="puzzleUI/fios"]
+position = Vector2(657, 500)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("18_5r4ia")
+sprite_normal = ExtResource("4_wh8i6")
+sprite_pressionado = ExtResource("5_6a3s8")
+sprite_conectado = ExtResource("6_50q5j")
+
+[node name="Sprite2D" type="Sprite2D" parent="puzzleUI/fios/fioA"]
+position = Vector2(1, 0)
+texture = ExtResource("4_wh8i6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puzzleUI/fios/fioA"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_m6v2m")
+
+[node name="fioB" type="Area2D" parent="puzzleUI/fios"]
+position = Vector2(323, 490)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("19_pegsr")
+sprite_normal = ExtResource("8_h3tqt")
+sprite_pressionado = ExtResource("9_wh8vp")
+sprite_conectado = ExtResource("10_erpbf")
+
+[node name="Sprite2D" type="Sprite2D" parent="puzzleUI/fios/fioB"]
+texture = ExtResource("8_h3tqt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puzzleUI/fios/fioB"]
+shape = SubResource("RectangleShape2D_m6v2m")
+
+[node name="fioC" type="Area2D" parent="puzzleUI/fios"]
+position = Vector2(823, 126)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("20_x2svu")
+sprite_normal = ExtResource("12_8nv4d")
+sprite_pressionado = ExtResource("13_4lha1")
+sprite_conectado = ExtResource("14_4d58l")
+
+[node name="Sprite2D" type="Sprite2D" parent="puzzleUI/fios/fioC"]
+texture = ExtResource("12_8nv4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puzzleUI/fios/fioC"]
+shape = SubResource("RectangleShape2D_m6v2m")
+
+[node name="fioD" type="Area2D" parent="puzzleUI/fios"]
+position = Vector2(823, 415)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("21_rftql")
+sprite_normal = ExtResource("16_5a363")
+sprite_pressionado = ExtResource("17_pyap8")
+sprite_conectado = ExtResource("18_sko6h")
+
+[node name="Sprite2D" type="Sprite2D" parent="puzzleUI/fios/fioD"]
+texture = ExtResource("16_5a363")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puzzleUI/fios/fioD"]
+shape = SubResource("RectangleShape2D_m6v2m")
+
+[node name="dialogoUI" type="Control" parent="puzzleUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("23_p1e2k")
+
+[node name="Panel" type="Panel" parent="puzzleUI/dialogoUI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.23
+anchor_top = 0.18800001
+anchor_right = 0.786
+anchor_bottom = 0.84700006
+offset_left = 0.040008545
+offset_top = 0.17599487
+offset_right = -426.80536
+offset_bottom = -284.5227
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+theme_override_styles/panel = SubResource("StyleBoxFlat_j7nta")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="puzzleUI/dialogoUI/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.000197192
+anchor_top = -0.0011709526
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.04213336
+offset_top = -0.16666651
+offset_right = 0.33329773
+offset_bottom = 0.6667023
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 6
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorblindFilter" parent="puzzleUI" instance=ExtResource("22_v2qej")]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://iahwi31ycmss"]
+
+[ext_resource type="Texture2D" uid="uid://bui7fguruu5ff" path="res://assets/PNG/City4/Bright/City4.png" id="1_h1p4o"]
+[ext_resource type="PackedScene" uid="uid://csgq2q1g8mh86" path="res://scenes/paredes.tscn" id="2_ow8b4"]
+[ext_resource type="PackedScene" uid="uid://b2vyxab30n72u" path="res://scenes/personagens/jogador.tscn" id="3_ow8b4"]
+
+[node name="cidade_direita" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(630.5, 343.50003)
+scale = Vector2(0.6557292, 0.6416667)
+texture = ExtResource("1_h1p4o")
+
+[node name="Paredes" parent="." instance=ExtResource("2_ow8b4")]
+
+[node name="Jogador" parent="." instance=ExtResource("3_ow8b4")]
+position = Vector2(74, 454)
+scale = Vector2(3, 3)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=57 format=3 uid="uid://b2vyxab30n72u"]
 
-[ext_resource type="Script" uid="uid://4afaah74x43v" path="res://scripts/jogador.gd" id="1_b26j0"]
+[ext_resource type="Script" uid="uid://4afaah74x43v" path="res://scripts/personagens/jogador.gd" id="1_b26j0"]
 [ext_resource type="Texture2D" uid="uid://bi8lb81f2fwpe" path="res://assets/protagonista/Attack.png" id="2_sbhs4"]
 [ext_resource type="Texture2D" uid="uid://bmr7p3du0pip7" path="res://assets/protagonista/Hurt.png" id="3_n7ghd"]
 [ext_resource type="Texture2D" uid="uid://b20lu43lxq2mv" path="res://assets/protagonista/Idle.png" id="4_nvl01"]

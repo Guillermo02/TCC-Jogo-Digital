@@ -1,7 +1,7 @@
 extends Area2D
 
-@export var nome_fio: String = "3"
-@export var par_nome: String = "C"
+@export var nome_fio: String = "2"
+@export var par_nome: String = "B"
 
 @export var sprite_normal: Texture2D
 @export var sprite_pressionado: Texture2D
@@ -12,6 +12,7 @@ var conectado = false
 @onready var sprite = $Sprite2D
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	definir_normal()
 
 func _input_event(_viewport, event, _shape_idx):
@@ -19,7 +20,7 @@ func _input_event(_viewport, event, _shape_idx):
 		return
 	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		get_parent().selecionar_ponto(self)
+		get_parent().get_parent().selecionar_ponto(self)
 
 func definir_normal():
 	if sprite_normal != null:

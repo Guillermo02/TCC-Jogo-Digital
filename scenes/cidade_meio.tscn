@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://l3kj1i4sgumc"]
+
+[ext_resource type="Texture2D" uid="uid://dtd1xhf34p0gm" path="res://assets/PNG/City2/Bright/City2.png" id="1_4xjr8"]
+[ext_resource type="PackedScene" uid="uid://csgq2q1g8mh86" path="res://scenes/paredes.tscn" id="2_muy8g"]
+[ext_resource type="PackedScene" uid="uid://ct6dbgrbjrylr" path="res://scenes/personagens/npcCinza.tscn" id="3_ecitr"]
+[ext_resource type="PackedScene" uid="uid://b2vyxab30n72u" path="res://scenes/personagens/jogador.tscn" id="4_lvgl4"]
+[ext_resource type="Script" uid="uid://dt0flip5eqnfa" path="res://scripts/interagivel_puzzle.gd" id="5_muy8g"]
+[ext_resource type="Texture2D" uid="uid://b5apvs7duykwn" path="res://assets/AAkenney/pattern-pack-pixel/Tiles (Grayscale)/tile_0059.png" id="6_ecitr"]
+[ext_resource type="PackedScene" uid="uid://dhhpmfu6ryooi" path="res://scenes/colorblind_filter.tscn" id="7_lvgl4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvgl4"]
+size = Vector2(48, 48)
+
+[node name="cidade_meio" type="Node2D"]
+position = Vector2(2, 4)
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1174, 662.99994)
+scale = Vector2(1.2229167, 1.2314814)
+texture = ExtResource("1_4xjr8")
+
+[node name="Paredes" parent="." instance=ExtResource("2_muy8g")]
+position = Vector2(2, -2)
+scale = Vector2(2, 2)
+
+[node name="interagivel_puzzle" type="Area2D" parent="."]
+position = Vector2(1078, 1036)
+scale = Vector2(2, 2)
+script = ExtResource("5_muy8g")
+
+[node name="Sprite2D" type="Sprite2D" parent="interagivel_puzzle"]
+scale = Vector2(3, 3)
+texture = ExtResource("6_ecitr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interagivel_puzzle"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_lvgl4")
+
+[node name="NpcCinza" parent="." instance=ExtResource("3_ecitr")]
+position = Vector2(1994, 766)
+scale = Vector2(6, 6)
+
+[node name="Jogador" parent="." instance=ExtResource("4_lvgl4")]
+position = Vector2(94.000015, 932)
+scale = Vector2(6, 6)
+
+[node name="ColorblindFilter" parent="." instance=ExtResource("7_lvgl4")]

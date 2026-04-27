@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=3 uid="uid://ct41bj7rcjkwt"]
+[gd_scene load_steps=54 format=3 uid="uid://ct41bj7rcjkwt"]
 
 [ext_resource type="Script" uid="uid://cg1fk2hkyn58o" path="res://scripts/personagens/npc_bebo_roxo.gd" id="1_dk7dl"]
 [ext_resource type="Texture2D" uid="uid://i03lw11tj16i" path="res://assets/Homeless_3/Attack_1.png" id="1_i74sn"]
@@ -350,17 +350,30 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="NpcBeboRoxo" type="Node2D" unique_id=410114744]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xterr"]
+size = Vector2(23, 62)
 
-[node name="NpcBeboRoxo" type="CharacterBody2D" parent="." unique_id=1167497737]
+[node name="NpcBeboRoxo" type="Node2D"]
 script = ExtResource("1_dk7dl")
+dialogo_npc = Array[String](["Olá! Sou NPC bebo roxo"])
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NpcBeboRoxo" unique_id=542394418]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bri0g")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NpcBeboRoxo" unique_id=599684523]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="NpcBeboRoxo" unique_id=1573454831]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, 21)
+shape = SubResource("RectangleShape2D_xterr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NpcBeboRoxo/Area2D" unique_id=361898056]
+[node name="Label" type="Label" parent="."]
+offset_left = -39.0
+offset_top = -27.0
+offset_right = 38.0
+offset_bottom = -15.0
+theme_override_font_sizes/font_size = 8
+
+[node name="E" type="Sprite2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

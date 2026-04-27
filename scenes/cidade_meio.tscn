@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://l3kj1i4sgumc"]
+[gd_scene load_steps=11 format=3 uid="uid://l3kj1i4sgumc"]
 
 [ext_resource type="Texture2D" uid="uid://dtd1xhf34p0gm" path="res://assets/PNG/City2/Bright/City2.png" id="1_4xjr8"]
 [ext_resource type="PackedScene" uid="uid://csgq2q1g8mh86" path="res://scenes/paredes.tscn" id="2_muy8g"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://b2vyxab30n72u" path="res://scenes/personagens/jogador.tscn" id="4_lvgl4"]
 [ext_resource type="Script" uid="uid://dt0flip5eqnfa" path="res://scripts/interagivel_puzzle.gd" id="5_muy8g"]
 [ext_resource type="Texture2D" uid="uid://b5apvs7duykwn" path="res://assets/AAkenney/pattern-pack-pixel/Tiles (Grayscale)/tile_0059.png" id="6_ecitr"]
+[ext_resource type="PackedScene" uid="uid://ct41bj7rcjkwt" path="res://scenes/personagens/npcBeboRoxo.tscn" id="6_ya7ci"]
 [ext_resource type="PackedScene" uid="uid://dhhpmfu6ryooi" path="res://scenes/colorblind_filter.tscn" id="7_lvgl4"]
+[ext_resource type="PackedScene" uid="uid://ccya173axdrg" path="res://scenes/personagens/npcBeboVerde.tscn" id="7_yohb1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvgl4"]
 size = Vector2(48, 48)
@@ -39,6 +41,14 @@ shape = SubResource("RectangleShape2D_lvgl4")
 
 [node name="NpcCinza" parent="." instance=ExtResource("3_ecitr")]
 position = Vector2(1994, 766)
+scale = Vector2(6, 6)
+
+[node name="NpcBeboRoxo" parent="." instance=ExtResource("6_ya7ci")]
+position = Vector2(632, 774)
+scale = Vector2(6, 6)
+
+[node name="NpcBeboVerde" parent="." instance=ExtResource("7_yohb1")]
+position = Vector2(1532, 768)
 scale = Vector2(6, 6)
 
 [node name="Jogador" parent="." instance=ExtResource("4_lvgl4")]

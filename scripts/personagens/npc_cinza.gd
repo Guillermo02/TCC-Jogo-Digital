@@ -4,9 +4,7 @@ extends Node2D
 @onready var area = $Area2D
 @onready var label = $Label
 
-@export var dialogo_npc: Array[String] = [
-	"Olá!"
-]
+@export var dialogo_npc: Array[String] = []
 
 var jogador_perto := false
 

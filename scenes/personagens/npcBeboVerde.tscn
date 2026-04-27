@@ -1,5 +1,6 @@
-[gd_scene format=3 uid="uid://ccya173axdrg"]
+[gd_scene load_steps=54 format=3 uid="uid://ccya173axdrg"]
 
+[ext_resource type="Script" uid="uid://i4tj2c1wabo3" path="res://scripts/personagens/npc_bebo_verde.gd" id="1_eqoov"]
 [ext_resource type="Texture2D" uid="uid://6rf5hcs3htmd" path="res://assets/Homeless_1/Attack_1.png" id="1_qvsv8"]
 [ext_resource type="Texture2D" uid="uid://br08gw2urr1sr" path="res://assets/Homeless_1/Idle_2.png" id="2_ea0ja"]
 [ext_resource type="Texture2D" uid="uid://damsvluxx6otg" path="res://assets/Homeless_1/Run.png" id="3_nkj43"]
@@ -349,12 +350,30 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="NpcBeboVerde" type="Node2D" unique_id=1070595975]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_si153"]
+size = Vector2(23, 62)
 
-[node name="NpcBeboVerde" type="CharacterBody2D" parent="." unique_id=1761560136]
+[node name="NpcBeboVerde" type="Node2D"]
+script = ExtResource("1_eqoov")
+dialogo_npc = Array[String](["Olá! Sou NPC bebo verde"])
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NpcBeboVerde" unique_id=1656285890]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fchnh")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NpcBeboVerde" unique_id=1343499729]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, 21)
+shape = SubResource("RectangleShape2D_si153")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -39.0
+offset_top = -27.0
+offset_right = 38.0
+offset_bottom = -15.0
+theme_override_font_sizes/font_size = 8
+
+[node name="E" type="Sprite2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

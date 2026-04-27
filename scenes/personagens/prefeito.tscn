@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://d1xidedqcx8mm"]
+[gd_scene load_steps=40 format=3 uid="uid://d1xidedqcx8mm"]
 
 [ext_resource type="Texture2D" uid="uid://dpkol7joxiqni" path="res://assets/gangsters-loiro/Attack.png" id="1_p7u2l"]
+[ext_resource type="Script" uid="uid://dug4j0wqv6yk4" path="res://scripts/personagens/prefeito.gd" id="1_y4tg3"]
 [ext_resource type="Texture2D" uid="uid://dtwq78maw8mmc" path="res://assets/gangsters-loiro/Idle.png" id="2_vshoh"]
 [ext_resource type="Texture2D" uid="uid://bn6jks7pssl2c" path="res://assets/gangsters-loiro/Run.png" id="3_qcyes"]
 [ext_resource type="Texture2D" uid="uid://d3urq0wg3sii0" path="res://assets/gangsters-loiro/Walk.png" id="4_t0i6b"]
@@ -252,13 +253,28 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Prefeito" type="Node2D" unique_id=1334428114]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j24py"]
+size = Vector2(23, 62)
 
-[node name="Prefeito" type="CharacterBody2D" parent="." unique_id=1291929584]
+[node name="Prefeito" type="Node2D"]
+script = ExtResource("1_y4tg3")
+dialogo_npc = Array[String](["Ola eu sou o Prefeito muahaha"])
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Prefeito" unique_id=1351881224]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cbvrk")
-animation = &"walk"
-frame_progress = 0.56180716
+animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Prefeito" unique_id=1524946004]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, 21)
+shape = SubResource("RectangleShape2D_j24py")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -39.0
+offset_top = -27.0
+offset_right = 38.0
+offset_bottom = -15.0
+theme_override_font_sizes/font_size = 8
+
+[node name="E" type="Sprite2D" parent="."]

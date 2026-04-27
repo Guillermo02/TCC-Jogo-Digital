@@ -1,5 +1,6 @@
-[gd_scene format=3 uid="uid://cdfwukr65lw2x"]
+[gd_scene load_steps=64 format=3 uid="uid://cdfwukr65lw2x"]
 
+[ext_resource type="Script" uid="uid://dg3w8c46fegqe" path="res://scripts/personagens/filha.gd" id="1_dw0xj"]
 [ext_resource type="Texture2D" uid="uid://ba1oenwvkqml0" path="res://assets/Girl_1/Attack.png" id="1_wfbt8"]
 [ext_resource type="Texture2D" uid="uid://cr3tj056g6r5g" path="res://assets/Girl_1/Book.png" id="2_vewpu"]
 [ext_resource type="Texture2D" uid="uid://cqpjgnbt52exk" path="res://assets/Girl_1/Dialogue.png" id="3_8t12l"]
@@ -418,12 +419,31 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Filha" type="Node2D" unique_id=1549994381]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0d6f"]
+size = Vector2(23, 69)
 
-[node name="Filha" type="CharacterBody2D" parent="." unique_id=797396356]
+[node name="Filha" type="Node2D"]
+script = ExtResource("1_dw0xj")
+dialogo_npc = Array[String](["Ola eu sou a sua filha :)"])
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Filha" unique_id=1903780998]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_d50q2")
 animation = &"idle"
+frame = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Filha" unique_id=700905402]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 17)
+shape = SubResource("RectangleShape2D_c0d6f")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -39.0
+offset_top = -27.0
+offset_right = 38.0
+offset_bottom = -15.0
+theme_override_font_sizes/font_size = 8
+
+[node name="E" type="Sprite2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

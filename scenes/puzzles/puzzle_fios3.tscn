@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://2b2lvc6kaie0"]
 
-[ext_resource type="Script" uid="uid://bninlf7t088gc" path="res://scripts/puzzle/puzzle_fios.gd" id="1_wh8i6"]
+[ext_resource type="Script" uid="uid://6va8lbyodebd" path="res://scripts/puzzle/puzzle_fios3.gd" id="1_jmiv7"]
 [ext_resource type="Texture2D" uid="uid://c2mbdl4u52hpa" path="res://assets/AAkenney/puzzle icons/background/button_square_header_large_square_screws.png" id="2_6a3s8"]
 [ext_resource type="Script" uid="uid://dclrplv3mv8ga" path="res://scripts/puzzle/fio_1.gd" id="2_wh8i6"]
 [ext_resource type="Texture2D" uid="uid://dlw4lrkw5ke04" path="res://assets/AAkenney/rune-pack/Grey/Tile (outline)/runeGrey_tileOutline_025.png" id="4_wh8i6"]
@@ -41,7 +41,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_wh8i6")
+script = ExtResource("1_jmiv7")
 metadata/_edit_use_anchors_ = true
 
 [node name="background" type="TextureRect" parent="puzzleUI"]

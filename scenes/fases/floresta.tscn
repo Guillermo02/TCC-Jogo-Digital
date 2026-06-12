@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://ck7iyhgodkvxn"]
+[gd_scene load_steps=75 format=4 uid="uid://ck7iyhgodkvxn"]
 
 [ext_resource type="PackedScene" uid="uid://cjdpsuep8yj7x" path="res://entities/jogador.tscn" id="1_uyb4q"]
 [ext_resource type="PackedScene" uid="uid://dxmwq8ofqd67x" path="res://entities/camera.tscn" id="2_lbk0t"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://de4ifu5fruyfd" path="res://scripts/floresta_scripts/InteracaoE.gd" id="21_q16n2"]
 [ext_resource type="Script" uid="uid://dd1a4j757455h" path="res://scripts/floresta_scripts/Area_Cartaz.gd" id="22_17x7d"]
 [ext_resource type="Texture2D" uid="uid://bfko8bjcgi2ra" path="res://sprites/Free Pixel Art Forest/Free Pixel Art Forest/Background layers/Layer_0001_8.png" id="23_gg65c"]
+[ext_resource type="Script" uid="uid://csv6sfexmsyny" path="res://scripts/floresta_scripts/ProxCenaFloresta.gd" id="23_lbk0t"]
 [ext_resource type="Texture2D" uid="uid://d3dj7d48lk52k" path="res://sprites/Free Pixel Art Forest/Free Pixel Art Forest/Background layers/Layer_0000_9.png" id="24_2bvdr"]
 [ext_resource type="Texture2D" uid="uid://es2dx43344po" path="res://sprites/TutorialBox/PapelTutorial.png" id="25_b700k"]
 [ext_resource type="Texture2D" uid="uid://thbfiqsc4jku" path="res://UI/Tutorial/tile_0086.png" id="26_gsq0v"]
@@ -44,14 +45,22 @@ script/source = "extends Node2D
 var player_ref: Node2D = null
 var offset_balao: Vector2 = Vector2(140, -165)
 
+var falas_mostradas := {}
+
+var dialogo_ativo := false
+var cancelar_fala_atual := false
+var fala_atual_numero := 0
+var fala_token := 0
+
 var falas := {
 	1: \"Faz tempo que eu não venho nessa floresta... Onde você está filha?\",
 	2: \"Essas árvores parecem diferentes... Será que estou no caminho certo?\",
-	3: \"O silêncio daqui me dá um mau pressentimento...\",
-	4: \"Filha! Responda, por favor! Onde você está?\",
-	5: \"Preciso continuar procurando antes que escureça.\",
-	6: \"Tenho certeza de que estou cada vez mais perto...\"
+	3: \"Preciso continuar procurando antes que escureça.\",
+	4: \"Tenho certeza de que estou perto, Liz...\",
+	5: \"O vento nessas árvores... Certeza que uma chuva grande vai chegar alguma hora.\",
+	6: \"Não vou encontrar nada aqui, vou voltar ao escritório.\"
 }
+
 
 func _ready() -> void:
 	dialog_holder.scale = Vector2(0.5, 0.5)
@@ -61,67 +70,197 @@ func _ready() -> void:
 	if players.size() > 0:
 		player_ref = players[0] as Node2D
 	else:
-		print(\"Nenhum player encontrado no grupo 'player'.\")
+		push_warning(\"Nenhum player encontrado no grupo 'player' na cena Floresta.\")
+
 
 func _process(_delta: float) -> void:
 	if player_ref == null:
 		return
 
 	if dialog_box.visible:
-		var largura_balao: float = dialog_box.size.x * dialog_holder.scale.x
-		var pos_x: float = player_ref.global_position.x - (largura_balao / 2.0) + offset_balao.x
-		var pos_y: float = player_ref.global_position.y + offset_balao.y
+		atualizar_posicao_balao()
 
-		dialog_holder.global_position = Vector2(pos_x, pos_y)
+
+func atualizar_posicao_balao() -> void:
+	if player_ref == null:
+		return
+
+	if not is_instance_valid(player_ref):
+		return
+
+	var largura_balao: float = dialog_box.size.x * dialog_holder.scale.x
+	var pos_x: float = player_ref.global_position.x - (largura_balao / 2.0) + offset_balao.x
+	var pos_y: float = player_ref.global_position.y + offset_balao.y
+
+	dialog_holder.global_position = Vector2(pos_x, pos_y)
+
+
+func fala_ainda_valida(token: int) -> bool:
+	if not is_inside_tree():
+		return false
+
+	if cancelar_fala_atual:
+		return false
+
+	if token != fala_token:
+		return false
+
+	return true
+
+
+func aguardar_soltar_enter_ou_cancelar(token: int) -> void:
+	await get_tree().process_frame
+
+	while is_inside_tree() and Input.is_action_pressed(\"ui_accept\") and fala_ainda_valida(token):
+		await get_tree().process_frame
+
+
+func esperar_enter_ou_cancelar(token: int) -> void:
+	await aguardar_soltar_enter_ou_cancelar(token)
+
+	while is_inside_tree() and not Input.is_action_just_pressed(\"ui_accept\") and fala_ainda_valida(token):
+		await get_tree().process_frame
+
+	await aguardar_soltar_enter_ou_cancelar(token)
+
 
 func mostrar_fala(numero: int, body: Node2D) -> void:
+	if body == null:
+		return
+
 	if not body.is_in_group(\"player\"):
 		return
 
-	if falas.has(numero):
-		await dialog_box.mostrar_texto(falas[numero])
-
-func esconder_fala(body: Node2D) -> void:
-	if not body.is_in_group(\"player\"):
+	if falas_mostradas.has(numero):
 		return
+
+	if not falas.has(numero):
+		return
+
+	if dialogo_ativo:
+		return
+
+	player_ref = body
+	falas_mostradas[numero] = true
+
+	dialogo_ativo = true
+	cancelar_fala_atual = false
+	fala_atual_numero = numero
+	fala_token += 1
+
+	var token_local := fala_token
 
 	await dialog_box.esconder_balao()
 
+	if not fala_ainda_valida(token_local):
+		return
+
+	await get_tree().create_timer(0.08).timeout
+
+	if not fala_ainda_valida(token_local):
+		return
+
+	atualizar_posicao_balao()
+
+	await dialog_box.mostrar_texto(falas[numero])
+
+	if not fala_ainda_valida(token_local):
+		return
+
+	await esperar_enter_ou_cancelar(token_local)
+
+	if not fala_ainda_valida(token_local):
+		return
+
+	await dialog_box.esconder_balao()
+	finalizar_estado_dialogo(token_local)
+
+
+func esconder_fala(body: Node2D, numero: int = 0) -> void:
+	if body == null:
+		return
+
+	if not body.is_in_group(\"player\"):
+		return
+
+	if numero != 0 and fala_atual_numero != 0 and fala_atual_numero != numero:
+		return
+
+	cancelar_fala_atual = true
+	fala_token += 1
+
+	if dialog_box.visible:
+		await dialog_box.esconder_balao()
+
+	finalizar_estado_dialogo()
+
+
+func finalizar_estado_dialogo(token: int = -1) -> void:
+	if token != -1 and token != fala_token:
+		return
+
+	dialogo_ativo = false
+	cancelar_fala_atual = false
+	fala_atual_numero = 0
+
+
 func _on_area_2d_e_fala_1_body_entered(body: Node2D) -> void:
-	mostrar_fala(1, body)
+	await mostrar_fala(1, body)
+
 
 func _on_area_2d_s_fala_1_body_entered(body: Node2D) -> void:
-	esconder_fala(body)
+	await esconder_fala(body, 1)
+
 
 func _on_area_2d_e_fala_2_body_entered(body: Node2D) -> void:
-	mostrar_fala(2, body)
+	await mostrar_fala(2, body)
+
 
 func _on_area_2d_s_fala_2_body_entered(body: Node2D) -> void:
-	esconder_fala(body)
+	await esconder_fala(body, 2)
+
 
 func _on_area_2d_e_fala_3_body_entered(body: Node2D) -> void:
-	mostrar_fala(3, body)
+	await mostrar_fala(3, body)
+
 
 func _on_area_2d_s_fala_3_body_entered(body: Node2D) -> void:
-	esconder_fala(body)
+	await esconder_fala(body, 3)
+
 
 func _on_area_2d_e_fala_4_body_entered(body: Node2D) -> void:
-	mostrar_fala(4, body)
+	await mostrar_fala(4, body)
+
 
 func _on_area_2d_s_fala_4_body_entered(body: Node2D) -> void:
-	esconder_fala(body)
+	await esconder_fala(body, 4)
+
 
 func _on_area_2d_e_fala_5_body_entered(body: Node2D) -> void:
-	mostrar_fala(5, body)
+	await mostrar_fala(5, body)
+
 
 func _on_area_2d_s_fala_5_body_entered(body: Node2D) -> void:
-	esconder_fala(body)
+	await esconder_fala(body, 5)
+
 
 func _on_area_2d_e_fala_6_body_entered(body: Node2D) -> void:
-	mostrar_fala(6, body)
+	await mostrar_fala(6, body)
+
 
 func _on_area_2d_s_fala_6_body_entered(body: Node2D) -> void:
-	esconder_fala(body)
+	await esconder_fala(body, 6)
+
+
+func _on_proxima_cena_body_entered(body: Node2D) -> void:
+	pass
+
+
+func _exit_tree() -> void:
+	cancelar_fala_atual = true
+	fala_token += 1
+	dialogo_ativo = false
+	fala_atual_numero = 0
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ii8w"]
@@ -2418,6 +2557,9 @@ size = Vector2(4, 145.60916)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_58mi5"]
 size = Vector2(2, 158.57443)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02qec"]
+size = Vector2(11, 180.03027)
+
 [node name="floresta" type="Node2D"]
 scale = Vector2(1, 1.002684)
 script = SubResource("GDScript_inxo1")
@@ -2495,7 +2637,7 @@ repeat_size = Vector2(928, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax6"]
 texture_repeat = 2
-position = Vector2(56.263073, 7.9132442)
+position = Vector2(56.263073, -12.8246)
 texture = ExtResource("8_0nlo8")
 region_enabled = true
 region_rect = Rect2(0, 0, 1856, 793)
@@ -2508,7 +2650,7 @@ repeat_size = Vector2(931.025, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax5"]
 texture_repeat = 2
-position = Vector2(10.672248, 24.683588)
+position = Vector2(10.672248, 8.227863)
 scale = Vector2(1.0034585, 1.0034585)
 texture = ExtResource("9_g2r0s")
 region_enabled = true
@@ -2731,7 +2873,7 @@ repeat_size = Vector2(928, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax3"]
 texture_repeat = 2
-position = Vector2(0, 6.7118235)
+position = Vector2(0, -2.85083)
 texture = ExtResource("17_dakpt")
 region_enabled = true
 region_rect = Rect2(0, 0, 1856, 793)
@@ -2744,7 +2886,7 @@ repeat_size = Vector2(928, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2"]
 texture_repeat = 2
-position = Vector2(45.071136, 0)
+position = Vector2(48.67683, -7.211382)
 texture = ExtResource("18_yfilq")
 region_enabled = true
 region_rect = Rect2(0, 0, 1856, 793)
@@ -2752,7 +2894,7 @@ region_rect = Rect2(0, 0, 1856, 793)
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(16793.5, 377.75)
+position = Vector2(16794, 380.97745)
 shape = SubResource("RectangleShape2D_k0wgh")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
@@ -2881,6 +3023,16 @@ position = Vector2(5971, 251.29869)
 shape = SubResource("RectangleShape2D_58mi5")
 debug_color = Color(0.82025856, 0.4033096, 7.70092e-07, 0.41960785)
 
+[node name="ParallaxProxCena" type="Parallax2D" parent="."]
+
+[node name="ProximaCena" type="Area2D" parent="ParallaxProxCena"]
+script = ExtResource("23_lbk0t")
+
+[node name="ProximaCena" type="CollisionShape2D" parent="ParallaxProxCena/ProximaCena"]
+position = Vector2(5860, 254.31741)
+shape = SubResource("RectangleShape2D_02qec")
+debug_color = Color(0.5627773, 0.39464995, 1, 0.41960785)
+
 [node name="Parallax1" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.92, 0.92)
 scroll_offset = Vector2(-817, 10)
@@ -2915,6 +3067,7 @@ offset_right = -640.0
 offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Fundo Escuro" type="ColorRect" parent="CanvasLayer/TutorialUI"]
 custom_minimum_size = Vector2(800, 300)
@@ -2930,6 +3083,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8105235, 0.7557991)
 color = Color(0, 0, 0, 0.60784316)
+metadata/_edit_use_anchors_ = true
 
 [node name="Papel" type="TextureRect" parent="CanvasLayer/TutorialUI"]
 layout_mode = 0
@@ -2937,8 +3091,37 @@ offset_left = 150.0
 offset_top = -3.0
 offset_right = 566.0
 offset_bottom = 445.0
-scale = Vector2(0.84500587, 0.84500587)
+scale = Vector2(0.8164487, 0.8164487)
 texture = ExtResource("25_b700k")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextoTutorial" type="Label" parent="CanvasLayer/TutorialUI/Papel"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.5557259
+anchor_top = -0.048966713
+anchor_right = 1.7239952
+anchor_bottom = 0.23228332
+offset_left = -501.80798
+offset_top = 115.00001
+offset_right = -344.80798
+offset_bottom = 382.0
+scale = Vector2(0.80924726, 0.80924726)
+theme_override_colors/font_color = Color(0.30323282, 0.30323282, 0.30323282, 1)
+theme_override_constants/line_spacing = 15
+theme_override_fonts/font = ExtResource("12_advpw")
+theme_override_font_sizes/font_size = 29
+text = "Pular ou subir
+Andar direita
+Andar esquerda
+Descer
+Correr
+Ataque
+Menu/Sair
+"
+metadata/_edit_use_anchors_ = true
 
 [node name="W" type="Sprite2D" parent="CanvasLayer/TutorialUI/Papel"]
 texture_filter = 1
@@ -2957,34 +3140,6 @@ texture_filter = 1
 position = Vector2(124.69287, 232.96474)
 scale = Vector2(2.1790516, 1.9844055)
 texture = ExtResource("28_eidof")
-
-[node name="TextoTutorial" type="Label" parent="CanvasLayer/TutorialUI/Papel"]
-texture_filter = 1
-texture_repeat = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.5557259
-anchor_top = -0.048966713
-anchor_right = 1.7239952
-anchor_bottom = 0.23228332
-offset_left = -501.80798
-offset_top = 115.0
-offset_right = -344.80798
-offset_bottom = 280.0
-scale = Vector2(0.80924726, 0.80924726)
-theme_override_colors/font_color = Color(0.30323282, 0.30323282, 0.30323282, 1)
-theme_override_constants/line_spacing = 15
-theme_override_fonts/font = ExtResource("12_advpw")
-theme_override_font_sizes/font_size = 29
-text = "Pular ou subir
-Andar direita
-Andar esquerda
-Descer
-Correr
-Ataque
-Menu/Sair
-"
-metadata/_edit_use_anchors_ = true
 
 [node name="D" type="Sprite2D" parent="CanvasLayer/TutorialUI/Papel"]
 texture_filter = 1
@@ -3005,8 +3160,8 @@ scale = Vector2(1.9245241, 1.9245241)
 texture = ExtResource("31_d88b8")
 
 [node name="ESC" type="Sprite2D" parent="CanvasLayer/TutorialUI/Papel"]
-position = Vector2(-142.3349, 43.795357)
-scale = Vector2(2.508832, 2.508832)
+position = Vector2(-113.60868, 55.620914)
+scale = Vector2(3.369749, 3.369749)
 texture = ExtResource("32_ig0i2")
 
 [node name="Mouse1" type="Sprite2D" parent="CanvasLayer/TutorialUI/Papel"]
@@ -3043,5 +3198,6 @@ scale = Vector2(0.64311063, 0.64311063)
 [connection signal="body_entered" from="ParallaxFalas/Area2D_S_Fala5" to="." method="_on_area_2d_s_fala_5_body_entered"]
 [connection signal="body_entered" from="ParallaxFalas/Area2D_E_Fala6" to="." method="_on_area_2d_e_fala_6_body_entered"]
 [connection signal="body_entered" from="ParallaxFalas/Area2D_S_Fala6" to="." method="_on_area_2d_s_fala_6_body_entered"]
+[connection signal="body_entered" from="ParallaxProxCena/ProximaCena" to="." method="_on_proxima_cena_body_entered"]
 
 [editable path="Camera"]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://6hqrnjpm4xc7"]
+
+[ext_resource type="Texture2D" uid="uid://bev8ilor7pmet" path="res://assets/PassarosOleo/Walk.png" id="1_3yiw2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ww5vy"]
+atlas = ExtResource("1_3yiw2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6amt2"]
+atlas = ExtResource("1_3yiw2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsrvu"]
+atlas = ExtResource("1_3yiw2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4ias"]
+atlas = ExtResource("1_3yiw2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ju86"]
+atlas = ExtResource("1_3yiw2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4se0"]
+atlas = ExtResource("1_3yiw2")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5amuf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ww5vy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6amt2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsrvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4ias")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ju86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4se0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PassarosOleo" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5amuf")
+frame = 2
+frame_progress = 0.5380395

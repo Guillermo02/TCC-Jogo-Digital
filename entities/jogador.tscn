@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://cjdpsuep8yj7x"]
+[gd_scene load_steps=61 format=3 uid="uid://cjdpsuep8yj7x"]
 
 [ext_resource type="Script" uid="uid://cwyxghuvo0wsx" path="res://scripts/jogador.gd" id="1_b26j0"]
 [ext_resource type="Texture2D" uid="uid://coilhcb34ycjh" path="res://assets/protagonista/Attack.png" id="2_sbhs4"]
@@ -390,6 +390,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1y6is"]
+radius = 12.5934925
+height = 70.0
+
 [node name="Jogador" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_b26j0")
 
@@ -398,8 +402,9 @@ z_index = 1
 position = Vector2(13.000001, 8)
 scale = Vector2(0.93, 0.93)
 sprite_frames = SubResource("SpriteFrames_77e46")
-animation = &"run"
-frame_progress = 0.7229936
+animation = &"attack"
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 21)
@@ -411,3 +416,13 @@ scale = Vector2(0.06, 0.06)
 sprite_frames = SubResource("SpriteFrames_gkpso")
 animation = &"ladder"
 frame_progress = 0.036336076
+
+[node name="AttackArea" type="Area2D" parent="."]
+position = Vector2(4, -7)
+scale = Vector2(1.0117311, 0.8810223)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(8.999918, 38.24965)
+scale = Vector2(2.3226068, 0.96528137)
+shape = SubResource("CapsuleShape2D_1y6is")
+debug_color = Color(0.89070547, 0.325194, 0.018836258, 0.41960785)

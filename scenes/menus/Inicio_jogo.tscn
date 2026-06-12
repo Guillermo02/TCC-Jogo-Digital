@@ -139,7 +139,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 4.5
+"speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ebim"]
@@ -262,11 +262,11 @@ script = ExtResource("4_8r2yn")
 [node name="CenterContainer" type="CenterContainer" parent="."]
 z_index = 3
 layout_mode = 0
-offset_left = 274.94617
-offset_top = 175.72646
-offset_right = 418.94617
-offset_bottom = 338.72653
-scale = Vector2(1.4314599, 1.4314599)
+offset_left = 279.72784
+offset_top = 181.70355
+offset_right = 423.72784
+offset_bottom = 344.7036
+scale = Vector2(1.3768142, 1.3768142)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 z_index = 3
@@ -338,8 +338,8 @@ text = "Sair"
 [node name="StarOutline" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.6862745)
 z_index = 3
-position = Vector2(21.517525, 457.84512)
-scale = Vector2(0.1232719, 0.1232719)
+position = Vector2(337.10794, 22.712944)
+scale = Vector2(0.09743295, 0.09743295)
 texture = ExtResource("7_x8vjp")
 
 [node name="Versão do jogo" type="Label" parent="StarOutline"]

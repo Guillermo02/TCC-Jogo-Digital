@@ -1,0 +1,815 @@
+[gd_scene load_steps=30 format=3 uid="uid://bl7pt6q1rm3wq"]
+
+[ext_resource type="Script" uid="uid://hmjfj5dtr30x" path="res://scripts/puzzles_scripts/PuzzleDescida.gd" id="1_xb6uq"]
+[ext_resource type="Texture2D" uid="uid://k4hev0hk8qpx" path="res://sprites/puzzles/sci-fi-ui-pack/button_square_header_large_square_screws_sided.png" id="2_y34lr"]
+[ext_resource type="Texture2D" uid="uid://bfcu0lqcgqo3t" path="res://sprites/puzzles/rune-pack/Grey/Tile (outline)/runeGrey_tileOutline_001.png" id="4_mgvj8"]
+[ext_resource type="Texture2D" uid="uid://bndkpgodwmxx5" path="res://sprites/puzzles/rune-pack/Blue/Tile (outline)/runeBlue_tileOutline_036.png" id="5_xsy46"]
+[ext_resource type="Texture2D" uid="uid://cdvaiaejwyh56" path="res://sprites/puzzles/rune-pack/Black/Tile (outline)/runeBlack_tileOutline_001.png" id="6_oswg1"]
+[ext_resource type="Texture2D" uid="uid://tlyum2s27v8c" path="res://sprites/puzzles/rune-pack/Grey/Tile (outline)/runeGrey_tileOutline_005.png" id="8_32k2f"]
+[ext_resource type="Texture2D" uid="uid://0vgifpgwtrqm" path="res://sprites/puzzles/rune-pack/Grey/Tile (outline)/runeGrey_tileOutline_002.png" id="8_au4bw"]
+[ext_resource type="Texture2D" uid="uid://7ihoaq3pcivk" path="res://sprites/puzzles/rune-pack/Blue/Tile (outline)/runeBlue_tileOutline_001.png" id="9_wbkkp"]
+[ext_resource type="Texture2D" uid="uid://c7i5a6l0ck5v4" path="res://sprites/puzzles/rune-pack/Black/Tile (outline)/runeBlack_tileOutline_002.png" id="10_jm3yj"]
+[ext_resource type="Texture2D" uid="uid://b6w6ts2iiuro" path="res://sprites/puzzles/rune-pack/Grey/Tile (outline)/runeGrey_tileOutline_003.png" id="12_8sqqe"]
+[ext_resource type="Texture2D" uid="uid://b3fc2or3h4r3k" path="res://sprites/puzzles/rune-pack/Grey/Tile (outline)/runeGrey_tileOutline_018.png" id="12_p2hi1"]
+[ext_resource type="Texture2D" uid="uid://dsag7bseombuo" path="res://sprites/puzzles/rune-pack/Blue/Tile (outline)/runeBlue_tileOutline_002.png" id="13_6rfx3"]
+[ext_resource type="Texture2D" uid="uid://b65tmefgmovcx" path="res://sprites/puzzles/rune-pack/Black/Tile (outline)/runeBlack_tileOutline_003.png" id="14_1okfb"]
+[ext_resource type="Texture2D" uid="uid://chkiaajko3ppq" path="res://sprites/puzzles/rune-pack/Grey/Tile (outline)/runeGrey_tileOutline_022.png" id="16_b1nn0"]
+[ext_resource type="Texture2D" uid="uid://boesnxta6hncy" path="res://sprites/puzzles/rune-pack/Grey/Tile (outline)/runeGrey_tileOutline_004.png" id="16_mpk6b"]
+[ext_resource type="Texture2D" uid="uid://bstjwcbxv6dqx" path="res://sprites/puzzles/rune-pack/Blue/Tile (outline)/runeBlue_tileOutline_003.png" id="17_b3qcp"]
+[ext_resource type="Texture2D" uid="uid://dgj1ttdvadgr0" path="res://UI/Tutorial/tile_0017.png" id="17_g88wp"]
+[ext_resource type="Texture2D" uid="uid://cbbw0aomjpflr" path="res://sprites/puzzles/rune-pack/Black/Tile (outline)/runeBlack_tileOutline_004.png" id="18_ae43o"]
+[ext_resource type="Texture2D" uid="uid://dt5pko2vk86vw" path="res://UI/Tutorial/tile_0382.png" id="18_tatcn"]
+
+[sub_resource type="GDScript" id="GDScript_y34lr"]
+script/source = "extends Control
+
+var primeiro_ponto = null
+var segundo_ponto = null
+var puzzle_completo = false
+var numero_do_puzzle = 1
+
+var dialogos = {
+	1: [
+		\"Prefeito: Atualização da situação\",
+		\"Capanga 1: Já subornamos mais da metade dos votos.\",
+		\"Prefeito: Ótimo, se certifique de cobrir bem os rastros.\",
+		\"Capanga 1: Entendido!\"
+	],
+	2: [
+		\"Capanga 2: Deixamos aquela garota naquele lugar que você pediu, seu prefeito.\",
+		\"Prefeito: Perfeito. Se certifiquem que ela não possa escapar, e encontrem aquele maldito celular!\",
+		\"Capanga 2: Vamos encontrar, senhor!\"
+	]
+}
+
+func _ready():
+	get_tree().paused=true
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	print(\"Puzzle UI carregou\")
+	
+	for fio in $fios.get_children():
+		if fio is Area2D:
+			fio.input_pickable = true
+			print(\"Fio encontrado: \", fio.name)
+
+func _input(event):
+	if event.is_action_pressed(\"ui_cancel\"):
+		sair_do_puzzle()
+
+func selecionar_ponto(ponto):
+	print(\"Clique recebido no fio: \", ponto.name)
+	
+	if ponto.conectado:
+		return
+	
+	if primeiro_ponto == ponto:
+		return
+	
+	if primeiro_ponto == null:
+		primeiro_ponto = ponto
+		ponto.definir_pressionado()
+		print(\"Primeiro selecionado: \", ponto.nome_fio)
+		return
+	
+	if segundo_ponto == null:
+		segundo_ponto = ponto
+		ponto.definir_pressionado()
+		print(\"Segundo selecionado: \", ponto.nome_fio)
+		validar_conexao()
+
+func validar_conexao():
+	if primeiro_ponto == null or segundo_ponto == null:
+		return
+	
+	if primeiro_ponto == segundo_ponto:
+		resetar_selecao()
+		return
+	
+	if combinacao_correta(primeiro_ponto, segundo_ponto):
+		conectar_pontos(primeiro_ponto, segundo_ponto)
+	else:
+		print(\"Combinação errada!\")
+		await get_tree().create_timer(0.25).timeout
+		resetar_selecao()
+
+func combinacao_correta(ponto1, ponto2) -> bool:
+	return ponto1.par_nome == ponto2.nome_fio and ponto2.par_nome == ponto1.nome_fio
+
+func conectar_pontos(ponto1, ponto2):
+	print(\"Conectado corretamente!\")
+	
+	ponto1.conectado = true
+	ponto2.conectado = true
+	
+	ponto1.definir_conectado()
+	ponto2.definir_conectado()
+	
+	primeiro_ponto = null
+	segundo_ponto = null
+	
+	verificar_vitoria()
+
+func resetar_selecao():
+	if primeiro_ponto != null and not primeiro_ponto.conectado:
+		primeiro_ponto.definir_normal()
+	
+	if segundo_ponto != null and not segundo_ponto.conectado:
+		segundo_ponto.definir_normal()
+	
+	primeiro_ponto = null
+	segundo_ponto = null
+
+func verificar_vitoria():
+	for no in $fios.get_children():
+		if no is Area2D and not no.conectado:
+			return
+	
+	print(\"PUZZLE COMPLETO!\")
+
+func sair_do_puzzle():
+	get_tree().paused = false
+	queue_free()
+"
+
+[sub_resource type="GDScript" id="GDScript_g88wp"]
+script/source = "extends Area2D
+
+@export var nome_fio: String = \"1\"
+@export var par_nome: String = \"A\"
+
+@export var sprite_normal: Texture2D
+@export var sprite_pressionado: Texture2D
+@export var sprite_conectado: Texture2D
+
+var conectado: bool = false
+
+@onready var sprite: Sprite2D = $Sprite2D
+
+func _ready():
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	input_pickable = true
+	definir_normal()
+
+func _input_event(_viewport, event, _shape_idx):
+	print(\"Input chegou em: \", name)
+
+	if conectado:
+		return
+	
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			print(\"Clique no fio: \", name)
+			var puzzle_ui = get_parent().get_parent()
+			
+			if puzzle_ui.has_method(\"selecionar_ponto\"):
+				puzzle_ui.selecionar_ponto(self)
+			else:
+				print(\"Erro: puzzleUI não tem selecionar_ponto.\")
+
+func definir_normal():
+	if sprite_normal != null:
+		sprite.texture = sprite_normal
+	
+	modulate = Color(1, 1, 1)
+
+func definir_pressionado():
+	if sprite_pressionado != null:
+		sprite.texture = sprite_pressionado
+	
+	modulate = Color(1, 1, 1)
+
+func definir_conectado():
+	if sprite_conectado != null:
+		sprite.texture = sprite_conectado
+	
+	modulate = Color(1, 1, 1)
+
+func _on_mouse_entered():
+	if not conectado:
+		modulate = Color(1.15, 1.15, 1.15)
+
+func _on_mouse_exited():
+	if not conectado:
+		modulate = Color(1, 1, 1)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fvtmu"]
+size = Vector2(54, 52)
+
+[sub_resource type="GDScript" id="GDScript_tatcn"]
+script/source = "extends Area2D
+
+@export var nome_fio: String = \"2\"
+@export var par_nome: String = \"B\"
+
+@export var sprite_normal: Texture2D
+@export var sprite_pressionado: Texture2D
+@export var sprite_conectado: Texture2D
+
+var conectado: bool = false
+
+@onready var sprite: Sprite2D = $Sprite2D
+
+func _ready():
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	input_pickable = true
+	definir_normal()
+
+func _input_event(_viewport, event, _shape_idx):
+	print(\"Input chegou em: \", name)
+
+	if conectado:
+		return
+	
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			print(\"Clique no fio: \", name)
+			var puzzle_ui = get_parent().get_parent()
+			
+			if puzzle_ui.has_method(\"selecionar_ponto\"):
+				puzzle_ui.selecionar_ponto(self)
+			else:
+				print(\"Erro: puzzleUI não tem selecionar_ponto.\")
+
+func definir_normal():
+	if sprite_normal != null:
+		sprite.texture = sprite_normal
+	
+	modulate = Color(1, 1, 1)
+
+func definir_pressionado():
+	if sprite_pressionado != null:
+		sprite.texture = sprite_pressionado
+	
+	modulate = Color(1, 1, 1)
+
+func definir_conectado():
+	if sprite_conectado != null:
+		sprite.texture = sprite_conectado
+	
+	modulate = Color(1, 1, 1)
+
+func _on_mouse_entered():
+	if not conectado:
+		modulate = Color(1.15, 1.15, 1.15)
+
+func _on_mouse_exited():
+	if not conectado:
+		modulate = Color(1, 1, 1)
+"
+
+[sub_resource type="GDScript" id="GDScript_xb6uq"]
+script/source = "extends Area2D
+
+@export var nome_fio: String = \"3\"
+@export var par_nome: String = \"C\"
+
+@export var sprite_normal: Texture2D
+@export var sprite_pressionado: Texture2D
+@export var sprite_conectado: Texture2D
+
+var conectado: bool = false
+
+@onready var sprite: Sprite2D = $Sprite2D
+
+func _ready():
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	input_pickable = true
+	definir_normal()
+
+func _input_event(_viewport, event, _shape_idx):
+	print(\"Input chegou em: \", name)
+
+	if conectado:
+		return
+	
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			print(\"Clique no fio: \", name)
+			var puzzle_ui = get_parent().get_parent()
+			
+			if puzzle_ui.has_method(\"selecionar_ponto\"):
+				puzzle_ui.selecionar_ponto(self)
+			else:
+				print(\"Erro: puzzleUI não tem selecionar_ponto.\")
+
+func definir_normal():
+	if sprite_normal != null:
+		sprite.texture = sprite_normal
+	
+	modulate = Color(1, 1, 1)
+
+func definir_pressionado():
+	if sprite_pressionado != null:
+		sprite.texture = sprite_pressionado
+	
+	modulate = Color(1, 1, 1)
+
+func definir_conectado():
+	if sprite_conectado != null:
+		sprite.texture = sprite_conectado
+	
+	modulate = Color(1, 1, 1)
+
+func _on_mouse_entered():
+	if not conectado:
+		modulate = Color(1.15, 1.15, 1.15)
+
+func _on_mouse_exited():
+	if not conectado:
+		modulate = Color(1, 1, 1)
+"
+
+[sub_resource type="GDScript" id="GDScript_aqhyn"]
+script/source = "extends Area2D
+
+@export var nome_fio: String = \"4\"
+@export var par_nome: String = \"D\"
+
+@export var sprite_normal: Texture2D
+@export var sprite_pressionado: Texture2D
+@export var sprite_conectado: Texture2D
+
+var conectado: bool = false
+
+@onready var sprite: Sprite2D = $Sprite2D
+
+func _ready():
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	input_pickable = true
+	definir_normal()
+
+func _input_event(_viewport, event, _shape_idx):
+	print(\"Input chegou em: \", name)
+
+	if conectado:
+		return
+	
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			print(\"Clique no fio: \", name)
+			var puzzle_ui = get_parent().get_parent()
+			
+			if puzzle_ui.has_method(\"selecionar_ponto\"):
+				puzzle_ui.selecionar_ponto(self)
+			else:
+				print(\"Erro: puzzleUI não tem selecionar_ponto.\")
+
+func definir_normal():
+	if sprite_normal != null:
+		sprite.texture = sprite_normal
+	
+	modulate = Color(1, 1, 1)
+
+func definir_pressionado():
+	if sprite_pressionado != null:
+		sprite.texture = sprite_pressionado
+	
+	modulate = Color(1, 1, 1)
+
+func definir_conectado():
+	if sprite_conectado != null:
+		sprite.texture = sprite_conectado
+	
+	modulate = Color(1, 1, 1)
+
+func _on_mouse_entered():
+	if not conectado:
+		modulate = Color(1.15, 1.15, 1.15)
+
+func _on_mouse_exited():
+	if not conectado:
+		modulate = Color(1, 1, 1)
+"
+
+[sub_resource type="GDScript" id="GDScript_my2qu"]
+script/source = "extends Area2D
+
+@export var nome_fio: String = \"A\"
+@export var par_nome: String = \"1\"
+
+@export var sprite_normal: Texture2D
+@export var sprite_pressionado: Texture2D
+@export var sprite_conectado: Texture2D
+
+var conectado: bool = false
+
+@onready var sprite: Sprite2D = $Sprite2D
+
+func _ready():
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	input_pickable = true
+	definir_normal()
+
+func _input_event(_viewport, event, _shape_idx):
+	print(\"Input chegou em: \", name)
+
+	if conectado:
+		return
+	
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			print(\"Clique no fio: \", name)
+			var puzzle_ui = get_parent().get_parent()
+			
+			if puzzle_ui.has_method(\"selecionar_ponto\"):
+				puzzle_ui.selecionar_ponto(self)
+			else:
+				print(\"Erro: puzzleUI não tem selecionar_ponto.\")
+
+func definir_normal():
+	if sprite_normal != null:
+		sprite.texture = sprite_normal
+	
+	modulate = Color(1, 1, 1)
+
+func definir_pressionado():
+	if sprite_pressionado != null:
+		sprite.texture = sprite_pressionado
+	
+	modulate = Color(1, 1, 1)
+
+func definir_conectado():
+	if sprite_conectado != null:
+		sprite.texture = sprite_conectado
+	
+	modulate = Color(1, 1, 1)
+
+func _on_mouse_entered():
+	if not conectado:
+		modulate = Color(1.15, 1.15, 1.15)
+
+func _on_mouse_exited():
+	if not conectado:
+		modulate = Color(1, 1, 1)
+"
+
+[sub_resource type="GDScript" id="GDScript_mtqw6"]
+script/source = "extends Area2D
+
+@export var nome_fio: String = \"B\"
+@export var par_nome: String = \"2\"
+
+@export var sprite_normal: Texture2D
+@export var sprite_pressionado: Texture2D
+@export var sprite_conectado: Texture2D
+
+var conectado: bool = false
+
+@onready var sprite: Sprite2D = $Sprite2D
+
+func _ready():
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	input_pickable = true
+	definir_normal()
+
+func _input_event(_viewport, event, _shape_idx):
+	print(\"Input chegou em: \", name)
+
+	if conectado:
+		return
+	
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			print(\"Clique no fio: \", name)
+			var puzzle_ui = get_parent().get_parent()
+			
+			if puzzle_ui.has_method(\"selecionar_ponto\"):
+				puzzle_ui.selecionar_ponto(self)
+			else:
+				print(\"Erro: puzzleUI não tem selecionar_ponto.\")
+
+func definir_normal():
+	if sprite_normal != null:
+		sprite.texture = sprite_normal
+	
+	modulate = Color(1, 1, 1)
+
+func definir_pressionado():
+	if sprite_pressionado != null:
+		sprite.texture = sprite_pressionado
+	
+	modulate = Color(1, 1, 1)
+
+func definir_conectado():
+	if sprite_conectado != null:
+		sprite.texture = sprite_conectado
+	
+	modulate = Color(1, 1, 1)
+
+func _on_mouse_entered():
+	if not conectado:
+		modulate = Color(1.15, 1.15, 1.15)
+
+func _on_mouse_exited():
+	if not conectado:
+		modulate = Color(1, 1, 1)
+"
+
+[sub_resource type="GDScript" id="GDScript_6sh7n"]
+script/source = "extends Area2D
+
+@export var nome_fio: String = \"C\"
+@export var par_nome: String = \"3\"
+
+@export var sprite_normal: Texture2D
+@export var sprite_pressionado: Texture2D
+@export var sprite_conectado: Texture2D
+
+var conectado: bool = false
+
+@onready var sprite: Sprite2D = $Sprite2D
+
+func _ready():
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	input_pickable = true
+	definir_normal()
+
+func _input_event(_viewport, event, _shape_idx):
+	print(\"Input chegou em: \", name)
+
+	if conectado:
+		return
+	
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			print(\"Clique no fio: \", name)
+			var puzzle_ui = get_parent().get_parent()
+			
+			if puzzle_ui.has_method(\"selecionar_ponto\"):
+				puzzle_ui.selecionar_ponto(self)
+			else:
+				print(\"Erro: puzzleUI não tem selecionar_ponto.\")
+
+func definir_normal():
+	if sprite_normal != null:
+		sprite.texture = sprite_normal
+	
+	modulate = Color(1, 1, 1)
+
+func definir_pressionado():
+	if sprite_pressionado != null:
+		sprite.texture = sprite_pressionado
+	
+	modulate = Color(1, 1, 1)
+
+func definir_conectado():
+	if sprite_conectado != null:
+		sprite.texture = sprite_conectado
+	
+	modulate = Color(1, 1, 1)
+
+func _on_mouse_entered():
+	if not conectado:
+		modulate = Color(1.15, 1.15, 1.15)
+
+func _on_mouse_exited():
+	if not conectado:
+		modulate = Color(1, 1, 1)
+"
+
+[sub_resource type="GDScript" id="GDScript_fvtmu"]
+script/source = "extends Area2D
+
+@export var nome_fio: String = \"D\"
+@export var par_nome: String = \"4\"
+
+@export var sprite_normal: Texture2D
+@export var sprite_pressionado: Texture2D
+@export var sprite_conectado: Texture2D
+
+var conectado: bool = false
+
+@onready var sprite: Sprite2D = $Sprite2D
+
+func _ready():
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	input_pickable = true
+	definir_normal()
+
+func _input_event(_viewport, event, _shape_idx):
+	print(\"Input chegou em: \", name)
+
+	if conectado:
+		return
+	
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			print(\"Clique no fio: \", name)
+			var puzzle_ui = get_parent().get_parent()
+			
+			if puzzle_ui.has_method(\"selecionar_ponto\"):
+				puzzle_ui.selecionar_ponto(self)
+			else:
+				print(\"Erro: puzzleUI não tem selecionar_ponto.\")
+
+func definir_normal():
+	if sprite_normal != null:
+		sprite.texture = sprite_normal
+	
+	modulate = Color(1, 1, 1)
+
+func definir_pressionado():
+	if sprite_pressionado != null:
+		sprite.texture = sprite_pressionado
+	
+	modulate = Color(1, 1, 1)
+
+func definir_conectado():
+	if sprite_conectado != null:
+		sprite.texture = sprite_conectado
+	
+	modulate = Color(1, 1, 1)
+
+func _on_mouse_entered():
+	if not conectado:
+		modulate = Color(1.15, 1.15, 1.15)
+
+func _on_mouse_exited():
+	if not conectado:
+		modulate = Color(1, 1, 1)
+"
+
+[node name="PuzzleDescida" type="CanvasLayer"]
+script = ExtResource("1_xb6uq")
+
+[node name="Overlay" type="ColorRect" parent="."]
+offset_top = -52.0
+offset_right = 615.4073
+offset_bottom = 403.59592
+scale = Vector2(1.08871, 1.1106333)
+color = Color(0.13682577, 0.13682574, 0.13682571, 0.79607844)
+
+[node name="puzzleUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = SubResource("GDScript_y34lr")
+metadata/_edit_use_anchors_ = true
+
+[node name="background" type="TextureRect" parent="puzzleUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0942875
+anchor_top = 0.08895558
+anchor_right = 0.81621104
+anchor_bottom = 1.3732641
+offset_left = -0.34399414
+offset_top = -0.02400589
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1243113, 0.6108574)
+mouse_filter = 2
+texture = ExtResource("2_y34lr")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="fios" type="Node2D" parent="puzzleUI"]
+position = Vector2(8, 15)
+scale = Vector2(0.52567124, 0.52567124)
+
+[node name="fio1" type="Area2D" parent="puzzleUI/fios"]
+visibility_layer = 512
+position = Vector2(382, 163)
+scale = Vector2(1.5, 1.5)
+script = SubResource("GDScript_g88wp")
+sprite_normal = ExtResource("4_mgvj8")
+sprite_pressionado = ExtResource("5_xsy46")
+sprite_conectado = ExtResource("6_oswg1")
+
+[node name="Sprite2D" type="Sprite2D" parent="puzzleUI/fios/fio1"]
+position = Vector2(1, -1.9999962)
+texture = ExtResource("4_mgvj8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puzzleUI/fios/fio1"]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_fvtmu")
+
+[node name="fio2" type="Area2D" parent="puzzleUI/fios"]
+position = Vector2(775.00006, 159)
+scale = Vector2(1.5, 1.5)
+script = SubResource("GDScript_tatcn")
+sprite_normal = ExtResource("8_au4bw")
+sprite_pressionado = ExtResource("9_wbkkp")
+sprite_conectado = ExtResource("10_jm3yj")
+
+[node name="Sprite2D" type="Sprite2D" parent="puzzleUI/fios/fio2"]
+texture = ExtResource("8_au4bw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puzzleUI/fios/fio2"]
+shape = SubResource("RectangleShape2D_fvtmu")
+
+[node name="fio3" type="Area2D" parent="puzzleUI/fios"]
+position = Vector2(887.00006, 309)
+scale = Vector2(1.5, 1.5)
+script = SubResource("GDScript_xb6uq")
+sprite_normal = ExtResource("12_8sqqe")
+sprite_pressionado = ExtResource("13_6rfx3")
+sprite_conectado = ExtResource("14_1okfb")
+
+[node name="Sprite2D" type="Sprite2D" parent="puzzleUI/fios/fio3"]
+texture = ExtResource("12_8sqqe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puzzleUI/fios/fio3"]
+shape = SubResource("RectangleShape2D_fvtmu")
+
+[node name="fio4" type="Area2D" parent="puzzleUI/fios"]
+position = Vector2(389, 452)
+scale = Vector2(1.5, 1.5)
+script = SubResource("GDScript_aqhyn")
+sprite_normal = ExtResource("16_mpk6b")
+sprite_pressionado = ExtResource("17_b3qcp")
+sprite_conectado = ExtResource("18_ae43o")
+
+[node name="Sprite2D" type="Sprite2D" parent="puzzleUI/fios/fio4"]
+texture = ExtResource("16_mpk6b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puzzleUI/fios/fio4"]
+shape = SubResource("RectangleShape2D_fvtmu")
+
+[node name="fioA" type="Area2D" parent="puzzleUI/fios"]
+position = Vector2(775, 452)
+scale = Vector2(1.5, 1.5)
+script = SubResource("GDScript_my2qu")
+sprite_normal = ExtResource("4_mgvj8")
+sprite_pressionado = ExtResource("5_xsy46")
+sprite_conectado = ExtResource("6_oswg1")
+
+[node name="Sprite2D" type="Sprite2D" parent="puzzleUI/fios/fioA"]
+position = Vector2(1, 0)
+texture = ExtResource("4_mgvj8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puzzleUI/fios/fioA"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_fvtmu")
+
+[node name="fioB" type="Area2D" parent="puzzleUI/fios"]
+position = Vector2(488.00003, 308)
+scale = Vector2(1.5, 1.5)
+script = SubResource("GDScript_mtqw6")
+sprite_normal = ExtResource("8_au4bw")
+sprite_pressionado = ExtResource("9_wbkkp")
+sprite_conectado = ExtResource("10_jm3yj")
+
+[node name="Sprite2D" type="Sprite2D" parent="puzzleUI/fios/fioB"]
+texture = ExtResource("8_32k2f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puzzleUI/fios/fioB"]
+shape = SubResource("RectangleShape2D_fvtmu")
+
+[node name="fioC" type="Area2D" parent="puzzleUI/fios"]
+position = Vector2(288, 309)
+scale = Vector2(1.5, 1.5)
+script = SubResource("GDScript_6sh7n")
+sprite_normal = ExtResource("12_8sqqe")
+sprite_pressionado = ExtResource("13_6rfx3")
+sprite_conectado = ExtResource("14_1okfb")
+
+[node name="Sprite2D" type="Sprite2D" parent="puzzleUI/fios/fioC"]
+texture = ExtResource("12_p2hi1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puzzleUI/fios/fioC"]
+shape = SubResource("RectangleShape2D_fvtmu")
+
+[node name="fioD" type="Area2D" parent="puzzleUI/fios"]
+position = Vector2(659.00006, 311)
+scale = Vector2(1.5, 1.5)
+script = SubResource("GDScript_fvtmu")
+sprite_normal = ExtResource("16_mpk6b")
+sprite_pressionado = ExtResource("17_b3qcp")
+sprite_conectado = ExtResource("18_ae43o")
+
+[node name="Sprite2D" type="Sprite2D" parent="puzzleUI/fios/fioD"]
+texture = ExtResource("16_b1nn0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puzzleUI/fios/fioD"]
+shape = SubResource("RectangleShape2D_fvtmu")
+
+[node name="ESC" type="Sprite2D" parent="puzzleUI"]
+position = Vector2(72.00001, 46.000004)
+scale = Vector2(3.8596354, 3.8596354)
+texture = ExtResource("17_g88wp")
+
+[node name="Parafuso1" type="Sprite2D" parent="puzzleUI"]
+position = Vector2(141.00002, 295)
+scale = Vector2(2.6671212, 2.6671212)
+texture = ExtResource("18_tatcn")
+
+[node name="Parafuso2" type="Sprite2D" parent="puzzleUI"]
+position = Vector2(141, 79)
+scale = Vector2(2.6671212, 2.6671212)
+texture = ExtResource("18_tatcn")
+
+[node name="Parafuso3" type="Sprite2D" parent="puzzleUI"]
+position = Vector2(498.00003, 81)
+scale = Vector2(2.6671212, 2.6671212)
+texture = ExtResource("18_tatcn")
+
+[node name="Parafuso4" type="Sprite2D" parent="puzzleUI"]
+position = Vector2(498, 297)
+scale = Vector2(2.6671212, 2.6671212)
+texture = ExtResource("18_tatcn")

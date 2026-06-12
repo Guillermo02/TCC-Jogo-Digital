@@ -37,8 +37,16 @@ var heart_empty_tex: Texture2D
 var shield_full_tex: Texture2D
 var shield_broken_tex: Texture2D
 
+var hud_tween: Tween = null
+var damage_indicator_tween: Tween = null
+var damage_indicator_fade_tween: Tween = null
+var regen_tween: Tween = null
+var shield_blink_tweens := {}
+
 
 func _ready() -> void:
+	add_to_group("hud")
+
 	_setup_input_action()
 	_setup_panel_style()
 	_setup_nodes()
@@ -99,11 +107,15 @@ func _setup_nodes() -> void:
 func _setup_timers() -> void:
 	regen_timer.one_shot = true
 	regen_timer.wait_time = health_regen_delay
-	regen_timer.timeout.connect(_on_regen_timer_timeout)
+
+	if not regen_timer.timeout.is_connected(_on_regen_timer_timeout):
+		regen_timer.timeout.connect(_on_regen_timer_timeout)
 
 	damage_indicator_timer.one_shot = true
 	damage_indicator_timer.wait_time = damage_indicator_duration
-	damage_indicator_timer.timeout.connect(_on_damage_indicator_timer_timeout)
+
+	if not damage_indicator_timer.timeout.is_connected(_on_damage_indicator_timer_timeout):
+		damage_indicator_timer.timeout.connect(_on_damage_indicator_timer_timeout)
 
 
 func _cache_textures() -> void:
@@ -118,20 +130,31 @@ func _cache_textures() -> void:
 func toggle_hud() -> void:
 	hud_hidden = not hud_hidden
 
-	var tween := create_tween()
+	_kill_tween(hud_tween)
+
+	hud_tween = create_tween()
+
 	if hud_hidden:
-		tween.tween_property(background_panel, "modulate:a", 0.0, 0.2)
+		hud_tween.tween_property(background_panel, "modulate:a", 0.0, 0.2)
 	else:
-		tween.tween_property(background_panel, "modulate:a", 1.0, 0.2)
+		hud_tween.tween_property(background_panel, "modulate:a", 1.0, 0.2)
+
+	hud_tween.tween_callback(func():
+		hud_tween = null
+	)
 
 
 func take_damage(amount: int = 1) -> void:
+	_kill_regen_tween()
+
 	for i in range(amount):
 		_apply_single_damage()
 
 	update_hearts()
 	update_shields()
 	_show_damage_indicator()
+
+	regen_timer.stop()
 	regen_timer.start()
 
 	if current_hearts <= 0:
@@ -169,6 +192,7 @@ func full_restore_shields() -> void:
 func heal_heart_unit(amount: int = 1) -> void:
 	for i in range(amount):
 		_restore_one_heart_step()
+
 	update_hearts()
 
 
@@ -176,6 +200,61 @@ func full_restore_health() -> void:
 	current_hearts = max_hearts
 	heart_damage_stage = 0
 	update_hearts()
+
+
+func restaurar_um_coracao_ou_um_escudo() -> void:
+	regen_timer.stop()
+	_kill_regen_tween()
+
+	if vida_nao_esta_cheia():
+		restaurar_um_coracao_inteiro()
+		update_hearts()
+		return
+
+	if current_shields < max_shields:
+		current_shields += 1
+		update_shields()
+
+
+func vida_nao_esta_cheia() -> bool:
+	if current_hearts < max_hearts:
+		return true
+
+	if heart_damage_stage == 1:
+		return true
+
+	return false
+
+
+func restaurar_um_coracao_inteiro() -> void:
+	if current_hearts <= 0:
+		current_hearts = 1
+		heart_damage_stage = 0
+		return
+
+	if heart_damage_stage == 1:
+		heart_damage_stage = 0
+
+		if current_hearts < max_hearts:
+			current_hearts += 1
+
+		return
+
+	if current_hearts < max_hearts:
+		current_hearts += 1
+		heart_damage_stage = 0
+
+
+func restaurar_vida_e_escudo_total() -> void:
+	regen_timer.stop()
+	_kill_regen_tween()
+
+	current_hearts = max_hearts
+	current_shields = max_shields
+	heart_damage_stage = 0
+
+	update_hearts()
+	update_shields()
 
 
 func _restore_one_heart_step() -> void:
@@ -194,9 +273,13 @@ func _restore_one_heart_step() -> void:
 
 
 func _on_player_death() -> void:
+	regen_timer.stop()
+	_kill_regen_tween()
+
 	current_hearts = max_hearts
 	current_shields = 0
 	heart_damage_stage = 0
+
 	update_hearts()
 	update_shields()
 
@@ -236,26 +319,50 @@ func _blink_shield(index: int) -> void:
 	if index < 0 or index >= shield_nodes.size():
 		return
 
+	if shield_blink_tweens.has(index):
+		var old_tween: Tween = shield_blink_tweens[index]
+		_kill_tween(old_tween)
+		shield_blink_tweens.erase(index)
+
 	var shield := shield_nodes[index]
+	shield.modulate.a = 1.0
+
 	var tween := create_tween()
+	shield_blink_tweens[index] = tween
 
 	for i in range(4):
 		tween.tween_property(shield, "modulate:a", 0.15, shield_blink_duration / 8.0)
 		tween.tween_property(shield, "modulate:a", 1.0, shield_blink_duration / 8.0)
 
+	tween.tween_callback(func():
+		if is_instance_valid(shield):
+			shield.modulate.a = 1.0
+
+		shield_blink_tweens.erase(index)
+	)
+
 
 func _show_damage_indicator() -> void:
 	damage_indicator_timer.stop()
+
+	_kill_tween(damage_indicator_tween)
+	_kill_tween(damage_indicator_fade_tween)
+
+	damage_indicator.position = damage_indicator.position
 	damage_indicator.visible = true
 	damage_indicator.modulate = Color(1, 1, 1, 1.0)
 
 	var base_pos := damage_indicator.position
-	var tween := create_tween()
-	tween.tween_property(damage_indicator, "position", base_pos + Vector2(3, 0), 0.06)
-	tween.tween_property(damage_indicator, "position", base_pos + Vector2(-3, 0), 0.06)
-	tween.tween_property(damage_indicator, "position", base_pos + Vector2(3, 0), 0.06)
-	tween.tween_property(damage_indicator, "position", base_pos + Vector2(-3, 0), 0.06)
-	tween.tween_property(damage_indicator, "position", base_pos, 0.06)
+
+	damage_indicator_tween = create_tween()
+	damage_indicator_tween.tween_property(damage_indicator, "position", base_pos + Vector2(3, 0), 0.06)
+	damage_indicator_tween.tween_property(damage_indicator, "position", base_pos + Vector2(-3, 0), 0.06)
+	damage_indicator_tween.tween_property(damage_indicator, "position", base_pos + Vector2(3, 0), 0.06)
+	damage_indicator_tween.tween_property(damage_indicator, "position", base_pos + Vector2(-3, 0), 0.06)
+	damage_indicator_tween.tween_property(damage_indicator, "position", base_pos, 0.06)
+	damage_indicator_tween.tween_callback(func():
+		damage_indicator_tween = null
+	)
 
 	damage_indicator_timer.start()
 
@@ -266,9 +373,16 @@ func _hide_damage_indicator_immediately() -> void:
 
 
 func _on_damage_indicator_timer_timeout() -> void:
-	var tween := create_tween()
-	tween.tween_property(damage_indicator, "modulate:a", 0.0, 0.25)
-	tween.tween_callback(func(): damage_indicator.visible = false)
+	_kill_tween(damage_indicator_fade_tween)
+
+	damage_indicator_fade_tween = create_tween()
+	damage_indicator_fade_tween.tween_property(damage_indicator, "modulate:a", 0.0, 0.25)
+	damage_indicator_fade_tween.tween_callback(func():
+		if is_instance_valid(damage_indicator):
+			damage_indicator.visible = false
+
+		damage_indicator_fade_tween = null
+	)
 
 
 func _on_regen_timer_timeout() -> void:
@@ -276,14 +390,29 @@ func _on_regen_timer_timeout() -> void:
 
 
 func _regen_all_hearts_slowly() -> void:
-	var tween := create_tween()
+	_kill_regen_tween()
+
+	if not vida_nao_esta_cheia():
+		return
+
+	regen_tween = create_tween()
 
 	while current_hearts < max_hearts or heart_damage_stage == 1:
-		tween.tween_interval(0.35)
-		tween.tween_callback(_regen_step)
+		regen_tween.tween_interval(0.35)
+		regen_tween.tween_callback(_regen_step)
+
+		if current_hearts >= max_hearts and heart_damage_stage == 0:
+			break
+
+	regen_tween.tween_callback(func():
+		regen_tween = null
+	)
 
 
 func _regen_step() -> void:
+	if not is_inside_tree():
+		return
+
 	_restore_one_heart_step()
 	update_hearts()
 
@@ -292,5 +421,32 @@ func set_health_and_shields(hearts: int, shields: int, cracked: bool = false) ->
 	current_hearts = clamp(hearts, 0, max_hearts)
 	current_shields = clamp(shields, 0, max_shields)
 	heart_damage_stage = 1 if cracked else 0
+
 	update_hearts()
 	update_shields()
+
+
+func _kill_tween(tween: Tween) -> void:
+	if tween != null and tween.is_valid():
+		tween.kill()
+
+
+func _kill_regen_tween() -> void:
+	_kill_tween(regen_tween)
+	regen_tween = null
+
+
+func _exit_tree() -> void:
+	regen_timer.stop()
+	damage_indicator_timer.stop()
+
+	_kill_tween(hud_tween)
+	_kill_tween(damage_indicator_tween)
+	_kill_tween(damage_indicator_fade_tween)
+	_kill_regen_tween()
+
+	for key in shield_blink_tweens.keys():
+		var tween: Tween = shield_blink_tweens[key]
+		_kill_tween(tween)
+
+	shield_blink_tweens.clear()

@@ -1,0 +1,367 @@
+[gd_scene load_steps=60 format=4 uid="uid://brj7hcgi610li"]
+
+[ext_resource type="Script" uid="uid://270hqspy37p5" path="res://scripts/casa_elliot_scripts/casa_elliot_2.gd" id="1_84fsn"]
+[ext_resource type="Texture2D" uid="uid://d03hnx2mhjgxs" path="res://sprites/Casa Elliot/1 Tiles/Tile_50.png" id="2_el1x5"]
+[ext_resource type="Texture2D" uid="uid://bw184q102i7og" path="res://sprites/Casa Elliot/1 Tiles/Tile_51.png" id="3_llneu"]
+[ext_resource type="Texture2D" uid="uid://ddj3garxw73vy" path="res://sprites/Casa Elliot/1 Tiles/Tile_60.png" id="4_a0x5f"]
+[ext_resource type="Texture2D" uid="uid://bw8v6ld50660r" path="res://sprites/Casa Elliot/1 Tiles/Tile_61.png" id="5_7da7y"]
+[ext_resource type="Texture2D" uid="uid://cko22qgkukosg" path="res://sprites/Casa Elliot/1 Tiles/Tile_62.png" id="6_vtoyw"]
+[ext_resource type="Texture2D" uid="uid://boe7beuowpv6q" path="res://sprites/Casa Elliot/1 Tiles/Tile_63.png" id="7_j1stc"]
+[ext_resource type="Texture2D" uid="uid://csyb2bjvevwdd" path="res://sprites/Casa Elliot/1 Tiles/Tile_64.png" id="8_fkw6s"]
+[ext_resource type="Texture2D" uid="uid://dsno3kduffgke" path="res://sprites/Free Industrial Zone Tileset/1 Tiles/IndustrialTile_77.png" id="9_aeys7"]
+[ext_resource type="Texture2D" uid="uid://cb4j7lw31notr" path="res://sprites/Free Industrial Zone Tileset/1 Tiles/IndustrialTile_78.png" id="10_1dnny"]
+[ext_resource type="Texture2D" uid="uid://dfaqilnigdgh8" path="res://sprites/Free Industrial Zone Tileset/1 Tiles/IndustrialTile_79.png" id="11_pkuts"]
+[ext_resource type="Texture2D" uid="uid://cdaqeppt6nmph" path="res://sprites/Casa Elliot/1 Tiles/Tile_52.png" id="12_64c4x"]
+[ext_resource type="Texture2D" uid="uid://cjdni8kp0pvn3" path="res://sprites/Casa Elliot/1 Tiles/Tile_53.png" id="13_2clon"]
+[ext_resource type="Texture2D" uid="uid://ch5ge0kg6uudp" path="res://sprites/Casa Elliot/1 Tiles/Tile_54.png" id="14_ldqfx"]
+[ext_resource type="Texture2D" uid="uid://dirlmx5rd7353" path="res://sprites/Casa Elliot/1 Tiles/Tile_55.png" id="15_bkbfa"]
+[ext_resource type="Texture2D" uid="uid://dvvym0rogqrle" path="res://sprites/Casa Elliot/1 Tiles/Tile_56.png" id="16_ynn4w"]
+[ext_resource type="Texture2D" uid="uid://jtch11rfnyl1" path="res://sprites/Casa Elliot/1 Tiles/Tile_57.png" id="17_1bfsy"]
+[ext_resource type="Texture2D" uid="uid://b0xnvj5o8py5k" path="res://sprites/Casa Elliot/1 Tiles/Tile_58.png" id="18_5pf8o"]
+[ext_resource type="Texture2D" uid="uid://dcaff3cjlnp4t" path="res://sprites/Casa Elliot/1 Tiles/Tile_59.png" id="19_20xbb"]
+[ext_resource type="Texture2D" uid="uid://b3ttoomgme8iw" path="res://sprites/Free Industrial Zone Tileset/3 Objects/Locker4.png" id="20_6owy3"]
+[ext_resource type="Texture2D" uid="uid://ecdqwqtakujk" path="res://sprites/Casa Elliot/2 Decoration/18.png" id="21_5ouvk"]
+[ext_resource type="Texture2D" uid="uid://die4sjco35l45" path="res://sprites/Casa Elliot/2 Decoration/16.png" id="22_ucrmo"]
+[ext_resource type="Texture2D" uid="uid://beta6p1hgfnli" path="res://sprites/Casa Elliot/2 Decoration/8.png" id="23_elksr"]
+[ext_resource type="Texture2D" uid="uid://bmadq7cj3oy3v" path="res://sprites/Casa Elliot/2 Decoration/1.png" id="24_tf2yk"]
+[ext_resource type="Texture2D" uid="uid://cf1sgvj26ngew" path="res://sprites/Casa Elliot/2 Decoration/2.png" id="25_e15lr"]
+[ext_resource type="Texture2D" uid="uid://dn4wk3j6q26i1" path="res://sprites/Casa Elliot/2 Decoration/20.png" id="26_2vqfp"]
+[ext_resource type="Texture2D" uid="uid://bco3jixpvdyuo" path="res://sprites/Casa Elliot/2 Decoration/22.png" id="27_vk67e"]
+[ext_resource type="Texture2D" uid="uid://b48jnuaxak0kf" path="res://sprites/Casa Elliot/2 Decoration/9.png" id="28_agy3e"]
+[ext_resource type="Texture2D" uid="uid://b3wpmqxvq6jun" path="res://sprites/Casa Elliot/2 Decoration/6.png" id="29_mbr0a"]
+[ext_resource type="Texture2D" uid="uid://dn28kify46iks" path="res://sprites/Casa Elliot/2 Decoration/12.png" id="30_hy6ns"]
+[ext_resource type="Texture2D" uid="uid://e3aj3whdf5j3" path="res://sprites/Casa Elliot/2 Decoration/7.png" id="31_mx0bm"]
+[ext_resource type="Texture2D" uid="uid://cuenxtm1oqkbo" path="res://sprites/Casa Elliot/2 Decoration/23.png" id="32_gu6gd"]
+[ext_resource type="Texture2D" uid="uid://devekt7lk3np6" path="res://sprites/Free Industrial Zone Tileset/3 Objects/Board1.png" id="33_lbi0d"]
+[ext_resource type="Texture2D" uid="uid://d3nls7wa327vl" path="res://sprites/Free Industrial Zone Tileset/3 Objects/Fire-extinguisher3.png" id="34_nkf33"]
+[ext_resource type="Texture2D" uid="uid://bw3g8f4y1380i" path="res://sprites/Free Industrial Zone Tileset/3 Objects/Mop.png" id="35_3b34r"]
+[ext_resource type="Texture2D" uid="uid://va0mnivxbcor" path="res://sprites/Free Industrial Zone Tileset/1 Tiles/IndustrialTile_75.png" id="36_dmas1"]
+[ext_resource type="PackedScene" uid="uid://cjdpsuep8yj7x" path="res://entities/jogador.tscn" id="37_qdlp0"]
+[ext_resource type="Script" uid="uid://cfrvsqw4uiaid" path="res://scripts/jogadorCasa.gd" id="38_y1k1t"]
+[ext_resource type="PackedScene" uid="uid://b2xgy1n6g6h56" path="res://entities/FilhaLiz.tscn" id="40_84fsn"]
+[ext_resource type="PackedScene" uid="uid://cbd30h1r7sg3s" path="res://scenes/menus/dialog_box.tscn" id="42_0wko8"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ce3h7"]
+texture = ExtResource("2_el1x5")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qkkue"]
+texture = ExtResource("3_llneu")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l8cx2"]
+texture = ExtResource("4_a0x5f")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5l3rk"]
+texture = ExtResource("5_7da7y")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fvf82"]
+texture = ExtResource("6_vtoyw")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3c3dr"]
+texture = ExtResource("7_j1stc")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n7kse"]
+texture = ExtResource("8_fkw6s")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vxvfj"]
+texture = ExtResource("9_aeys7")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_relri"]
+texture = ExtResource("10_1dnny")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ayrh7"]
+texture = ExtResource("11_pkuts")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y5ue2"]
+texture = ExtResource("12_64c4x")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yrnuo"]
+texture = ExtResource("13_2clon")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1yaq5"]
+texture = ExtResource("14_ldqfx")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m3tmd"]
+texture = ExtResource("15_bkbfa")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y2b7e"]
+texture = ExtResource("16_ynn4w")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2bq1i"]
+texture = ExtResource("17_1bfsy")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nxy2c"]
+texture = ExtResource("18_5pf8o")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d76uh"]
+texture = ExtResource("19_20xbb")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_6wydd"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ce3h7")
+sources/1 = SubResource("TileSetAtlasSource_qkkue")
+sources/2 = SubResource("TileSetAtlasSource_y5ue2")
+sources/3 = SubResource("TileSetAtlasSource_yrnuo")
+sources/4 = SubResource("TileSetAtlasSource_1yaq5")
+sources/5 = SubResource("TileSetAtlasSource_m3tmd")
+sources/6 = SubResource("TileSetAtlasSource_y2b7e")
+sources/7 = SubResource("TileSetAtlasSource_2bq1i")
+sources/8 = SubResource("TileSetAtlasSource_nxy2c")
+sources/9 = SubResource("TileSetAtlasSource_d76uh")
+sources/10 = SubResource("TileSetAtlasSource_l8cx2")
+sources/11 = SubResource("TileSetAtlasSource_5l3rk")
+sources/12 = SubResource("TileSetAtlasSource_fvf82")
+sources/13 = SubResource("TileSetAtlasSource_3c3dr")
+sources/14 = SubResource("TileSetAtlasSource_n7kse")
+sources/15 = SubResource("TileSetAtlasSource_vxvfj")
+sources/16 = SubResource("TileSetAtlasSource_relri")
+sources/17 = SubResource("TileSetAtlasSource_ayrh7")
+
+[node name="CasaElliot2" type="Node2D"]
+position = Vector2(-1, -13)
+script = ExtResource("1_84fsn")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(2.5, 2.5)
+tile_map_data = PackedByteArray("AAAAAAAACwAAAAAAAAAAAAEACwAAAAEAAAABAAAACwABAAAAAAACAAAACwAAAAAAAAADAAAACwABAAAAAAACAAIACwAAAAAAAAACAAMACwAAAAEAAAADAAIACwABAAAAAAADAAMACwABAAEAAAAEAAIACwAAAAAAAAAEAAMACwAAAAEAAAAFAAIACwABAAAAAAAFAAMACwABAAEAAAAGAAIACwAAAAAAAAAGAAMACwAAAAEAAAAHAAIACwABAAAAAAAHAAMACwABAAEAAAAGAAQACwAAAAAAAAAGAAUACwAAAAEAAAAHAAQACwABAAAAAAAHAAUACwABAAEAAAAIAAQACwAAAAAAAAAIAAUACwAAAAEAAAAJAAQACwABAAAAAAAJAAUACwABAAEAAAAKAAQACwAAAAAAAAAKAAUACwAAAAEAAAALAAQACwABAAAAAAALAAUACwABAAEAAAAKAAYACwAAAAAAAAAKAAcACwAAAAEAAAALAAYACwABAAAAAAALAAcACwABAAEAAAAMAAYACwAAAAAAAAAMAAcACwAAAAEAAAANAAYACwABAAAAAAANAAcACwABAAEAAAAOAAYACwAAAAAAAAAOAAcACwAAAAEAAAAPAAYACwABAAAAAAAPAAcACwABAAEAAAAOAAgACwAAAAAAAAAOAAkAEAAAAAAAAAAPAAgACwABAAAAAAAPAAkAEAABAAAAAAAMAAgACwAAAAAAAAAMAAkAEAAAAAAAAAANAAgACwABAAAAAAANAAkAEAABAAAAAAAKAAgACwAAAAAAAAAKAAkAEAAAAAAAAAALAAgACwABAAAAAAALAAkAEAABAAAAAAAIAAgACwAAAAAAAAAIAAkAEAAAAAAAAAAJAAgACwABAAAAAAAJAAkAEAABAAAAAAAGAAgACwAAAAAAAAAGAAkAEAAAAAAAAAAHAAgACwABAAAAAAAHAAkAEAABAAAAAAAEAAgACwAAAAAAAAAEAAkAEAAAAAAAAAAFAAgACwABAAAAAAAFAAkAEAABAAAAAAACAAgACwAAAAAAAAACAAkAEAAAAAAAAAADAAgACwABAAAAAAADAAkAEAABAAAAAAAAAAgACwAAAAAAAAAAAAkADwAAAAAAAAABAAgACwABAAAAAAABAAkADwABAAAAAAAAAAYACwAAAAAAAAAAAAcACwAAAAEAAAABAAYACwABAAAAAAABAAcACwABAAEAAAAAAAQACwAAAAAAAAAAAAUACwAAAAEAAAABAAQACwABAAAAAAABAAUACwABAAEAAAAAAAIACwAAAAAAAAAAAAMACwAAAAEAAAABAAIACwABAAAAAAABAAMACwABAAEAAAACAAQACwAAAAAAAAACAAUACwAAAAEAAAADAAQACwABAAAAAAADAAUACwABAAEAAAAEAAQACwAAAAAAAAAEAAUACwAAAAEAAAAFAAQACwABAAAAAAAFAAUACwABAAEAAAAEAAYACwABAAAAAAAEAAcACwABAAEAAAAFAAYACwABAAAAAAAFAAcACwABAAEAAAAGAAYACwAAAAAAAAAGAAcACwAAAAEAAAAHAAYACwABAAAAAAAHAAcACwABAAEAAAAIAAYACwAAAAAAAAAIAAcACwAAAAEAAAAJAAYACwABAAAAAAAJAAcACwABAAEAAAADAAYACwABAAAAAAADAAcACwABAAEAAAACAAYACwAAAAAAAAACAAcACwAAAAEAAAAOAAQACwAAAAAAAAAOAAUACwAAAAEAAAAPAAQACwABAAAAAAAPAAUACwABAAEAAAAMAAQACwAAAAAAAAAMAAUACwAAAAEAAAANAAQACwABAAAAAAANAAUACwABAAEAAAAOAAAACwAAAAAAAAAOAAEACwAAAAEAAAAPAAAACwABAAAAAAAPAAEACwABAAEAAAAOAAIACwAAAAAAAAAOAAMACwAAAAEAAAAPAAIACwABAAAAAAAPAAMACwABAAEAAAAEAAAACwAAAAAAAAAFAAAACwABAAAAAAAFAAEACwABAAEAAAAGAAAACwAAAAAAAAAGAAEACwAAAAEAAAAHAAAACwABAAAAAAAHAAEACwABAAEAAAAIAAAACwAAAAAAAAAIAAEACwAAAAEAAAAJAAAACwABAAAAAAAJAAEACwABAAEAAAAKAAAACwAAAAAAAAAKAAEACwAAAAEAAAALAAAACwABAAAAAAALAAEACwABAAEAAAAMAAAACwAAAAAAAAAMAAEACwAAAAEAAAANAAAACwABAAAAAAANAAEACwABAAEAAAAIAAIACwAAAAAAAAAIAAMACwAAAAEAAAAJAAIACwABAAAAAAAJAAMACwABAAEAAAAKAAIACwAAAAAAAAAKAAMACwAAAAEAAAALAAIACwABAAAAAAALAAMACwABAAEAAAAMAAIACwAAAAAAAAAMAAMACwAAAAEAAAANAAIACwABAAAAAAANAAMACwABAAEAAAAQAAkAEAAAAAAAAAARAAkAEAABAAAAAAASAAkAEAAAAAAAAAD+/wgAEAAAAAAAAAD//wgAEAABAAAAAAD+/wcAEAAAAAAAAAD//wcAEAABAAAAAAD+/wYAEAAAAAAAAAD//wYAEAABAAAAAAD+/wUAEAAAAAAAAAD//wUAEAABAAAAAAD+/wQAEAAAAAAAAAD//wQAEAABAAAAAAD+/wMAEAAAAAAAAAD//wMAEAABAAAAAAD+/wIAEAAAAAAAAAD//wIAEAABAAAAAAD+/wEAEAAAAAAAAAD//wEAEAABAAAAAAD+/wAAEAAAAAAAAAD//wAAEAABAAAAAAABAAEACwABAAEAAAAEAAEACwAAAAEAAAACAAEACwAAAAEAAAADAAEACwABAAEAAAAQAAIACwAAAAAAAAAQAAMACwAAAAEAAAAQAAQACwAAAAAAAAAQAAUACwAAAAEAAAAQAAYACwAAAAAAAAAQAAcACwAAAAAAAAAQAAgACwAAAAEAAAARAAIACwABAAAAAAARAAMACwABAAEAAAARAAQACwABAAAAAAARAAUACwABAAEAAAARAAYACwABAAAAAAARAAcACwABAAAAAAARAAgACwABAAEAAAAQAAAACwAAAAAAAAAQAAEACwAAAAEAAAARAAAACwABAAAAAAARAAEACwABAAEAAAA=")
+tile_set = SubResource("TileSet_6wydd")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(222, 303)
+scale = Vector2(3.2355616, 3.2355616)
+texture = ExtResource("20_6owy3")
+
+[node name="Mesa" type="Sprite2D" parent="Node2D"]
+position = Vector2(394, 320.00003)
+scale = Vector2(4.9929495, 4.9929495)
+texture = ExtResource("21_5ouvk")
+
+[node name="Tela1" type="Sprite2D" parent="Node2D"]
+position = Vector2(394.00003, 215)
+scale = Vector2(4.06976, 4.06976)
+texture = ExtResource("22_ucrmo")
+
+[node name="Cadeira" type="Sprite2D" parent="Node2D"]
+position = Vector2(329, 290.00003)
+scale = Vector2(5.8433557, 5.8433557)
+texture = ExtResource("23_elksr")
+
+[node name="Livros1" type="Sprite2D" parent="Node2D"]
+position = Vector2(353.00003, 106.00001)
+scale = Vector2(3.496652, 3.496652)
+texture = ExtResource("24_tf2yk")
+
+[node name="Livros2" type="Sprite2D" parent="Node2D"]
+position = Vector2(439, 112.99999)
+scale = Vector2(3.497, 3.497)
+texture = ExtResource("25_e15lr")
+
+[node name="Livros3" type="Sprite2D" parent="Node2D"]
+position = Vector2(525, 106)
+scale = Vector2(3.497, 3.497)
+texture = ExtResource("24_tf2yk")
+
+[node name="Quadro" type="Sprite2D" parent="Node2D"]
+position = Vector2(87, 294.00003)
+scale = Vector2(6.0454545, 6.0454545)
+texture = ExtResource("26_2vqfp")
+
+[node name="Mic" type="Sprite2D" parent="Node2D"]
+position = Vector2(448.30063, 258.89746)
+scale = Vector2(1.9248371, 1.9248371)
+texture = ExtResource("27_vk67e")
+
+[node name="Armário" type="Sprite2D" parent="Node2D"]
+position = Vector2(131, 148)
+scale = Vector2(5.268698, 5.268698)
+texture = ExtResource("28_agy3e")
+
+[node name="Botão" type="Sprite2D" parent="Node2D"]
+position = Vector2(359.99997, 275)
+scale = Vector2(2.7777774, 2.7777777)
+texture = ExtResource("29_mbr0a")
+
+[node name="Servidor" type="Sprite2D" parent="Node2D"]
+position = Vector2(577.74146, 325.25595)
+scale = Vector2(3.917328, 3.917328)
+texture = ExtResource("30_hy6ns")
+
+[node name="ApoioPé" type="Sprite2D" parent="Node2D"]
+position = Vector2(410.98807, 353.00003)
+scale = Vector2(3.5568864, 3.3083751)
+texture = ExtResource("31_mx0bm")
+
+[node name="Objeto1" type="Sprite2D" parent="Node2D"]
+position = Vector2(196.00002, 96.00001)
+scale = Vector2(2.120553, 2.120553)
+texture = ExtResource("32_gu6gd")
+
+[node name="QuadroPistas" type="Sprite2D" parent="Node2D"]
+position = Vector2(596, 241.00002)
+scale = Vector2(3.9375, 3.9375)
+texture = ExtResource("33_lbi0d")
+
+[node name="Extintor" type="Sprite2D" parent="Node2D"]
+position = Vector2(232.00002, 310)
+scale = Vector2(2.849811, 2.849811)
+texture = ExtResource("34_nkf33")
+
+[node name="Vassoura" type="Sprite2D" parent="Node2D"]
+position = Vector2(34, 307)
+scale = Vector2(3.0520957, 3.0520957)
+texture = ExtResource("35_3b34r")
+
+[node name="Teto1" type="Sprite2D" parent="Node2D"]
+position = Vector2(34.97653, -15.023472)
+rotation = -3.1415927
+scale = Vector2(2.1860328, 2.1860328)
+texture = ExtResource("36_dmas1")
+
+[node name="Teto2" type="Sprite2D" parent="Node2D"]
+position = Vector2(104.97653, -15.023472)
+rotation = 3.1415927
+scale = Vector2(2.186, 2.186)
+texture = ExtResource("36_dmas1")
+
+[node name="Teto3" type="Sprite2D" parent="Node2D"]
+position = Vector2(174.97653, -15.023472)
+rotation = 3.1415927
+scale = Vector2(2.186, 2.186)
+texture = ExtResource("36_dmas1")
+
+[node name="Teto4" type="Sprite2D" parent="Node2D"]
+position = Vector2(244.97653, -15.023472)
+rotation = 3.1415927
+scale = Vector2(2.186, 2.186)
+texture = ExtResource("36_dmas1")
+
+[node name="Teto5" type="Sprite2D" parent="Node2D"]
+position = Vector2(314.97653, -15.023472)
+rotation = 3.1415927
+scale = Vector2(2.186, 2.186)
+texture = ExtResource("36_dmas1")
+
+[node name="Teto6" type="Sprite2D" parent="Node2D"]
+position = Vector2(384.97653, -15.023472)
+rotation = 3.1415927
+scale = Vector2(2.186, 2.186)
+texture = ExtResource("36_dmas1")
+
+[node name="Teto7" type="Sprite2D" parent="Node2D"]
+position = Vector2(454.97653, -15.023472)
+rotation = 3.1415927
+scale = Vector2(2.186, 2.186)
+texture = ExtResource("36_dmas1")
+
+[node name="Teto8" type="Sprite2D" parent="Node2D"]
+position = Vector2(524.9765, -15.023472)
+rotation = 3.1415927
+scale = Vector2(2.186, 2.186)
+texture = ExtResource("36_dmas1")
+
+[node name="Teto9" type="Sprite2D" parent="Node2D"]
+position = Vector2(593.97656, -15.023472)
+rotation = 3.1415927
+scale = Vector2(2.186, 2.186)
+texture = ExtResource("36_dmas1")
+
+[node name="Teto10" type="Sprite2D" parent="Node2D"]
+position = Vector2(663.9765, -15.023474)
+rotation = 3.1415927
+scale = Vector2(2.186, 2.186)
+texture = ExtResource("36_dmas1")
+
+[node name="Jogador" parent="." instance=ExtResource("37_qdlp0")]
+position = Vector2(170, 203.00002)
+scale = Vector2(2.7729616, 2.7729616)
+script = ExtResource("38_y1k1t")
+
+[node name="FilhaLiz" parent="." instance=ExtResource("40_84fsn")]
+position = Vector2(432, 203)
+scale = Vector2(2.576157, 2.576157)
+
+[node name="DialogHolder" type="Node2D" parent="."]
+z_index = 1
+texture_filter = 1
+position = Vector2(574, -313)
+
+[node name="dialog_box" parent="DialogHolder" instance=ExtResource("42_0wko8")]
+offset_left = -270.99997
+offset_top = 219.0
+offset_right = -270.68
+offset_bottom = 219.0
+scale = Vector2(0.64311063, 0.64311063)
+metadata/_edit_use_anchors_ = true

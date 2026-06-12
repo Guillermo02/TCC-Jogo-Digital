@@ -1,0 +1,95 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqnhs13y7pbga"]
+
+[ext_resource type="Texture2D" uid="uid://es2dx43344po" path="res://sprites/TutorialBox/PapelTutorial.png" id="1_l1mms"]
+[ext_resource type="FontFile" uid="uid://doey2ik21lr0r" path="res://fonts/PixelifySans-VariableFont_wght.ttf" id="2_77jil"]
+[ext_resource type="Texture2D" uid="uid://dgj1ttdvadgr0" path="res://UI/Tutorial/tile_0017.png" id="9_uavk2"]
+
+[node name="CartaLiz" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TutorialUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -640.0
+offset_bottom = -360.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Fundo Escuro" type="ColorRect" parent="CanvasLayer/TutorialUI"]
+custom_minimum_size = Vector2(800, 300)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -10.000001
+offset_right = 797.0
+offset_bottom = 490.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8105235, 0.7557991)
+color = Color(0, 0, 0, 0.60784316)
+metadata/_edit_use_anchors_ = true
+
+[node name="Papel" type="TextureRect" parent="CanvasLayer/TutorialUI"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = -3.0
+offset_right = 566.0
+offset_bottom = 445.0
+scale = Vector2(0.84500587, 0.84500587)
+texture = ExtResource("1_l1mms")
+metadata/_edit_use_anchors_ = true
+
+[node name="Texto" type="Label" parent="CanvasLayer/TutorialUI/Papel"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.4110926
+anchor_top = -0.06650335
+anchor_right = 2.4231114
+anchor_bottom = 0.7080502
+offset_left = -501.80798
+offset_top = 115.00001
+offset_right = -344.80798
+offset_bottom = 382.0
+scale = Vector2(0.47047418, 0.47047418)
+theme_override_colors/font_color = Color(0.30323282, 0.30323282, 0.30323282, 1)
+theme_override_constants/line_spacing = -2
+theme_override_fonts/font = ExtResource("2_77jil")
+theme_override_font_sizes/font_size = 29
+text = "Pai, sei que vai ler isso...
+
+Deixei esta carta escondida.
+A corrupção nessa cidade vai além
+da fábrica.
+
+Encontrei provas, mas eles me viram.
+Se eu sumir, procure na zona norte
+da cidade. Vi mapas, rotas e ordens
+com o nome daquela região.
+O prefeito está levando algo pra lá.
+
+Não confie nos homens dele.
+Estou com medo...
+mas precisava fazer isso.
+
+Eu te amo.
+Liz
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="ESC" type="Sprite2D" parent="CanvasLayer/TutorialUI/Papel"]
+position = Vector2(-142.3349, 43.795357)
+scale = Vector2(2.508832, 2.508832)
+texture = ExtResource("9_uavk2")
+
+[node name="CartaLiz" type="Sprite2D" parent="."]
+position = Vector2(-131, 126)
+scale = Vector2(0.33106714, 0.33106714)
+texture = ExtResource("1_l1mms")

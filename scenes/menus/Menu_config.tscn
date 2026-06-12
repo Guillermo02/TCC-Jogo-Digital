@@ -125,7 +125,6 @@ expand_margin_bottom = 1.0
 
 [node name="MenuConfig" type="Control"]
 process_mode = 2
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -157,10 +156,11 @@ layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel"]
 layout_mode = 0
-offset_left = -75.907845
-offset_top = -88.36471
-offset_right = 48.092155
-offset_bottom = 87.63529
+offset_left = -72.22171
+offset_top = -88.3647
+offset_right = 51.77829
+offset_bottom = 87.6353
+scale = Vector2(0.9314811, 0.9314811)
 
 [node name="Conteudo" type="Control" parent="CenterContainer/Panel/MarginContainer"]
 layout_mode = 2
@@ -291,7 +291,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_bfuw3")
 text = "Voltar"
 
 [node name="StarOutline" type="Sprite2D" parent="."]
-position = Vector2(38.48464, 478.74887)
+position = Vector2(33.882774, 436.71127)
 scale = Vector2(0.15924445, 0.15924445)
 texture = ExtResource("5_uy37p")
 
@@ -312,10 +312,10 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 texture_filter = 1
 texture_repeat = 1
-offset_left = 1752.9144
-offset_top = -2809.8186
-offset_right = 2339.914
-offset_bottom = -2730.8186
+offset_left = 1749.4591
+offset_top = -2513.8628
+offset_right = 2336.4587
+offset_bottom = -2434.8628
 scale = Vector2(8.116583, 8.116583)
 theme_override_fonts/font = ExtResource("4_765cl")
 theme_override_font_sizes/font_size = 54

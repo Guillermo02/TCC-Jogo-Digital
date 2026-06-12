@@ -19,82 +19,119 @@ extends Control
 @onready var indicador: TextureRect = $indicador
 
 var _posicao_inicial: Vector2
+
 var _animando_texto: bool = false
 var _texto_finalizado: bool = false
-var _pode_fechar_com_enter: bool = false
 var _fechando: bool = false
 var _pular_digitacao: bool = false
+
+var _tween_atual: Tween = null
+var _fluxo_id: int = 0
+
 
 func _ready() -> void:
 	_posicao_inicial = position
 	_preparar_balao()
-	show()
-	await mostrar_texto(texto_inicial)
+	hide()
+
 
 func _preparar_balao() -> void:
+	_parar_tween_atual()
+
 	modulate.a = 1.0
 	scale = Vector2.ONE
 	position = _posicao_inicial
+
+	text_label.text = ""
 	text_label.visible_characters = 0
-	_texto_finalizado = false
-	_pode_fechar_com_enter = false
+
+	indicador.show()
+
 	_animando_texto = false
+	_texto_finalizado = false
 	_fechando = false
 	_pular_digitacao = false
 
+
 func mostrar_texto(texto: String) -> void:
+	_fluxo_id += 1
+	var fluxo_local: int = _fluxo_id
+
 	_resetar_estado_para_novo_texto()
 
 	show()
+	indicador.show()
+
 	text_label.text = texto
 	text_label.visible_characters = 0
 
 	await get_tree().process_frame
+	if not _fluxo_valido(fluxo_local):
+		return
+
+	await get_tree().process_frame
+	if not _fluxo_valido(fluxo_local):
+		return
+
 	_atualizar_indicador()
 
-	await _animar_entrada()
-	await _animar_texto(texto)
+	await _animar_entrada(fluxo_local)
+
+	if not _fluxo_valido(fluxo_local):
+		return
+
+	await _animar_texto(texto, fluxo_local)
+
+	if not _fluxo_valido(fluxo_local):
+		return
 
 	_texto_finalizado = true
-	_pode_fechar_com_enter = true
+	indicador.show()
+	_atualizar_indicador()
+
 
 func mostrar_texto_com_saida(texto: String, esperar: float = -1.0) -> void:
-	_resetar_estado_para_novo_texto()
+	_fluxo_id += 1
+	var fluxo_local: int = _fluxo_id
 
-	show()
-	text_label.text = texto
-	text_label.visible_characters = 0
+	await mostrar_texto(texto)
 
-	await get_tree().process_frame
-	_atualizar_indicador()
+	if not _fluxo_valido(fluxo_local):
+		return
 
-	await _animar_entrada()
-	await _animar_texto(texto)
+	var tempo_final: float = tempo_espera_antes_saida if esperar < 0.0 else esperar
 
-	_texto_finalizado = true
-	_pode_fechar_com_enter = true
-
-	var tempo_final := tempo_espera_antes_saida if esperar < 0.0 else esperar
 	if tempo_final > 0.0:
 		await get_tree().create_timer(tempo_final).timeout
+
+	if not _fluxo_valido(fluxo_local):
+		return
 
 	if visible and not _fechando:
 		await esconder_balao()
 
+
 func esconder_balao() -> void:
-	if _fechando or not visible:
+	if _fechando:
 		return
 
+	if not visible:
+		return
+
+	_fluxo_id += 1
+
 	_fechando = true
-	_pode_fechar_com_enter = false
 	_animando_texto = false
 	_pular_digitacao = false
 
 	await _animar_saida()
+
 	hide()
 
 	_fechando = false
 	_texto_finalizado = false
+	text_label.visible_characters = 0
+
 
 func pular_animacao_texto() -> void:
 	if not _animando_texto:
@@ -102,74 +139,153 @@ func pular_animacao_texto() -> void:
 
 	_pular_digitacao = true
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if not visible:
-		return
-
-	if not event.is_action_pressed("ui_accept"):
 		return
 
 	if _fechando:
 		return
 
-	if _animando_texto:
-		pular_animacao_texto()
+	if not event.is_action_pressed("ui_accept"):
 		return
 
-	if _pode_fechar_com_enter and _texto_finalizado:
-		await esconder_balao()
+	if _animando_texto:
+		pular_animacao_texto()
+		get_viewport().set_input_as_handled()
+
 
 func _resetar_estado_para_novo_texto() -> void:
+	_parar_tween_atual()
+
 	modulate.a = 1.0
 	scale = Vector2.ONE
 	position = _posicao_inicial
-	_texto_finalizado = false
-	_pode_fechar_com_enter = false
+
 	_animando_texto = false
+	_texto_finalizado = false
 	_fechando = false
 	_pular_digitacao = false
 
-func _animar_entrada() -> void:
+	indicador.show()
+
+
+func _animar_entrada(fluxo_local: int) -> void:
+	_parar_tween_atual()
+
+	if not _fluxo_valido(fluxo_local):
+		return
+
 	modulate.a = 0.0
 	scale = entrada_escala_inicial
 	position = _posicao_inicial + Vector2(0, entrada_deslocamento_y)
 
-	var tween := create_tween()
-	tween.set_parallel(true)
-	tween.tween_property(self, "modulate:a", 1.0, entrada_duracao)
-	tween.tween_property(self, "scale", Vector2.ONE, entrada_duracao)
-	tween.tween_property(self, "position", _posicao_inicial, entrada_duracao)
+	indicador.show()
 
-	await tween.finished
+	_tween_atual = create_tween()
+	_tween_atual.set_parallel(true)
+	_tween_atual.tween_property(self, "modulate:a", 1.0, entrada_duracao)
+	_tween_atual.tween_property(self, "scale", Vector2.ONE, entrada_duracao)
+	_tween_atual.tween_property(self, "position", _posicao_inicial, entrada_duracao)
+
+	await get_tree().create_timer(entrada_duracao).timeout
+
+	if not _fluxo_valido(fluxo_local):
+		return
+
+	_parar_tween_atual()
+
+	modulate.a = 1.0
+	scale = Vector2.ONE
+	position = _posicao_inicial
+	indicador.show()
+
 
 func _animar_saida() -> void:
-	var tween := create_tween()
-	tween.set_parallel(true)
-	tween.tween_property(self, "modulate:a", 0.0, saida_duracao)
-	tween.tween_property(self, "scale", saida_escala_final, saida_duracao)
-	tween.tween_property(self, "position", _posicao_inicial + Vector2(0, saida_deslocamento_y), saida_duracao)
+	_parar_tween_atual()
 
-	await tween.finished
+	_tween_atual = create_tween()
+	_tween_atual.set_parallel(true)
+	_tween_atual.tween_property(self, "modulate:a", 0.0, saida_duracao)
+	_tween_atual.tween_property(self, "scale", saida_escala_final, saida_duracao)
+	_tween_atual.tween_property(self, "position", _posicao_inicial + Vector2(0, saida_deslocamento_y), saida_duracao)
 
-func _animar_texto(texto: String) -> void:
+	await get_tree().create_timer(saida_duracao).timeout
+
+	_parar_tween_atual()
+
+	modulate.a = 0.0
+	scale = saida_escala_final
+	position = _posicao_inicial + Vector2(0, saida_deslocamento_y)
+
+
+func _animar_texto(texto: String, fluxo_local: int) -> void:
+	if not _fluxo_valido(fluxo_local):
+		return
+
 	_animando_texto = true
 	_pular_digitacao = false
+	indicador.show()
 
-	for i in range(texto.length() + 1):
+	var total_caracteres: int = texto.length()
+
+	for i in range(total_caracteres + 1):
+		if not _fluxo_valido(fluxo_local):
+			return
+
+		if not visible:
+			break
+
+		if _fechando:
+			break
+
 		if _pular_digitacao:
-			text_label.visible_characters = texto.length()
+			text_label.visible_characters = total_caracteres
 			break
 
 		text_label.visible_characters = i
-		await get_tree().create_timer(velocidade_texto).timeout
 
-	text_label.visible_characters = texto.length()
+		if velocidade_texto > 0.0:
+			await get_tree().create_timer(velocidade_texto).timeout
+		else:
+			await get_tree().process_frame
+
+	if not _fluxo_valido(fluxo_local):
+		return
+
+	text_label.visible_characters = total_caracteres
+
 	_animando_texto = false
 	_pular_digitacao = false
+	indicador.show()
+
 
 func _atualizar_indicador() -> void:
-	var bg_size := bg_dialog_box.size
-	var ind_size := indicador.size
+	var bg_size: Vector2 = bg_dialog_box.size
+	var ind_size: Vector2 = indicador.size
 
 	indicador.position.x = bg_dialog_box.position.x + (bg_size.x * 0.5) - (ind_size.x * 0.5)
 	indicador.position.y = bg_dialog_box.position.y + bg_size.y - 1.0
+
+
+func _fluxo_valido(fluxo_local: int) -> bool:
+	if not is_inside_tree():
+		return false
+
+	if fluxo_local != _fluxo_id:
+		return false
+
+	return true
+
+
+func _parar_tween_atual() -> void:
+	if _tween_atual != null:
+		if _tween_atual.is_valid():
+			_tween_atual.kill()
+
+	_tween_atual = null
+
+
+func _exit_tree() -> void:
+	_fluxo_id += 1
+	_parar_tween_atual()

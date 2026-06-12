@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://bxae5r7ysb7dk"]
+
+[ext_resource type="Texture2D" uid="uid://c1cgucplkokce" path="res://assets/Capanga1/Idle.png" id="1_1carx"]
+[ext_resource type="Texture2D" uid="uid://dialc76jkc0ch" path="res://UI/Tutorial/tile_0087.png" id="2_2tu0f"]
+[ext_resource type="Script" uid="uid://de4ifu5fruyfd" path="res://scripts/floresta_scripts/InteracaoE.gd" id="3_s0tsl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypqvd"]
+atlas = ExtResource("1_1carx")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tu0f"]
+atlas = ExtResource("1_1carx")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0tsl"]
+atlas = ExtResource("1_1carx")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4gab"]
+atlas = ExtResource("1_1carx")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_015cl"]
+atlas = ExtResource("1_1carx")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blkpe"]
+atlas = ExtResource("1_1carx")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5rby7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypqvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tu0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0tsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4gab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_015cl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blkpe")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_exmbc"]
+radius = 16.92269
+height = 70.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2tu0f"]
+
+[node name="Capanga1" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(6.000001, 8)
+scale = Vector2(0.8266743, 0.8266743)
+sprite_frames = SubResource("SpriteFrames_5rby7")
+animation = &"idle"
+autoplay = "idle"
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.88889706, 0.88889706)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-22.499794, 35.99967)
+scale = Vector2(5.222852, 0.90173876)
+shape = SubResource("CapsuleShape2D_exmbc")
+debug_color = Color(0.89070547, 0.325194, 0.018836258, 0.41960785)
+
+[node name="E" type="Sprite2D" parent="."]
+position = Vector2(8, -4)
+scale = Vector2(0.91819793, 0.91819793)
+texture = ExtResource("2_2tu0f")
+script = ExtResource("3_s0tsl")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(8, 32)
+scale = Vector2(-1.2071071, 1.8760065)
+shape = SubResource("CapsuleShape2D_2tu0f")

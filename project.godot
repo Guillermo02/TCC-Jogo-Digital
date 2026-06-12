@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://scripts/menu_scripts/game_manager.gd"
+SaveManager="*res://scripts/menu_scripts/SaveManager.gd"
+CursorManager="*res://scripts/menu_scripts/CursorManager.gd"
 
 [display]
 
@@ -26,7 +28,6 @@ window/size/viewport_height=360
 window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
 window/vram_compression/compress_with_gpu=true
 window/canvas_textures/default_texture_filter=0
@@ -84,5 +85,6 @@ interagir={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 textures/vram_compression/compress_with_gpu=false
 2d/snap/snap_2d_transforms_to_pixel=true
